@@ -21,7 +21,7 @@ img {
 }
 
 .app {
-  background-color: #fff;
+  background-color: rgb(218, 209, 209);
   width: 330px;
   height: 570px;
   margin: 2em auto;
@@ -34,7 +34,7 @@ img {
 
 a {
   text-decoration: none;
-  color: #257aa6;
+  color: #f1f1f1;
 }
 
 p {
