@@ -52,7 +52,7 @@ def signup():
             while api.check_teach_key(teacher_id):
                 teacher_id=gen.teach_key()
 
-            api.signup_teacher(name,email,password,phone_no,student_id)  
+            api.signup_teacher(name,email,password,phone_no,teacher_id)  
             session['email']=email
             session['who']=1
             return redirect('/')    
