@@ -63,16 +63,13 @@ body {
 .hero__heading {
   font-size: 1.875rem; /* 30px */
   font-weight: 400;
-}
-.hero__heading span {
-  color: #1f7574;
+  line-height: 1.6;
 }
 
 @media (min-width: 64rem) {
   /* 1024px */
   .hero__heading {
-    text-transform: uppercase;
-    font-size: 4rem;
+    font-size: 2.6rem;
     font-weight: 700;
   }
 }
@@ -106,6 +103,34 @@ body {
   box-shadow: none;
 }
 
+.content {
+  color: rgb(27, 24, 24);
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 0 40px;
+  margin-bottom: 3em;
+}
+.content h1 {
+  font-family: "Archivo", sans-serif;
+  color: #202020;
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 3em;
+}
+.content span {
+  color: #696e6e;
+}
+@media (min-width: 760px) {
+  .content h1 {
+    display: inline-block;
+    font-size: 4em;
+  }
+}
+
 .wrapper {
   margin-top: 12em;
   display: flex;
@@ -113,7 +138,7 @@ body {
   flex-wrap: wrap;
 }
 .card {
-  /* border: 2px solid black;
+  border: 2px solid black;
   max-width: 300px;
   min-height: 300px;
   background: #696e6e;
@@ -127,48 +152,50 @@ body {
   border: 5px solid #d8dcdc;
   border-radius: 50%;
   transition: 0.5s ease-in-out;
-  box-shadow: 5px 4px 0 black; */
-  background: #f9f9f9;
-  color: #000;
-  margin: 20px;
-  padding: 5px 30px;
-  border: 3px solid black;
-  display: flex;
-  border-radius: 1.25px;
-  justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  box-shadow: 5px 5px #71a89e, 7px 7px black;
-  transition: all 0.25s;
+  box-shadow: 5px 4px 0 black;
 }
 .card:hover,
 .card:focus,
 .card:last-child:hover {
-  transform: translateX(7px) translateY(7px);
-  box-shadow: -5px -5px #71a89e, -7px -7px rgb(0, 0, 0);
+  background-color: rgb(245, 245, 245);
+  color: black;
+  box-shadow: none;
 }
 .card:nth-child(2) {
   background: #4181ee;
 }
 .card:last-child {
+<<<<<<< HEAD
   background: #696e6e;
   /* background: #71a89e; */
   background: #f9f9f9;
+=======
+  background: #71a89e;
+>>>>>>> parent of 40e12e7 (changed the login/signin pages)
 }
 .card-title {
-  text-align: left;
   text-transform: uppercase;
+<<<<<<< HEAD
   color: #d8dcdc;
   margin-top: 0;
   color: #1d1d1d;
   margin-top: 0.2em;
+=======
+  color: #ffffff;
+  margin-top: 0;
+>>>>>>> parent of 40e12e7 (changed the login/signin pages)
   font-size: 1.2em;
   font-weight: 600;
+  letter-spacing: 1.2px;
 }
 .card-content {
+<<<<<<< HEAD
   color: #d8dcdc;
   text-align: left;
   color: #1d1d1d;
+=======
+  color: #ffffff;
+>>>>>>> parent of 40e12e7 (changed the login/signin pages)
   font-size: 14px;
   letter-spacing: 0.5px;
   line-height: 1.5;
