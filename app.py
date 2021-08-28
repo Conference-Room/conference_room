@@ -18,8 +18,16 @@ def home():
         else:
             return render_template('//teacher//teacher_main.html')    
         # return render_template('class.html')
-    return redirect('/login')
+    return render_template('/index.html')
 
+
+@app.route('/index',methods=['POST','GET'])
+def index():
+    if request.method=='POST':
+        form_details=request.form
+        who = form_details['who']
+        return render_template('login.html',who=who)
+    return render_template('index.html')    
 
 @app.route('/signup',methods=['POST','GET'])
 def signup():

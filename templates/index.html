@@ -52,24 +52,37 @@
           <p>A <span>virtual classroom</span> connecting teachers and students.</p>
         </section>
     </div>
-    
+    <form method="post" action="/index">
     <div class="wrapper">
         <div class="card">
+
             <h3 class="card-title">Teacher</h3>
             <img style="margin-bottom: 1em;" src="../static/photos/teacher.png" alt="">
 
                 <p class="card-content">If you are a teacher Join here</p>
-                <button class="card-btn">Click Here</button>
+                <button onclick="teach_fun" type="submit" name="teacher" class="card-btn">Click Here</button>
             </div>
-            
+            <input id="who" name="who" type="hidden" value="">
             <div class="card">
                 <h3 class="card-title">Student</h3>
                 <img style="margin-bottom: 1em;" src="../static/photos/student.png" alt="">
                 <p class="card-content">If you are a teacher Join here</p>
-                <button class="card-btn">Click Here</button>
+                <button onclick="stud_fun()" type="submit" name="student" class="card-btn">Click Here</button>
                 
             </div>
         </div>
+    </form>
+
+    <script>
+        function teach_fun() {
+            document.getElementById("who").value='teacher';
+        }
+        function stud_fun() {
+            document.getElementById("who").value='student';
+        }
+
+    </script>
+
 
 </body>
 

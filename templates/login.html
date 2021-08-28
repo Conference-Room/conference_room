@@ -21,16 +21,16 @@
                     <img src="https://www.searchpng.com/wp-content/uploads/2019/02/User-Icon-PNG.png" style="height: 10vh;">
                 </header>
                 <div class="inputs">
-                    <input type="email" name="mail" placeholder="Enter Email">
+                <input type="email" name="email" placeholder="Enter Email">
                 <input type="text" name="password" placeholder="Enter password">
-
+                <input id="who" name="who" type="hidden" value="">
                 <br>
                 <br><br><br> <br><br>
                 </div>
                 <br><br>
                 <footer>
                     <button onclick="myFunction()" type="submit" name="button" >Login</button>
-                    <p>Don't have an account? <a  onclick="myFunction()" href='/signup' href="#">Resigter</a></p>
+                    <p>Don't have an account? <a href='/signup'>Resigter</a></p>
                 </footer>
 
             </form>
@@ -43,13 +43,7 @@
 
     <script>
         function myFunction() {
-            var temp = document.forms[0];
-            for(var i=2;i<=3;i++){
-                if(temp[i].checked){
-                    document.getElementById("who").value=temp[i].id;
-                    break;
-                }
-            }
+            document.getElementById("who").value={{who}};
         }
 
     </script>
