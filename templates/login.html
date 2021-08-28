@@ -12,6 +12,21 @@
 </head>
 
 <body>
+
+
+    <style>
+        body {
+            background-image: url(../static/photos/SVG/Asset\ 1.svg);
+          height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        </style>
+
+
     <div class="app">
 
         <div class="bg"></div>
@@ -25,11 +40,12 @@
                 <input type="text" name="password" placeholder="Enter password">
                 <input id="who" name="who" type="hidden" value="">
                 <br>
-                <br><br><br> <br><br>
+                <br><br><br> <br><br> <br><br>
                 </div>
                 <br><br>
                 <footer>
                     <button onclick="myFunction()" type="submit" name="button" >Login</button>
+                    <br> <br>
                     <p>Don't have an account? <a href='/signup'>Resigter</a></p>
                 </footer>
 

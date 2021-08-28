@@ -96,13 +96,16 @@ a {
 .hero__heading {
   font-size: 1.875rem; /* 30px */
   font-weight: 400;
-  line-height: 1.6;
+}
+.hero__heading span {
+  color: #1f7574;
 }
 
 @media (min-width: 64rem) {
   /* 1024px */
   .hero__heading {
-    font-size: 2.6rem;
+    text-transform: uppercase;
+    font-size: 4rem;
     font-weight: 700;
   }
 }
@@ -136,41 +139,13 @@ a {
   box-shadow: none;
 }
 
-.content {
-  color: rgb(27, 24, 24);
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  padding: 0 40px;
-  margin-bottom: 3em;
-}
-.content h1 {
-  font-family: "Archivo", sans-serif;
-  color: #202020;
-  font-weight: bolder;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 3em;
-}
-.content span {
-  color: #696e6e;
-}
-@media (min-width: 760px) {
-  .content h1 {
-    display: inline-block;
-    font-size: 4em;
-  }
-}
-
 .wrapper {
   display: flex;
   justify-content: left;
   flex-wrap: wrap;
 }
 .card {
-  border: 2px solid black;
+  /* border: 2px solid black;
   max-width: 300px;
   background: #71a89e;
   padding: 30px;
@@ -178,32 +153,45 @@ a {
   color: white;
   margin: 20px;
   transition: 0.5s ease-in-out;
-  box-shadow: 5px 4px 0 black;
+  box-shadow: 5px 4px 0 black; */
+  background: #f9f9f9;
+  color: #000;
+  margin: 20px;
+  padding: 5px 30px;
+  border: 3px solid black;
+  display: flex;
+  border-radius: 1.25px;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  box-shadow: 5px 5px #71a89e, 7px 7px black;
+  transition: all 0.25s;
 }
 .card:hover,
 .card:focus,
 .card:last-child:hover {
-  background-color: rgb(245, 245, 245);
-  color: black;
-  box-shadow: none;
+  transform: translateX(7px) translateY(7px);
+  box-shadow: -5px -5px #71a89e, -7px -7px rgb(0, 0, 0);
 }
 
 .card:nth-child(2) {
   background: #4181ee;
 }
 .card:last-child {
-  background: #71a89e;
+  /* background: #71a89e; */
+  background: #f9f9f9;
 }
 .card-title {
+  text-align: left;
   text-transform: uppercase;
-  color: #ffffff;
-  margin-top: 0;
+  color: #1d1d1d;
+  margin-top: 0.2em;
   font-size: 1.2em;
   font-weight: 600;
-  letter-spacing: 1.2px;
 }
 .card-content {
-  color: #ffffff;
+  text-align: left;
+  color: #1d1d1d;
   font-size: 14px;
   letter-spacing: 0.5px;
   line-height: 1.5;
