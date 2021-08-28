@@ -16,7 +16,7 @@
 
         <div class="bg"></div>
 
-            <form method="post" action="/login">
+            <form method="post" action="/login" >
                 <header>
                     <img src="https://www.searchpng.com/wp-content/uploads/2019/02/User-Icon-PNG.png" style="height: 10vh;">
                 </header>
@@ -30,8 +30,8 @@
                 <br><br>
                 <footer>
                     <button onclick="myFunction()" type="submit" name="button" >Login</button>
-                    <p>Don't have an account? <a href='/signup'>Resigter</a></p>
-                </footer>
+                    <p>Don't have an account? <a href="/signup/{{who1}}">Resigter</a></p>
+                </footer>   
 
             </form>
 
@@ -43,7 +43,8 @@
 
     <script>
         function myFunction() {
-            document.getElementById("who").value={{who}};
+            console.log("hello");
+            document.getElementById("who").value={{ who1 }};
         }
 
     </script>

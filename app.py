@@ -26,11 +26,11 @@ def index():
     if request.method=='POST':
         form_details=request.form
         who = form_details['who']
-        return render_template('login.html',who=who)
+        return render_template('login.html',who1=who)
     return render_template('index.html')    
 
-@app.route('/signup',methods=['POST','GET'])
-def signup():
+@app.route('/signup/<who1>',methods=['POST','GET'])
+def signup(who1):
     if 'email' in session:
         return redirect('/')
     
@@ -44,8 +44,6 @@ def signup():
         phone_no = form_details['phone_no']
         
         if(who=='student'):
-            print("Im in student")
-            print(form_details)
             student_id = gen.stud_key()
             while api.check_stud_key(student_id):
                 student_id=gen.stud_key()
@@ -64,7 +62,8 @@ def signup():
             session['email']=email
             session['who']=1
             return redirect('/')    
-    return render_template('signup.html')        
+
+    return render_template('signup.html',who1=who1)        
             
 
 @app.route('/login',methods=['POST','GET'])

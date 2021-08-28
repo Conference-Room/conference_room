@@ -11,18 +11,12 @@
 </head>
 
 <body>
-    <form method="post" action="/signup">
+    <form method="post" action="/signup/{{ who1 }}">
         <input type="name" name="name" placeholder="Enter Name">
         <input type="email" name="email" placeholder="Enter Email">
         <input type="text" name="password" placeholder="Enter password">
         <input type="text" name="phone_no" placeholder="Enter Phone no">
 
-        <br>
-        <input type="radio" id="student" name="desig" value="false">
-        <label for="student"> As student</label><br>
-
-        <input type="radio" id="teacher" name="desig" value="false">
-        <label for="teacher"> As teacher</label><br>
 
         <button onclick="myFunction()" type="submit" name="button">Signup</button>
         <input id="who" name="who" type="hidden" value="">
@@ -30,13 +24,7 @@
 
     <script>
         function myFunction() {
-            var temp = document.forms[0];
-            for(var i=3;i<=4;i++){
-                if(temp[i].checked){
-                    document.getElementById("who").value=temp[i].id;
-                    break;
-                }
-            }
+            document.getElementById("who").value={{ who1 }};
         }
 
     </script>
