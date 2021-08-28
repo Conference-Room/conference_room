@@ -101,7 +101,7 @@ def login():
             else:
                 print("user not exist")
                 return render_template('login.html')
-        return render_template('login.html')
+    return render_template('login.html')
 
 @app.route('/logout')
 def logout():
