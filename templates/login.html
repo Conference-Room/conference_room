@@ -1,5 +1,3 @@
-<!doctype html>
-
 <html lang="en">
 
 <head>
@@ -12,11 +10,9 @@
 </head>
 
 <body>
-
-
     <style>
         body {
-            background-image: url(../static/photos/SVG/Asset\ 1.svg);
+            background-image: url(../static/photos/SVG/Asset\ 2.svg);
           height: 100%;
 
             /* Center and scale the image nicely */
@@ -25,44 +21,38 @@
             background-size: cover;
         }
         </style>
+           <div class="app">
 
-
-    <div class="app">
-
-        <div class="bg"></div>
-
-            <form method="post" action="/login" >
-                <header>
-                    <img src="https://www.searchpng.com/wp-content/uploads/2019/02/User-Icon-PNG.png" style="height: 10vh;">
-                </header>
-                <div class="inputs">
-                <input type="email" name="email" placeholder="Enter Email">
-                <input type="text" name="password" placeholder="Enter password">
-                <input id="who" name="who" type="hidden" value="">
-                <br>
-                <br><br><br> <br><br> <br><br>
-                </div>
-                <br><br>
-                <footer>
-                    <button onclick="myFunction()" type="submit" name="button" >Login</button>
-                    <p>Don't have an account? <a href="/signup/{{who1}}">Resigter</a></p>
-                </footer>   
-
-            </form>
-
-
-        </div>
-
-
-   
-
-    <script>
-        function myFunction() {
-            console.log("hello");
-            document.getElementById("who").value={{ who1 }};
-        }
-
-    </script>
+            <div class="bg"></div>
+    
+                <form method="post" action="/login">
+                    <header>
+                        <img src="https://www.searchpng.com/wp-content/uploads/2019/02/User-Icon-PNG.png" style="height: 10vh;">
+                    </header>
+                    <div class="inputs">
+                    <input type="email" name="email" placeholder="Enter Email">
+                    <input type="text" name="password" placeholder="Enter password">
+                    <input id="who" name="who" type="hidden" value="">
+                    <br>
+                    <br><br><br> <br><br> <br><br>
+                    </div>
+                    <br><br>
+                    <footer>
+                        <button onclick="myFunction()" type="submit" name="button" >Login</button>
+                        <br> <br>
+                        <p>Don't have an account? <a href='/signup'>Resigter</a></p>
+                    </footer>
+    
+                </form>
+    
+    
+            </div>
+        <script>
+            function myFunction() {
+                document.getElementById("who").value={{who}};
+            }
+    
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
