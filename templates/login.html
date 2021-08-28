@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+
+<body>
+    <form method="post" action="/login">
+    
+        <input type="email" name="email" placeholder="Enter Email">
+        <input type="text" name="password" placeholder="Enter password">
+
+        <br>
+        <input type="radio" id="student" name="desig" value="false">
+        <label for="student"> As student</label><br>
+
+        <input type="radio" id="teacher" name="desig" value="false">
+        <label for="teacher"> As teacher</label><br>
+
+        <button onclick="myFunction()" type="submit" name="button">Login</button>
+        <a href='/signup'>Register</a>
+        <input id="who" name="who" type="hidden" value="">
+    </form>
+
+    <script>
+        function myFunction() {
+            var temp = document.forms[0];
+            for(var i=2;i<=3;i++){
+                if(temp[i].checked){
+                    document.getElementById("who").value=temp[i].id;
+                    break;
+                }
+            }
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
