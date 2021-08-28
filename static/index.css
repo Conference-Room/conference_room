@@ -1,141 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@600&display=swap");
-
-:root {
-  --color-white: #fff;
-  --color-black: #000;
-  --color-lightGray: #f9f9f9;
-  --color-dark: #22322f;
-  --color-darkGray: #333333;
-  --color-primary: #71a89e;
-  --header-height: 7.5rem; /* 120px */
-}
-
 body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--color-lightGray);
-  font-family: "Lato", sans-serif;
-  font-size: 1.125rem;
+  background-color: #fdfdfd;
+  font-family: "Sora", sans-serif;
 }
-
-.body--noscroll {
-  overflow: hidden;
+.box-shadow-menu {
+  position: relative;
+  padding-left: 1.25em;
 }
-
-a {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--color-dark);
+.box-shadow-menu:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  width: 1em;
+  height: 0.15em;
+  background: black;
+  box-shadow: 0 0.25em 0 0 black, 0 0.5em 0 0 black;
 }
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* Spacing Rules */
-.container-pall {
-  /* all */
-  padding: 1.875rem 1.5625rem;
-}
-
-.hero {
-  min-height: calc(100vh - var(--header-height));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-@media (max-width: 18.75rem) {
-  /* 300px */
-  .hero {
-    text-align: center;
-  }
-}
-
-@media (min-width: 48rem) {
-  /* 768px */
-  .hero {
-    flex-direction: row-reverse;
-    justify-content: space-between;
-  }
-}
-
-.hero__illustration-image {
-  margin-left: auto;
-  margin-right: auto;
-  width: min(19.25rem, 100%); /* 308px - 100% */
-  height: min(18.8125rem, 100%); /* 301px - 100% */
-}
-
-@media (min-width: 48rem) {
-  /* 768px */
-  .hero__illustration-image {
-    width: 23.125rem; /* 370px */
-    height: auto;
-    margin-left: 3.125rem; /* 50px */
-  }
-}
-
-@media (min-width: 64rem) {
-  /* 1024px */
-  .hero__illustration-image {
-    width: 45rem; /* 500px */
-  }
-}
-
-@media (min-width: 64rem) {
-  /* 1024px */
-  .hero__text {
-    width: 31.25rem; /* 500px */
-  }
-}
-
-.hero__heading {
-  font-size: 1.875rem; /* 30px */
-  font-weight: 400;
-  line-height: 1.6;
-}
-
-@media (min-width: 64rem) {
-  /* 1024px */
-  .hero__heading {
-    font-size: 2.6rem;
-    font-weight: 700;
-  }
-}
-
-.hero__description {
-  font-size: 1.1875rem; /* 19px */
-  line-height: 1.7;
-}
-
-.hero__cta {
-  color: var(--color-dark);
-  border: 2px solid var(--color-dark);
-  border-radius: 10px;
-  padding: 0.9375rem 1.875rem; /* 15px - 30px */
-  font-size: 1.125rem;
-  font-weight: bold;
-  text-align: center;
-  transition: all 300ms ease-in-out;
-}
-
-.hero__cta--primary {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  box-shadow: 2px 2px 0 var(--color-dark);
-}
-
-.hero__cta--primary:hover,
-.hero__cta--primary:focus {
-  background-color: var(--color-white);
-  color: var(--color-dark);
-  box-shadow: none;
-}
-
 .content {
   color: rgb(27, 24, 24);
   position: absolute;
@@ -165,54 +47,45 @@ a {
 }
 
 .wrapper {
+  margin-top: 12em;
   display: flex;
-  justify-content: left;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .card {
-  border: 2px solid black;
   max-width: 300px;
-  background: #71a89e;
+  min-height: 300px;
+  background: #696e6e;
   padding: 30px;
   box-sizing: border-box;
-  color: white;
+  color: #d8dcdc;
   margin: 20px;
-  transition: 0.5s ease-in-out;
-  box-shadow: 5px 4px 0 black;
+  box-shadow: 0px 2px 18px -4px rgba(0, 0, 0, 0.75);
 }
-.card:hover,
-.card:focus,
-.card:last-child:hover {
-  background-color: rgb(245, 245, 245);
-  color: black;
-  box-shadow: none;
+.card img {
+  border: 5px solid #d8dcdc;
+  border-radius: 50%;
 }
-
 .card:nth-child(2) {
   background: #4181ee;
 }
 .card:last-child {
-  background: #71a89e;
+  background: #696e6e;
 }
 .card-title {
   text-transform: uppercase;
-  color: #ffffff;
+  color: #d8dcdc;
   margin-top: 0;
   font-size: 1.2em;
   font-weight: 600;
   letter-spacing: 1.2px;
 }
 .card-content {
-  color: #ffffff;
+  color: #d8dcdc;
   font-size: 14px;
   letter-spacing: 0.5px;
   line-height: 1.5;
 }
-.card:hover .card-content,
-.card:hover .card-title {
-  color: #000;
-}
-
 .card-btn {
   color: #e6e6e6;
   all: unset;
@@ -228,11 +101,11 @@ a {
   letter-spacing: 1.2px;
 }
 .card-btn:hover {
-  color: #ffffff;
-  background: #71a89e;
+  color: #02b875;
+  background: #fff;
 }
 
 .card:last-child .card-btn:hover {
-  color: #ffffff;
-  background: #71a89e;
+  color: #673ab7;
+  background: #fff;
 }
