@@ -46,6 +46,7 @@ body {
   }
 }
 
+<<<<<<< HEAD
 @media (min-width: 64rem) {
   /* 1024px */
   .hero__illustration-image {
@@ -131,6 +132,8 @@ body {
   }
 }
 
+=======
+>>>>>>> parent of 3792259 (Merge branch 'main' of https://github.com/Conference-Room/conference-room into main)
 .wrapper {
   margin-top: 12em;
   display: flex;
@@ -138,7 +141,10 @@ body {
   flex-wrap: wrap;
 }
 .card {
+<<<<<<< HEAD
   border: 2px solid black;
+=======
+>>>>>>> parent of 3792259 (Merge branch 'main' of https://github.com/Conference-Room/conference-room into main)
   max-width: 300px;
   min-height: 300px;
   background: #696e6e;
@@ -151,6 +157,7 @@ body {
 .card img {
   border: 5px solid #d8dcdc;
   border-radius: 50%;
+<<<<<<< HEAD
   transition: 0.5s ease-in-out;
   box-shadow: 5px 4px 0 black;
 }
@@ -160,6 +167,8 @@ body {
   background-color: rgb(245, 245, 245);
   color: black;
   box-shadow: none;
+=======
+>>>>>>> parent of 3792259 (Merge branch 'main' of https://github.com/Conference-Room/conference-room into main)
 }
 .card:nth-child(2) {
   background: #4181ee;
@@ -167,23 +176,29 @@ body {
 .card:last-child {
 <<<<<<< HEAD
   background: #696e6e;
+<<<<<<< HEAD
   /* background: #71a89e; */
   background: #f9f9f9;
 =======
   background: #71a89e;
 >>>>>>> parent of 40e12e7 (changed the login/signin pages)
+=======
+>>>>>>> parent of 3792259 (Merge branch 'main' of https://github.com/Conference-Room/conference-room into main)
 }
 .card-title {
   text-transform: uppercase;
 <<<<<<< HEAD
   color: #d8dcdc;
   margin-top: 0;
+<<<<<<< HEAD
   color: #1d1d1d;
   margin-top: 0.2em;
 =======
   color: #ffffff;
   margin-top: 0;
 >>>>>>> parent of 40e12e7 (changed the login/signin pages)
+=======
+>>>>>>> parent of 3792259 (Merge branch 'main' of https://github.com/Conference-Room/conference-room into main)
   font-size: 1.2em;
   font-weight: 600;
   letter-spacing: 1.2px;
@@ -191,11 +206,14 @@ body {
 .card-content {
 <<<<<<< HEAD
   color: #d8dcdc;
+<<<<<<< HEAD
   text-align: left;
   color: #1d1d1d;
 =======
   color: #ffffff;
 >>>>>>> parent of 40e12e7 (changed the login/signin pages)
+=======
+>>>>>>> parent of 3792259 (Merge branch 'main' of https://github.com/Conference-Room/conference-room into main)
   font-size: 14px;
   letter-spacing: 0.5px;
   line-height: 1.5;
