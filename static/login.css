@@ -8,9 +8,10 @@
 body {
   margin: 0;
   padding: 0;
-  background: #f6f6f6;
+  background: #dcdee6;
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
+  overflow-y: hidden;
   height: 100vh;
   margin: auto;
   display: flex;
@@ -22,14 +23,18 @@ img {
 
 .app {
   background-color: rgb(218, 209, 209);
-  width: 330px;
-  height: 570px;
-  margin: 2em auto;
+  width: 450px;
+  height: 650px;
+  margin: 5em auto;
   border-radius: 5px;
   padding: 1em;
   position: relative;
   overflow: hidden;
   box-shadow: 0 6px 31px -2px rgba(0, 0, 0, 0.3);
+  transition: 1.5s ease-in-out;
+}
+.app:hover {
+  transform: scale(1.05);
 }
 
 a {
@@ -51,7 +56,7 @@ p {
 }
 
 .bg {
-  width: 400px;
+  width: 450px;
   height: 550px;
   background: #696e6e;
   position: absolute;
@@ -112,14 +117,18 @@ footer {
 }
 
 button {
-  width: 100%;
   padding: 13px 15px;
-  border-radius: 100px;
+  border-radius: 5em;
   border: none;
   background: #696e6e;
   font-family: "Poppins", sans-serif;
   outline: none;
   color: #fff;
+  transition: 0.5s ease-in-out;
+}
+
+button:hover {
+  background-color: brown;
 }
 
 @media screen and (max-width: 640px) {
