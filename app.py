@@ -158,6 +158,7 @@ def create_class_data():
             api.create_class(class_name,class_id,class_link,teacher_id)    
             return redirect('/')
         return render_template("teacher/create_class.html")    
+    
     except Exception as e:
         print(e)
         return render_template("teacher/create_class.html") 
