@@ -22,7 +22,7 @@
 
             <div class="bg"></div>
     
-            <form method="post" action="/signup">
+            <form method="post" action="/signup/{{ who1 }}">
                 <header>
                     <img src="https://www.searchpng.com/wp-content/uploads/2019/02/User-Icon-PNG.png" style="height: 10vh;">
                 </header>
@@ -34,11 +34,6 @@
             
                 </div>
                 
-                <input type="checkbox" id="student" name="desig" value="false" style="margin-bottom:0em;">
-                <label for="student"  style="margin-bottom:.5em;" > As student</label><br>
-        
-                <input type="checkbox" id="teacher" name="desig" value="false" style="margin-bottom:0em;">
-                <label for="teacher"> As teacher</label><br>
         
                 <br> <br> <br>
                 <footer>
@@ -55,13 +50,7 @@
             </div>
         <script>
             function myFunction() {
-                var temp = document.forms[0];
-                for(var i=3;i<=4;i++){
-                    if(temp[i].checked){
-                        document.getElementById("who").value=temp[i].id;
-                        break;
-                    }
-                }
+                document.getElementById("who").value={{ who1 }};
             }
     
         </script>

@@ -26,14 +26,14 @@ def index():
     if request.method=='POST':
         form_details=request.form
         who = form_details['who']
-        return render_template('login.html',who=who)
+        return render_template('login.html',who1=who)
     return render_template('index.html')    
 
-@app.route('/signup',methods=['POST','GET'])
-def signup():
+@app.route('/signup/<who1>',methods=['POST','GET'])
+def signup(who1):
     if 'email' in session:
         return redirect('/')
-    # return "<p>Hello, World!</p>"
+    
     if(request.method=='POST'):
         form_details=request.form
         
@@ -44,8 +44,6 @@ def signup():
         phone_no = form_details['phone_no']
         
         if(who=='student'):
-            print("Im in student")
-            print(form_details)
             student_id = gen.stud_key()
             while api.check_stud_key(student_id):
                 student_id=gen.stud_key()
@@ -63,9 +61,9 @@ def signup():
             api.signup_teacher(name,email,password,phone_no,teacher_id)  
             session['email']=email
             session['who']=1
-            return redirect('/') 
-    # return "<p>Hello, World!</p>"
-    return render_template('signup.html')        
+            return redirect('/')    
+
+    return render_template('signup.html',who1=who1)              
             
 
 @app.route('/login',methods=['POST','GET'])
@@ -99,6 +97,7 @@ def login():
                 return render_template('login.html')        
         
         else:
+            print(email,password)
             flag = api.login_teacher(email,password)
             if(flag==1):
                 session['email']=email

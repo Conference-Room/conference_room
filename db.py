@@ -2,6 +2,12 @@ import pymysql
 import credential
 
 def login_teacher(email,password):
+    print(email,password)
+    print(credential.host)
+    print(credential.port)
+    print(credential.user)
+    print(credential.password)
+    print(credential.databasename)
     conn=pymysql.connect(
         host=credential.host,
         port=credential.port,
@@ -9,8 +15,10 @@ def login_teacher(email,password):
         password=credential.password,
         db=credential.databasename
     )
+    
     try:
         with conn.cursor() as curr:
+            print(email,password)
             sql = "select password from teacher where email=(%s)"
             curr.execute(sql,email)
             output = curr.fetchone()

@@ -40,7 +40,7 @@
                     <footer>
                         <button onclick="myFunction()" type="submit" name="button" >Login</button>
                         <br> <br>
-                        <p>Don't have an account? <a href='/signup'>Resigter</a></p>
+                        <p>Don't have an account? <a href="/signup/{{ who1 }}">Resigter</a></p>
                     </footer>
     
                 </form>
@@ -49,7 +49,7 @@
             </div>
         <script>
             function myFunction() {
-                document.getElementById("who").value={{who}};
+                document.getElementById("who").value={{ who1 }};
             }
     
         </script>
