@@ -166,7 +166,8 @@ def class_info(code):
         if 'email' not in session:
             return redirect('/')
         data = api.get_class_data(code)
-        return render_template('teacher/class_content.html',data=data)
+        details = api.get_teach_partiular_subject(code)
+        return render_template('teacher/class_content.html',data=data,details=details)
     except Exception as e:
         print(e)
         return redirect('/')
