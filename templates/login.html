@@ -21,6 +21,9 @@
             background-size: cover;
         }
         </style>
+       <!-- <a href="/">
+        <div class="navbar-brand " style="margin-top: 0.7rem; margin-left: 1.5rem;" href="/">Conference Room</div>
+        </a> -->
            <div class="app">
 
             <div class="bg"></div>
@@ -30,8 +33,8 @@
                         <img src="https://www.searchpng.com/wp-content/uploads/2019/02/User-Icon-PNG.png" style="height: 10vh;">
                     </header>
                     <div class="inputs">
-                    <input type="email" name="email" placeholder="Enter Email">
-                    <input type="text" name="password" placeholder="Enter password">
+                    <input type="email" name="email" placeholder="Enter Email" required>
+                    <input type="text" name="password" placeholder="Enter password" required>
                     <input id="who" name="who" type="hidden" value="">
                     <br>
                     <br><br><br> <br><br> <br><br>
@@ -40,7 +43,7 @@
                     <footer>
                         <button onclick="myFunction()" type="submit" name="button" >Login</button>
                         <br> <br>
-                        <p>Don't have an account? <a href="/signup/{{ who1 }}">Resigter</a></p>
+                        <p>Don't have an account? <a href="/signup/{{ who1 }}">Register</a></p>
                     </footer>
     
                 </form>

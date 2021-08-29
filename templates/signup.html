@@ -17,6 +17,9 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+        form input{
+            width:90%;
+        }
         </style>
         <div class="app">
 
@@ -26,21 +29,23 @@
                 <header>
                     <img src="https://www.searchpng.com/wp-content/uploads/2019/02/User-Icon-PNG.png" style="height: 10vh;">
                 </header>
-                <div class="inputs" style="margin-top: -9em">
-                    <input type="name" name="name" placeholder="Enter Name">
-                    <input type="email" name="email" placeholder="Enter Email">
-                    <input type="text" name="password" placeholder="Enter password">
-                    <input type="text" name="phone_no" placeholder="Enter Phone no">
+                <div class="inputs" style="margin-top: -10em">
+                    <input type="name" name="name" placeholder="Enter Name" required>
+                    <input type="email" name="email" placeholder="Enter Email" required>
+                    <input type="text" name="password" placeholder="Enter password" required>
+                    <input type="text" name="phone_no" placeholder="Enter Phone no" required>
             
                 </div>
                 
         
+                <br> <br> <br>
                 <br> <br> <br>
                 <footer>
                 
         
                 <button onclick="myFunction()" type="submit" name="button">Signup</button>
                 <input id="who" name="who" type="hidden" value="">
+
                 </footer>
                 
             </form>
