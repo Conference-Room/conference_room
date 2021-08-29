@@ -123,8 +123,16 @@ def create_class_data():
         form_details=request.form
         class_name=form_details['class_name']
         class_link=form_details['class_link']
-        print(class_name,class_link)
-        return render_template('teacher//teacher_main.html')
+        if 'email' not in session:
+            return redirect('/')
+        mail = session['email']
+        teacher_id = api.get_teacher_id(mail)
+        class_id = gen.class_id()
+        while api.check_class_id(class_id):
+            class_code=gen.class_id()
+        api.create_class(class_name,class_id,class_link,teacher_id)    
+        return redirect('/')
+    return render_template("teacher/create_class.html")    
 
 @app.route('/logout')
 def logout():

@@ -118,4 +118,61 @@ def check_stud_key(key):
             else:
                 return True 
     except Exception as e:
+        print(e) 
+
+
+def get_teacher_id(mail):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select teacher_id from teacher where email=(%s)"
+            curr.execute(sql,(mail))
+            output = curr.fetchall()
+            return output[0][0]
+    except Exception as e:
         print(e)            
+
+
+def check_class_id(code):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select class_name from class_table where class_id=(%s)"
+            curr.execute(sql,(code))
+            output = curr.fetchall()
+            if len(output)==0:
+                return False
+            return True
+    except Exception as e:
+        print(e)            
+
+
+
+def create_class(class_name,class_id,class_link,teacher_id):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            print(class_name,class_id,class_link,teacher_id)
+            sql = "insert into class_table (class_name,class_id,class_link,teacher_id) value (%s,%s,%s,%s)"
+            curr.execute(sql,(class_name,class_id,class_link,teacher_id))
+            conn.commit()
+    except Exception as e:
+        print(e)     
