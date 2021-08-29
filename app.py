@@ -47,7 +47,11 @@ def signup(who1):
         name = form_details['name']
         phone_no = form_details['phone_no']
         
+        
+
         if(who=='student'):
+            if api.check_stud_mail(email):
+                return redirect('/') #existing mail
             student_id = gen.stud_key()
             while api.check_stud_key(student_id):
                 student_id=gen.stud_key()
@@ -58,6 +62,8 @@ def signup(who1):
             return redirect('/')  
 
         else:
+            if api.check_teach_mail(email):
+                return redirect('/') #existing mail
             teacher_id = gen.teach_key()
             while api.check_teach_key(teacher_id):
                 teacher_id=gen.teach_key()
@@ -123,8 +129,16 @@ def create_class_data():
         form_details=request.form
         class_name=form_details['class_name']
         class_link=form_details['class_link']
-        print(class_name,class_link)
-        return render_template('teacher//teacher_main.html')
+        if 'email' not in session:
+            return redirect('/')
+        mail = session['email']
+        teacher_id = api.get_teacher_id(mail)
+        class_id = gen.class_id()
+        while api.check_class_id(class_id):
+            class_code=gen.class_id()
+        api.create_class(class_name,class_id,class_link,teacher_id)    
+        return redirect('/')
+    return render_template("teacher/create_class.html")    
 
 @app.route('/logout')
 def logout():
