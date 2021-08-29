@@ -1,6 +1,6 @@
-<!-- <p align="left">
+<p align="left">
 <br>
-  <a href="https://action-badges.now.sh/e-Luminous/src">
+  <a href="https://github.com/Conference-Room/conference-room">
     <img src="https://action-badges.now.sh/e-Luminous/src" alt="github-actions">
   </a>
   <a href="https://img.shields.io/github/languages/count/e-Luminous/src">
@@ -15,7 +15,7 @@
   <a href="https://img.shields.io/github/languages/code-size/e-Luminous/src">
     <img src="https://img.shields.io/github/languages/code-size/e-Luminous/src" alt="code-size">
   </a>
-</p> -->
+</p>
 
 # 💻 Conference Room
 A web-based platform connecting teachers and students.
