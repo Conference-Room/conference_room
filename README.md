@@ -12,8 +12,8 @@
   <a href="https://img.shields.io/github/repo-size/e-Luminous/src">
     <img src="https://img.shields.io/github/repo-size/e-Luminous/src" alt="repo-size">
   </a>
-  <a href="https://img.shields.io/github/languages/code-size/e-Luminous/src">
-    <img src="https://img.shields.io/github/languages/code-size/e-Luminous/src" alt="code-size">
+  <a href="https://github.com/Conference-Room/conference-room">
+    <img src="https://github.com/Conference-Room/conference-room" alt="code-size">
   </a>
 </p>
 
