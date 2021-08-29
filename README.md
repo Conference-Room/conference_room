@@ -4,7 +4,7 @@
     <img src="https://action-badges.now.sh/e-Luminous/src" alt="github-actions">
   </a>
   <a href="https://img.shields.io/github/languages/count/e-Luminous/src">
-    <img src="https://img.shields.io/github/languages/count/e-Luminous/src" alt="languages">
+    <img src="https://img.shields.io/github/languages/count/conference-room" alt="languages">
   </a>
   <a href="https://img.shields.io/github/languages/top/e-Luminous/src">
     <img src="https://img.shields.io/github/languages/top/e-Luminous/src" alt="top-language">
