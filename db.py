@@ -176,3 +176,42 @@ def create_class(class_name,class_id,class_link,teacher_id):
             conn.commit()
     except Exception as e:
         print(e)     
+
+
+def check_teach_mail(email):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select name from teacher where email=(%s)"
+            curr.execute(sql,(email))
+            output = curr.fetchall()
+            if len(output)==0:
+                return False
+            return True
+    except Exception as e:
+        print(e)            
+
+def check_stud_mail(email):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select name from student where email=(%s)"
+            curr.execute(sql,(email))
+            output = curr.fetchall()
+            if len(output)==0:
+                return False
+            return True
+    except Exception as e:
+        print(e)            

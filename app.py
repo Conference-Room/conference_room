@@ -47,7 +47,11 @@ def signup(who1):
         name = form_details['name']
         phone_no = form_details['phone_no']
         
+        
+
         if(who=='student'):
+            if api.check_stud_mail(email):
+                return redirect('/') #existing mail
             student_id = gen.stud_key()
             while api.check_stud_key(student_id):
                 student_id=gen.stud_key()
@@ -58,6 +62,8 @@ def signup(who1):
             return redirect('/')  
 
         else:
+            if api.check_teach_mail(email):
+                return redirect('/') #existing mail
             teacher_id = gen.teach_key()
             while api.check_teach_key(teacher_id):
                 teacher_id=gen.teach_key()
