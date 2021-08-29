@@ -215,3 +215,20 @@ def check_stud_mail(email):
             return True
     except Exception as e:
         print(e)            
+
+def get_teach_classes(teacher_id):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select class_name,class_id,class_link,creation_date from class_table where teacher_id=(%s)"
+            curr.execute(sql,(teacher_id))
+            output = curr.fetchall()
+            return output
+    except Exception as e:
+        print(e)    

@@ -46,7 +46,33 @@
             </div>
         </div>
     </nav>
-
+    {% for items in data %}
+    
+     <div class="container">
+        <div class="card">
+          <div class="card-header">
+            <img src="https://i.pinimg.com/originals/5c/b4/8c/5cb48cea9219f94fbbb6a77009d0b56a.png" alt="rover" />
+          </div>
+          <div class="card-body">
+            <span class="tag tag-teal">{{ items[0] }}</span>
+            <h4>
+              Class Code:- {{items[1]}}
+              <br>
+              Class Link:- {{items[2]}}
+            </h4>
+            <p>
+                            </p>
+            <div class="user">
+              <img src="data:image/png;base64,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" alt="user" />
+              <div class="user-info">
+                <h5>{{ items[3] }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        </div>
+        {% endfor %}
 </body>
 
 </html>

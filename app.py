@@ -17,8 +17,9 @@ def home():
         if who==0:
             return render_template('student/student_main.html')
         else:
-            return render_template('//teacher//teacher_main.html')    
-        # return render_template('class.html')
+            teacher_id = api.get_teacher_id(mail)
+            data = api.get_teach_classes(teacher_id)
+            return render_template('//teacher//teacher_main.html',data=data)    
     return render_template('/index.html')
 
 

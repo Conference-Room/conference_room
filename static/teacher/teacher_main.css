@@ -160,3 +160,115 @@
       transform: rotate(-135deg);
       margin-top: -9px;
   }
+
+
+  @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  box-sizing: border-box;
+}
+body {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f8fc;
+  font-family: "Roboto", sans-serif;
+  color: #10182f;
+}
+.container {
+  margin-top: 3em;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 3em;
+  width: 1040px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.card {
+  margin: 10px;
+  background: #71a89e;
+  box-sizing: border-box;
+  border: 3px solid black;
+  color: white;
+  transition: 0.5s ease-in-out;
+  background: #f9f9f9;
+  color: #000;
+  box-shadow: 5px 5px #71a89e, 7px 7px black;
+  overflow: hidden;
+  width: 400px;
+  height: 400px;
+}
+
+@media (min-width: 64rem) {
+  /* 1024px */
+  .container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.card:hover {
+  transform: translateX(7px) translateY(7px);
+  box-shadow: -5px -5px #71a89e, -7px -7px rgb(0, 0, 0);
+}
+
+.card-header img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  min-height: 250px;
+}
+h4 {
+  font-size: 1em;
+  font-weight: 700;
+  margin-top: 0.5em;
+}
+.tag {
+  background: #cccccc;
+  border-radius: 50px;
+  font-size: 12px;
+  margin: 0;
+  color: #fff;
+  padding: 2px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.tag-teal {
+  background-color: #47bcd4;
+}
+.tag-purple {
+  background-color: #5e76bf;
+}
+.tag-pink {
+  background-color: #cd5b9f;
+}
+
+.card-body p {
+  font-size: 13px;
+  margin: 0 0 40px;
+}
+.user {
+  display: flex;
+  margin-top: auto;
+}
+
+.user img {
+  border-radius: 50%;
+  margin-top: -2em;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+.user-info h5 {
+  font-size: 0.7em;
+  margin-top: -3.5em;
+}
+.user-info small {
+  color: #545d7a;
+}
