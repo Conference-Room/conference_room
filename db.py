@@ -2,12 +2,6 @@ import pymysql
 import credential
 
 def login_teacher(email,password):
-    print(email,password)
-    print(credential.host)
-    print(credential.port)
-    print(credential.user)
-    print(credential.password)
-    print(credential.databasename)
     conn=pymysql.connect(
         host=credential.host,
         port=credential.port,

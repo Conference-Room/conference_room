@@ -13,6 +13,7 @@ def home():
     if 'email' in session:
         mail = session['email']
         who = session['who']
+        print(mail,who)
         if who==0:
             return render_template('student/student_main.html')
         else:
@@ -23,6 +24,9 @@ def home():
 
 @app.route('/index',methods=['POST','GET'])
 def index():
+    if 'email' in session:
+        print("hello")
+        return redirect('/')
     if request.method=='POST':
         form_details=request.form
         who = form_details['who']
@@ -71,10 +75,7 @@ def login():
     if 'email' in session:
         mail = session['email']
         who = session['who']
-        if who==0:
-            return render_template('student\student_main.html')
-        else:
-            return render_template('\\teacher\\teacher_main.html')  
+        return redirect('/')
 
     if request.method=='POST':
         form_details=request.form
@@ -110,6 +111,13 @@ def login():
                 print("user not exist")
                 return render_template('login.html')
     return render_template('login.html')
+
+
+@app.route('/create_class')
+def create_class():
+    return render_template('teacher/create_class.html')
+
+
 
 @app.route('/logout')
 def logout():
