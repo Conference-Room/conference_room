@@ -146,9 +146,9 @@ def create_class_data():
             if 'email' not in session:
                 return redirect('/')    
             mail = session['email']
-            if api.check_class_name(class_name,mail):
-                return redirect('/')
             teacher_id = api.get_teacher_id(mail)
+            if api.check_class_name(class_name,teacher_id):
+                return redirect('/')
             class_id = gen.class_id()
             while api.check_class_id(class_id):
                 class_code=gen.class_id()

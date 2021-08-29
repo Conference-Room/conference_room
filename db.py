@@ -226,14 +226,14 @@ def get_teach_classes(teacher_id):
     )
     try:
         with conn.cursor() as curr:
-            sql = "select class_name,class_id,class_link from class_table where teacher_id=(%s)"
+            sql = "select class_name,class_id,class_link from class_table where teacher_id=(%s) order by creation_date desc"
             curr.execute(sql,(teacher_id))
             output = curr.fetchall()
             return output
     except Exception as e:
         print(e)    
 
-def check_class_name(class_name,email):
+def check_class_name(class_name,teacher_id):
     conn=pymysql.connect(
         host=credential.host,
         port=credential.port,
@@ -243,8 +243,8 @@ def check_class_name(class_name,email):
     )
     try:
         with conn.cursor() as curr:
-            sql = "select class_id from class_table where class_name=(%s) and email=(%s)"
-            curr.execute(sql,(class_name,email))
+            sql = "select class_id from class_table where class_name=(%s) and teacher_id=(%s)"
+            curr.execute(sql,(class_name,teacher_id))
             output = curr.fetchall()
             if len(output)==0:
                 return False
