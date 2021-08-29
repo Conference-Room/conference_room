@@ -10,115 +10,130 @@ app.secret_key = credential.secret_key
 
 @app.route('/')
 def home():
-    if 'email' in session:
-        mail = session['email']
-        who = session['who']
-        print(mail,who)
-        if who==0:
-            return render_template('student/student_main.html')
-        else:
-            teacher_id = api.get_teacher_id(mail)
-            data = api.get_teach_classes(teacher_id)
-            return render_template('//teacher//teacher_main.html',data=data)    
-    return render_template('/index.html')
+    try:
+        if 'email' in session:
+            mail = session['email']
+            who = session['who']
+            # print(mail,who)
+            if who==0:
+                return render_template('student/student_main.html')
+            else:
+                teacher_id = api.get_teacher_id(mail)
+                data = api.get_teach_classes(teacher_id)
+                return render_template('//teacher//teacher_main.html',data=data)    
+        return render_template('index.html')
+    except Exception as e:
+        print(e)
+        return render_template('index.html')   
 
 
 @app.route('/index',methods=['POST','GET'])
 def index():
-    if 'email' in session:
-        print("hello")
-        return redirect('/')
-    if request.method=='POST':
-        form_details=request.form
-        who = form_details['who']
-        return render_template('login.html',who1=who)
-    return render_template('index.html')    
+    try:
+        if 'email' in session:
+            print("hello")
+            return redirect('/')
+        if request.method=='POST':
+            form_details=request.form
+            who = form_details['who']
+            return render_template('login.html',who1=who)
+        return render_template('index.html')   
+    except Exception as e:
+        print(e)
+        return render_template('index.html')   
 
 @app.route('/signup/<who1>',methods=['POST','GET'])
 def signup(who1):
-    if 'email' in session:
-        return redirect('/')
-    
-    if(request.method=='POST'):
-        form_details=request.form
+    try:
+        if 'email' in session:
+            return redirect('/')
         
-        who = form_details['who']
-        email = form_details['email']
-        password = form_details['password'] 
-        name = form_details['name']
-        phone_no = form_details['phone_no']
-        
-        
+        if(request.method=='POST'):
+            form_details=request.form
+            
+            who = form_details['who']
+            email = form_details['email']
+            password = form_details['password'] 
+            name = form_details['name']
+            phone_no = form_details['phone_no']
+            
+            
 
-        if(who=='student'):
-            if api.check_stud_mail(email):
-                return redirect('/') #existing mail
-            student_id = gen.stud_key()
-            while api.check_stud_key(student_id):
-                student_id=gen.stud_key()
+            if(who=='student'):
+                if api.check_stud_mail(email):
+                    return redirect('/') #existing mail
+                student_id = gen.stud_key()
+                while api.check_stud_key(student_id):
+                    student_id=gen.stud_key()
 
-            api.signup_student(name,email,password,phone_no,student_id)  
-            session['email']=email
-            session['who']=0
-            return redirect('/')  
+                api.signup_student(name,email,password,phone_no,student_id)  
+                session['email']=email
+                session['who']=0
+                return redirect('/')  
 
-        else:
-            if api.check_teach_mail(email):
-                return redirect('/') #existing mail
-            teacher_id = gen.teach_key()
-            while api.check_teach_key(teacher_id):
-                teacher_id=gen.teach_key()
+            else:
+                if api.check_teach_mail(email):
+                    return redirect('/') #existing mail
+                teacher_id = gen.teach_key()
+                while api.check_teach_key(teacher_id):
+                    teacher_id=gen.teach_key()
 
-            api.signup_teacher(name,email,password,phone_no,teacher_id)  
-            session['email']=email
-            session['who']=1
-            return redirect('/')    
+                api.signup_teacher(name,email,password,phone_no,teacher_id)  
+                session['email']=email
+                session['who']=1
+                return redirect('/')    
 
-    return render_template('signup.html',who1=who1)              
+        return render_template('signup.html',who1=who1)     
+    except Exception as e:
+        print(e)
+        return render_template('signup.html',who1=who1)
+
             
 
 @app.route('/login',methods=['POST','GET'])
 def login():
-    if 'email' in session:
-        mail = session['email']
-        who = session['who']
-        return redirect('/')
+    try:
+        if 'email' in session:
+            mail = session['email']
+            who = session['who']
+            return redirect('/')
 
-    if request.method=='POST':
-        form_details=request.form
-        
-        who = form_details['who']
-        email = form_details['email']
-        password = form_details['password']
-        
-        if(who=='student'):
-            flag = api.login_student(email,password)
-            if(flag==1):
-                session['email']=email
-                session['who']=0
-                return redirect('/')
-            elif(flag==0):
-                print("wrong password") #remove print statements and add reply him with proper reply
-                return render_template('login.html')
+        if request.method=='POST':
+            form_details=request.form
+            
+            who = form_details['who']
+            email = form_details['email']
+            password = form_details['password']
+            
+            if(who=='student'):
+                flag = api.login_student(email,password)
+                if(flag==1):
+                    session['email']=email
+                    session['who']=0
+                    return redirect('/')
+                elif(flag==0):
+                    print("wrong password") #remove print statements and add reply him with proper reply
+                    return render_template('login.html')
+                else:
+                    print("user not exist")
+                    return render_template('login.html')        
+            
             else:
-                print("user not exist")
-                return render_template('login.html')        
-        
-        else:
-            print(email,password)
-            flag = api.login_teacher(email,password)
-            if(flag==1):
-                session['email']=email
-                session['who']=1
-                return redirect('/')
-            elif(flag==0):
-                print("wrong password")
-                return render_template('login.html')
-            else:
-                print("user not exist")
-                return render_template('login.html')
-    return render_template('login.html')
-
+                flag = api.login_teacher(email,password)
+                if(flag==1):
+                    session['email']=email
+                    session['who']=1
+                    return redirect('/')
+                elif(flag==0):
+                    print("wrong password")
+                    return render_template('login.html')
+                else:
+                    print("user not exist")
+                    return render_template('login.html')
+        return render_template('login.html')
+    except Exception as e:
+        print(e)
+        return render_template('login.html')
 
 @app.route('/create_class')
 def create_class():
@@ -126,27 +141,46 @@ def create_class():
 
 @app.route('/create_class_data',methods=['POST','GET'])
 def create_class_data():
-    if request.method=='POST':
-        form_details=request.form
-        class_name=form_details['class_name']
-        class_link=form_details['class_link']
+    try:
+        if request.method=='POST':
+            form_details=request.form
+            class_name=form_details['class_name']
+            class_link=form_details['class_link']
+            if 'email' not in session:
+                return redirect('/')    
+            mail = session['email']
+            if api.check_class_name(class_name,mail):
+                return redirect('/')
+            teacher_id = api.get_teacher_id(mail)
+            class_id = gen.class_id()
+            while api.check_class_id(class_id):
+                class_code=gen.class_id()
+            api.create_class(class_name,class_id,class_link,teacher_id)    
+            return redirect('/')
+        return render_template("teacher/create_class.html")    
+    except Exception as e:
+        print(e)
+        return render_template("teacher/create_class.html") 
+
+@app.route('/class/<code>')
+def class_info(code):
+    try:
         if 'email' not in session:
             return redirect('/')
-        mail = session['email']
-        teacher_id = api.get_teacher_id(mail)
-        class_id = gen.class_id()
-        while api.check_class_id(class_id):
-            class_code=gen.class_id()
-        api.create_class(class_name,class_id,class_link,teacher_id)    
+    except Exception as e:
+        print(e)
         return redirect('/')
-    return render_template("teacher/create_class.html")    
 
 @app.route('/logout')
 def logout():
-    session.pop('email')
-    session.pop('who')
-    print("logout done")
-    return redirect('/')
+    try:
+        session.pop('email')
+        session.pop('who')
+        print("logout done")
+        return redirect('/')
+    except Exception as e:
+        print(e)
+        return redirect('/')
 
 
 if __name__ =='__main__':

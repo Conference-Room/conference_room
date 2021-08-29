@@ -232,3 +232,22 @@ def get_teach_classes(teacher_id):
             return output
     except Exception as e:
         print(e)    
+
+def check_class_name(class_name,email):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select class_id from class_table where class_name=(%s) and email=(%s)"
+            curr.execute(sql,(class_name,email))
+            output = curr.fetchall()
+            if len(output)==0:
+                return False
+            return True
+    except Exception as e:
+        print(e)     
