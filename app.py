@@ -14,13 +14,12 @@ def home():
         if 'email' in session:
             mail = session['email']
             who = session['who']
-            # print(mail,who)
             if who==0:
                 return render_template('student/student_main.html')
             else:
                 teacher_id = api.get_teacher_id(mail)
                 data = api.get_teach_classes(teacher_id)
-                return render_template('//teacher//teacher_main.html',data=data)    
+                return render_template('teacher//teacher_main.html',data=data)    
         return render_template('index.html')
     except Exception as e:
         print(e)
@@ -31,12 +30,11 @@ def home():
 def index():
     try:
         if 'email' in session:
-            print("hello")
             return redirect('/')
         if request.method=='POST':
             form_details=request.form
             who = form_details['who']
-            return render_template('login.html',who1=who)
+            return render_template('/login.html',who1=who)
         return render_template('index.html')   
     except Exception as e:
         print(e)
@@ -59,7 +57,7 @@ def signup(who1):
             
             
 
-            if(who=='student'):
+            if(who=="student"):
                 if api.check_stud_mail(email):
                     return redirect('/') #existing mail
                 student_id = gen.stud_key()
@@ -104,7 +102,6 @@ def login():
             who = form_details['who']
             email = form_details['email']
             password = form_details['password']
-            
             if(who=='student'):
                 flag = api.login_student(email,password)
                 if(flag==1):

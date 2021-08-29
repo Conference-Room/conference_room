@@ -36,6 +36,7 @@
                     <input type="email" name="email" placeholder="Enter Email" required>
                     <input type="text" name="password" placeholder="Enter password" required>
                     <input id="who" name="who" type="hidden" value="">
+                    <button onclick="myFunction()"  name="button" >click</button>
                     <br>
                     <br><br><br> <br><br> <br><br>
                     </div>
@@ -47,12 +48,15 @@
                     </footer>
     
                 </form>
-    
+                
     
             </div>
+            <meta name="{{ who1 }}" id="data">
         <script>
+        
             function myFunction() {
-                document.getElementById("who").value={{ who1 }};
+                var val = document.getElementById("data").name
+                document.getElementById("who").value = val ;
             }
     
         </script>
