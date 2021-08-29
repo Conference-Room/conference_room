@@ -117,7 +117,14 @@ def login():
 def create_class():
     return render_template('teacher/create_class.html')
 
-
+@app.route('/create_class_data',methods=['POST','GET'])
+def create_class_data():
+    if request.method=='POST':
+        form_details=request.form
+        class_name=form_details['class_name']
+        class_link=form_details['class_link']
+        print(class_name,class_link)
+        return render_template('teacher//teacher_main.html')
 
 @app.route('/logout')
 def logout():
