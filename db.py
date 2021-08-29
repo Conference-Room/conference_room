@@ -251,3 +251,21 @@ def check_class_name(class_name,email):
             return True
     except Exception as e:
         print(e)     
+
+
+def get_class_data(class_id):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select content_heading,descript,upload_time,max_score,due_date from class_content where class_id=(%s)"
+            curr.execute(sql,(class_id))
+            output = curr.fetchall()
+            return output
+    except Exception as e:
+        print(e)    
