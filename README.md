@@ -8,7 +8,7 @@ Conference Room is a suite of online tools that allows teachers to set assignmen
 
 
 
-## Features
+## 🎇 Features
 1. [x] Login and signup via
    - [x] Username & Password
    - [x] Gmail Sync (Login with Gmail Option).
