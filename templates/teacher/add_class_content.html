@@ -71,8 +71,8 @@
         
 
         function validateForm() {
-        var ch = document.getElementById("content_heading");
-        var des = document.getElementById("description");
+        var ch = document.getElementById("content_heading").value;
+        var des = document.getElementById("description").value;
         // console.log(ch + des);
         if ((ch == "") || (des == "") || (ch == null) || (des == null)) {
             alert ("these fields are required");

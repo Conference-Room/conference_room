@@ -72,6 +72,7 @@ def signup_student(name,email,password,phone_no,student_id):
         db=credential.databasename
     )
     try:
+        print("in here too")
         with conn.cursor() as curr:
             sql = "insert into student (name,email,password,phone_no,student_id) value (%s,%s,%s,%s,%s)"
             # phone_no = int(phone_no)

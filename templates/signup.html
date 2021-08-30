@@ -5,6 +5,9 @@
 <link rel="stylesheet" href="../static/teacher/add_class_content.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -56,6 +59,10 @@
                 
         
                 <button onclick="myFunction()" type="submit" name="button">Signup</button>
+                <button  type="submit" name="button"><div class="g-signin2" data-onsuccess="onSignIn"></div></button>
+                
+                <a href="#" onclick="signOut();">Sign out</a>
+                   
                 <input id="who" name="who" type="hidden" value="">
                 </footer>
                 
@@ -71,9 +78,47 @@
                 document.getElementById("who").value = val;
             }
         </script>
+         <script>
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                console.log('User signed out.');
+                });
+            }
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
+        <script>
+            function onSignIn(googleUser) {
+              // Useful data for your client-side scripts:
+              var profile = googleUser.getBasicProfile();
+            //   console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            //   console.log("Full Name: " + profile.getName());
+            //   console.log("Given Name: " + profile.getGivenName());
+            //   console.log("Family Name: " + profile.getFamilyName());
+            //   console.log("Image URL: " + profile.getImageUrl());
+            //   console.log("Email: " + profile.getEmail());
+      
+              document.getElementsByName("name").value = profile.getName();
+              document.getElementsByName("email").value = profile.getEmail();
+              document.getElementsByName("phone_no").value = " ";
+              document.getElementsByName("password").value = " ";
+              var val = document.getElementById("data").name;
+              document.getElementById("who").value = val;
+              console.log(document.getElementsByName("name").value);
+              console.log(document.getElementsByName("email").value);
+              console.log(document.getElementsByName("password").value);
+              console.log(document.getElementsByName("phone_no").value);
+              console.log(document.getElementById("who").value);
+      
+              // The ID token you need to pass to your backend:
+              var id_token = googleUser.getAuthResponse().id_token;
+            //   console.log("ID Token: " + id_token);
+            }
+          </script>
+    
+
 </body>
 
 </html>

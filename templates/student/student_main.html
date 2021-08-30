@@ -10,6 +10,12 @@
         <link rel="stylesheet" media="screen and (min-width: 360px) and (max-width: 550px)" href="static\teacher\s_teacher_main.css">
     <link rel="stylesheet" href="static\teacher\teacher_main.css">
     <title>Conference Room</title>
+    <meta name="google-signin-scope" content="profile email" />
+    <meta
+      name="google-signin-client_id"
+      content="1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com"
+    />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -40,8 +46,9 @@
                 <div class="col-md-1 " style=" display: flex;flex-direction: row-reverse;z-index: 100;">
                     <div class="dropdown"><img style="margin-top: 0.8rem; width:40px; border-radius: 50%;"
                             src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-                        <div class="dropdown-content"><a href="/logout" style="color: #323335;">Log Out</a></div>      
+                        <div class="dropdown-content" ><a onclick="signOut()" href="/logout" style="color: #323335;">Log Out</a></div>      
                     </div>
+                    <!--  -->
                     <div style="margin-top: 1.3rem;margin-right: 0.5rem;z-index: 100;"  ><a href="/add_class"><img
                             src="https://img.icons8.com/ios/25/000000/plus--v2.png" /></a></div>
                 </div>
@@ -73,6 +80,40 @@
         </div>
         {% endfor %}
       </div>
+      
+      <!-- <script>
+          window.onload = function() {
+            onSignIn(googleUser);
+        };
+      </script>
+
+      <script>
+          function onSignIn(googleUser){
+              console.log("jsaxbkjbkjbe");
+            var profile = googleUser.getBasicProfile();
+          document.getElementsByName("email").value = profile.getEmail();
+          document.getElementsByName("password").value = " ";
+          var val = document.getElementById("data").name;
+          document.getElementById("who").value = val;
+          var id_token = googleUser.getAuthResponse().id_token;
+        }; -->
+        
+</script>
+<script>
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+    }
+
+    function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
+    }
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 
 </body>
 

@@ -3,6 +3,8 @@ import db as api
 import credential
 import generator as gen
 import os
+from google.oauth2 import id_token
+from google.auth.transport import requests
 
 app = Flask(__name__)
 app.secret_key = credential.secret_key
@@ -30,6 +32,11 @@ def home():
                 teacher_id = api.get_teacher_id(mail)
                 data = api.get_teach_classes(teacher_id)
                 return render_template('teacher//teacher_main.html', data=data)
+                #data = api.get_joined_class(student_id)
+                print("here toooooooooo")
+                return render_template('student/student_main.html')
+           
+        print("not here")
         return render_template('index.html')
     except Exception as e:
         print(e)
@@ -50,6 +57,46 @@ def index():
         print(e)
         return render_template('index.html')
 
+
+@app.route('/gs_login',methods=['POST','GET'])
+def gs_login():
+    try:
+        if 'email' in session:
+            return redirect('/')
+        token = request.form["idtoken"]
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
+        print("here")
+        userid = idinfo['sub']
+        email = idinfo['email']
+        name = idinfo['name']
+        api.signup_student(name,email,"","",userid)
+        print("hxsbdjhb")
+        session['email']=email
+        session['who']=0
+        return  '/'
+    except ValueError as e:
+        print(e)
+        return render_template('index.html')  
+
+@app.route('/gt_login',methods=['POST','GET'])
+def gt_login():
+    try:
+        if 'email' in session:
+            return redirect('/')
+        token = request.form["idtoken"]
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
+        print("here")
+        userid = idinfo['sub']
+        email = idinfo['email']
+        name = idinfo['name']
+        api.signup_teacher(name,email,"","",userid)
+        print("hxsbdjhb")
+        session['email']=email
+        session['who']=1
+        return  '/'
+    except ValueError as e:
+        print(e)
+        return render_template('index.html')   
 
 @app.route('/signup/<who1>', methods=['POST', 'GET'])
 def signup(who1):
@@ -226,7 +273,17 @@ def add_class_content(code):
         return render_template('teacher/add_class_content.html', code=code)
     except Exception as e:
         print(e)
-
+@app.route('/student_class/<code>')    ## for student class info 
+def stud_class_info(code):
+    try:
+        if 'email' not in session:
+            return redirect('/')
+        data = api.get_student_class_data(code)  ## get the heading,descript and uploadtime
+        details = api.get_teach_partiular_subject(code)  ## same as teacher for class link and name
+        return render_template('student/student_class_content.html',data=data,details=details)
+    except Exception as e:
+        print(e)
+        return redirect('/')
 
 @app.route('/add_content', methods=['POST', 'GET'])
 def add_content():
