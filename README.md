@@ -13,7 +13,7 @@ Conference Room is a suite of online tools that allows teachers to set assignmen
 |--------|-------------------------|-------------------------|
 | 01   |Teachers can upload assigment|Students can upload the work done|
 | 02   |Teachers can grade the assignments|Students can check marks provided by teacher|
-| 03   ||See other friends|
+| 03   |                       See other friends     |                       |
 | 04   |    Store work as submission                                        |
 | 05   |Tecahers can create new class| students can enroll into a new classroom
 | 06   |Preview & Route in Enrolled class|
