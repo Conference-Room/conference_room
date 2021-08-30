@@ -275,10 +275,6 @@ def add_class_content(code):
     except Exception as e:
         print(e)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e0d9e2e703a0f1aebf3430c7e5480faa3342324d
 @app.route('/student_class/<code>')    ## for student class info 
 def stud_class_info(code):
     try:
@@ -347,7 +343,6 @@ def add_content():
         return redirect('/')
 
 
-<<<<<<< HEAD
 @app.route('/show_students/<code>',methods=['POST','GET'])
 def show_joinned_students(code):
     try:
@@ -365,8 +360,6 @@ def show_joinned_students(code):
         link='/class/'+str(code)
         return redirect(link) 
 
-=======
->>>>>>> e0d9e2e703a0f1aebf3430c7e5480faa3342324d
 
 
 @app.route('/logout')
