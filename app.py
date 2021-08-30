@@ -16,6 +16,7 @@ def home():
             who = session['who']
             if who==0:
                 student_id = api.get_student_id(mail)
+                #joined_classes = api.get_joined_classes(student_id)
                 #data = api.get_joined_class(student_id)
                 return render_template('student/student_main.html')
             else:
@@ -155,7 +156,7 @@ def create_class_data():
                 return redirect('/') #after this return alert
             class_id = gen.class_id()
             while api.check_class_id(class_id):
-                class_code=gen.class_id()
+                class_id=gen.class_id()
             api.create_class(class_name,class_id,class_link,teacher_id)    
             return redirect('/')
         return render_template("teacher/create_class.html")    
@@ -163,6 +164,31 @@ def create_class_data():
     except Exception as e:
         print(e)
         return render_template("teacher/create_class.html") 
+
+
+@app.route('/add_class_data',methods=['POST','GET'])    ## for student joinining class
+def join_class_data():
+    try:
+        if request.method=='POST':
+            form_details = request.form
+            class_code = form_details['class_code']
+            if 'email' not in session:
+                return redirect('/')
+            if api.check_class_id(class_code):
+                return redirect('/')        ####WRONG class code alert
+            mail = session['email']
+            student_id = api.get_student_id(mail)
+            if api.already_joined_class(student_id,class_code):
+                return redirect('/')         #after this alert that class is already joined
+            api.join_class(student_id,class_code)
+            return redirect('/')
+        return render_template("student/add_class.html")
+    except Exception as e:
+        print(e)
+        return render_template("student/add_class.html")
+
+
+
 
 @app.route('/class/<code>')
 def class_info(code):
