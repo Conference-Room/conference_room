@@ -72,6 +72,7 @@ def signup_student(name,email,password,phone_no,student_id):
         db=credential.databasename
     )
     try:
+        print("in here too")
         with conn.cursor() as curr:
             sql = "insert into student (name,email,password,phone_no,student_id) value (%s,%s,%s,%s,%s)"
             # phone_no = int(phone_no)
@@ -279,7 +280,7 @@ def joined_classes_info(class_id):   ## Retrieve join class info i.e. class name
     )
     try:
         with conn.cursor() as curr:
-            sql = "select C.class_name,C.class_link,T.name from class_table C join teacher T on (C.teacher_id = T.teacher_id and C.class_id =(%s))"
+            sql = "select C.class_name,C.class_link,C.class_id,T.name from class_table C join teacher T on (C.teacher_id = T.teacher_id and C.class_id =(%s))"
             curr.execute(sql,(class_id))
             output = curr.fetchall()
             return output
