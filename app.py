@@ -24,6 +24,9 @@ def home():
                 # print(joined_classes)
                 for joined_class_id in joined_classes:
                     data = api.joined_classes_info(joined_class_id)
+                    #print(type(data))
+                    #data.append(joined_class_id)
+                    
                     list_data.append(data)
 
                 # print(list_data)

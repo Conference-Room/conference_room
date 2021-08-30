@@ -58,15 +58,15 @@
 
     <div id="cc" style="display: flex; flex-wrap: wrap; margin-left: 0rem;padding-left: 3rem; padding-top: 1rem;">
     {% for items in data %}
-    
+        
      <div  >
         <div class="card">
           <div class="card-header" style="height: 8rem;">
             <img src="https://i.pinimg.com/originals/5c/b4/8c/5cb48cea9219f94fbbb6a77009d0b56a.png" alt="rover" />
           </div>
           <div class="card-body">
-            <a class="tag tag-teal" id="{{items}}" href="/student_class/{{ items[0][0] }}">{{ items[0][0] }}</a>
-            <div class="col-md-4" align="right"><span class="tag tag-teal" href="#">{{items[0][2]}}</span></div>
+            <a class="tag tag-teal" id="{{items}}" href="/student_class/{{ items[0][2] }}">{{ items[0][0] }}</a>
+            <div class="col-md-4" align="right"><span class="tag tag-teal" href="#">{{items[0][3]}}</span></div>
             <div class="col-md-4" align="right"><span class="tag tag-teal" href="{{ items[0][1] }}">Meet</span></div>
           </div>
           <h6>Assignments:</h6>
