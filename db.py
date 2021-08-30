@@ -139,6 +139,24 @@ def get_teacher_id(mail):
         print(e)            
 
 
+def get_student_id(mail):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select student_id from student where email=(%s)"
+            curr.execute(sql,(mail))
+            output = curr.fetchall()
+            #print(output[0][0])
+            return output[0][0]
+    except Exception as e:
+        print(e)   
+
 def check_class_id(code):
     conn=pymysql.connect(
         host=credential.host,

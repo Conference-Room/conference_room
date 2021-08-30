@@ -15,6 +15,8 @@ def home():
             mail = session['email']
             who = session['who']
             if who==0:
+                student_id = api.get_student_id(mail)
+                #data = api.get_joined_class(student_id)
                 return render_template('student/student_main.html')
             else:
                 teacher_id = api.get_teacher_id(mail)
