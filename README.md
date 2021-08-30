@@ -19,16 +19,15 @@ be done)
  
 
 ### Some Salient Features
-| S.no.| Features for Teachers | 
-|--------|-------------------------|
-| 01   |Teachers can upload assigment|
-| 02   |Teachers can grade the assignments|
-| 03   |See other students enrolled     |  
-| 04   |Tecahers can create new class|
-| 05   |Preview & Route in Enrolled class|
-| 06   |Can view the work of any class|
-| 07   |Teachers can annouce anything to the whole class at once|
-| 08   |Teachers can create a meet link|
+**Features for Teachers*** 
+ 1. Teachers can upload assigment
+ 2. Teachers can grade the assignments
+ 3. See other students enrolled       
+ 4. Tecahers can create new class
+ 5. Preview & Route in Enrolled class
+ 6. Can view the work of any class
+ 7. Teachers can annouce anything to the whole class at once
+ 8. Teachers can create a meet link
 
 | S.no.|Features for Students |
 |--------|-------------------------|
