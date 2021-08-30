@@ -38,6 +38,6 @@ be done)
 * Students can ask their doubts directly from the teacher
 * Student can directly join the classes via the link
 
-### ⚙ Technology Stack
+## ⚙ Technology Stack
 
 
