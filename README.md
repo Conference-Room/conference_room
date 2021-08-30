@@ -9,8 +9,8 @@ Conference Room is a suite of online tools that allows teachers to set assignmen
 
 
 ## Features
-| S.no.| Features for Teachers | Features for Students |
-|--------|-------------------------|-------------------------|
+| S.no.| Features for Teachers | 
+|--------|-------------------------|
 | 01   |Teachers can upload assigment|
 | 02   |Teachers can grade the assignments|
 | 03   |See other students enrolled     |  
