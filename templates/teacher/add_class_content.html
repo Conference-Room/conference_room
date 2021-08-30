@@ -6,33 +6,54 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ADD Content</title>
+    <link rel="stylesheet" href="../../static/teacher/add_class_content.css">
+    <link rel="stylesheet" href="../../static/index2.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 
 <body>
-    <style>
-        body {
-            background-image: url(../static/photos/SVG/Asset\ 2.svg);
-          height: 100%;
 
-            /* Center and scale the image nicely */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        </style>
-       <!-- <a href="/">
-        <div class="navbar-brand " style="margin-top: 0.7rem; margin-left: 1.5rem;" href="/">Conference Room</div>
-        </a> -->
-           <div class="app" style="height: 243px; top: 24%;
-           ">
+
+
+
+    <div class="layout">
+        <form  method="POST" action="/add_content" enctype="multipart/form-data" name="myform" onsubmit="return validateForm()" >
+          <label for="Heading">Heading <em>&#x2a;</em></label>
+          <input type="text" id="content_heading" name="content_heading"  required>
+          <label for="description">Description<em>&#x2a;</em></label>
+          <textarea id="desc" name="desc" required=""></textarea>
+          <label for="links">Links</label>
+          <input type="text" id="reference_link" name="reference_link"  >
+          <label for="score">Max Score</label>
+          <input type="text" id="max_score" name="max_score" >
+          <label for="upload-files">Set Due Date <em></label>
+            <input type="datetime-local" id="due_date" name="due_date" >
+            <br>
+            <label for="upload-files">Upload Files <em></label>
+            <input type="file" id="files" name="files" placeholder="Select Files" multiple="">
+            <br>
+            <input type="hidden" id="class_id" name="class_id"  value="">
+          
+        <button type="submit" onclick="myFunction()" >Send</button>
+        
+        </form>
+        <meta name="{{ code }}" id="code">
+      </div>
+      
+
+
+
+
+
+
+           <!-- <div class="app" style="height: 243px; top: 24%;">
 
             <div class="bg"></div>
     
-            <form method="POST" action="/add_content" enctype="multipart/form-data">
+            <form method="POST" action="/add_content" enctype="multipart/form-data" name="myform" onsubmit="return validateForm()" >
                 <input type="text" id="content_heading" name="content_heading" placeholder="Heading" required>
-                <input type="text" id="description" name="description" placeholder="Description" >
+                <input type="text" id="description" name="description" placeholder="Description"required >
                 <input type="text" id="reference_link" name="reference_link" placeholder="Any links" >
                 <input type="text" id="max_score" name="max_score" placeholder="Max Score" >
                 <input type="datetime-local" id="due_date" name="due_date" placeholder="Due Date" >
@@ -42,14 +63,29 @@
             </form>
     
             <meta name="{{ code }}" id="code">
-            </div>
+            </div> -->
+
+
+
         <script>
         
-            function myFunction() {
+
+        function validateForm() {
+        var ch = document.getElementById("content_heading");
+        var des = document.getElementById("description");
+        // console.log(ch + des);
+        if ((ch == "") || (des == "") || (ch == null) || (des == null)) {
+            alert ("these fields are required");
+            return false;
+        }
+        return true;
+  }
+   function myFunction() {
                 var val = document.getElementById("code").name
                 document.getElementById("class_id").value = val;
             }
     
+
         </script>  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"

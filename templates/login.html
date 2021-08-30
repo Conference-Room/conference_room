@@ -4,53 +4,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
-    <link rel="stylesheet" href="../static/login.css">
+    <!-- <link rel="stylesheet" href="../static/login.css"> -->
+    <link rel="stylesheet" href="../static/teacher/add_class_content.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 
 <body>
-    <style>
-        body {
-            background-image: url(../static/photos/SVG/Asset\ 2.svg);
-          height: 100%;
 
-            /* Center and scale the image nicely */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        </style>
-       <!-- <a href="/">
-        <div class="navbar-brand " style="margin-top: 0.7rem; margin-left: 1.5rem;" href="/">Conference Room</div>
-        </a> -->
-           <div class="app">
+        <div class="layout">
+            <form  method="post" action="/login" >
+                <header>
+                    <img src="https://www.searchpng.com/wp-content/uploads/2019/02/User-Icon-PNG.png" style="height: 10vh;">
+                </header>
+              <label for="Heading">Email <em>&#x2a;</em></label>
+              <input type="email" name="email" placeholder="Enter Email" required>
+              <label for="description">Password<em>&#x2a;</em></label>
+              <input type="text" name="password" placeholder="Enter password" required>
 
-            <div class="bg"></div>
-    
-                <form method="post" action="/login">
-                    <header>
-                        <img src="https://www.searchpng.com/wp-content/uploads/2019/02/User-Icon-PNG.png" style="height: 10vh;">
-                    </header>
-                    <div class="inputs">
-                    <input type="email" name="email" placeholder="Enter Email" required>
-                    <input type="text" name="password" placeholder="Enter password" required>
-                    <input id="who" name="who" type="hidden" value="">
-                    <br>
-                    <br><br><br> <br><br> <br><br>
-                    </div>
-                    <br><br>
-                    <footer>
-                        <button onclick="myFunction()" type="submit" name="button" >Login</button>
-                        <br> <br>
-                        <p>Don't have an account? <a href="/signup/{{ who1 }}">Register</a></p>
-                    </footer>
-    
-                </form>
-                
-    
-            </div>
-            <meta name="{{ who1 }}" id="data">
+              <input id="who" name="who" type="hidden" value="">
+              
+              <br> <br>
+                <button onclick="myFunction()" type="submit" name="button" >Login</button>
+            
+            </form>
+            <br> <br>
+            <p>Don't have an account? <a href="/signup/{{ who1 }}">Register</a></p>
+          </div>
+
         <script>
         
             function myFunction() {

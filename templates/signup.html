@@ -1,24 +1,40 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sign Up</title>
-<link rel="stylesheet" href="../static/login.css">
+<!-- <link rel="stylesheet" href="../static/login.css"> -->
+<link rel="stylesheet" href="../static/teacher/add_class_content.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 
 <body>
-    <style>
-        body {
-            background-image: url(../static/photos/SVG/Asset\ 2.svg);
-          height: 100%;
+    
+    <div class="layout">
+        <form method="post" action="/signup/{{ who1 }}">
+            <header>
+                <img src="https://www.searchpng.com/wp-content/uploads/2019/02/User-Icon-PNG.png" style="height: 10vh;">
+            </header>
+          <label for="Heading">Name</label>
+          <input type="name" name="name" placeholder="Enter Name"> 
+          <label for="Heading">Email <em>&#x2a;</em></label>
+          <input type="email" name="email" placeholder="Enter Email" required>
+          <label for="description">Password<em>&#x2a;</em></label>
+          <input type="text" name="password" placeholder="Enter password" required>
+          <label for="Heading">Phone Number</label>
+          <input type="text" name="phone_no" placeholder="Enter Phone no">
 
-            /* Center and scale the image nicely */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        </style>
-        <div class="app">
+          <input id="who" name="who" type="hidden" value="">
+          
+          <br> <br>
+          <button onclick="myFunction()" type="submit" name="button">Signup</button>
+          <input id="who" name="who" type="hidden" value="">
+        
+        </form>
+      </div>
+
+
+
+        <!-- <div class="app">
 
             <div class="bg"></div>
     
@@ -43,7 +59,7 @@
                 <input id="who" name="who" type="hidden" value="">
                 </footer>
                 
-            </form>
+            </form> -->
                 
     
     
