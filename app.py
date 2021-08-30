@@ -54,9 +54,7 @@ def signup(who1):
             password = form_details['password'] 
             name = form_details['name']
             phone_no = form_details['phone_no']
-            
-            
-
+        
             if(who=="student"):
                 if api.check_stud_mail(email):
                     return redirect('/') #existing mail
@@ -148,7 +146,7 @@ def create_class_data():
             mail = session['email']
             teacher_id = api.get_teacher_id(mail)
             if api.check_class_name(class_name,teacher_id):
-                return redirect('/')
+                return redirect('/') #after this return alert
             class_id = gen.class_id()
             while api.check_class_id(class_id):
                 class_code=gen.class_id()

@@ -170,7 +170,6 @@ def create_class(class_name,class_id,class_link,teacher_id):
     )
     try:
         with conn.cursor() as curr:
-            print(class_name,class_id,class_link,teacher_id)
             sql = "insert into class_table (class_name,class_id,class_link,teacher_id) value (%s,%s,%s,%s)"
             curr.execute(sql,(class_name,class_id,class_link,teacher_id))
             conn.commit()
