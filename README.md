@@ -19,7 +19,7 @@ be done)
  
 
 ### Some Salient Features
-**Features for Teachers
+**Features for Teachers**
  * Teachers can upload assigment
  * Teachers can grade the assignments
  * See other students enrolled       
@@ -29,7 +29,7 @@ be done)
  * Teachers can annouce anything to the whole class at once
  * Teachers can create a meet link
 
-### Features for Students 
+**Features for Students**
 * Students can upload the work done
 * Students can check marks provided by teacher
 * See other friends               
