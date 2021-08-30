@@ -2,6 +2,7 @@ from flask import Flask,session,render_template,redirect,request
 import db as api
 import credential
 import generator as gen
+import os 
 
 app = Flask(__name__)
 app.secret_key = credential.secret_key
@@ -169,7 +170,58 @@ def class_info(code):
             return redirect('/')
         data = api.get_class_data(code)
         details = api.get_teach_partiular_subject(code)
-        return render_template('teacher/class_content.html',data=data,details=details)
+        return render_template('teacher/class_content.html',data=data,details=details,code=code)
+    except Exception as e:
+        print(e)
+        return redirect('/')
+
+@app.route('/add_class_content/<code>',methods=['POST','GET'])
+def add_class_content(code):
+    try:
+        return render_template('teacher/add_class_content.html',code=code)
+    except Exception as e:
+        print(e)
+
+@app.route('/add_content',methods=['POST','GET'])
+def add_content():
+    try:
+        if request.method=='POST':
+            form_details = request.form
+            
+            content_heading = form_details['content_heading']
+            descript = form_details['description']
+            reference_link = form_details['reference_link']
+            max_score = form_details['max_score']
+            due_date = form_details['due_date']
+            files = request.files.getlist("files")
+            class_id = form_details['class_id']
+            
+            
+            if(max_score==""): max_score="default"
+            if(due_date==""): due_date="default"
+            if(reference_link==""): reference_link="None"
+            if(len(files)==0): files="None"
+
+            content_id = gen.content_id()
+            while api.check_content_id(content_id):
+                content_id=gen.content_id()
+            
+            api.add_class_content(class_id,content_id,content_heading,descript,max_score,due_date)
+            if reference_link!="None":
+                api.add_content_storage_link(content_id,reference_link)
+
+            if files!="None":
+                app.config['UPLOAD_FOLDER']=credential.file_path
+                parent = credential.file_path
+                directory = content_id
+                path = os.path.join(parent,directory)
+                os.mkdir(path)
+                for f in files:
+                    f.save(os.path.join(path,f.filename))
+                    api.add_content_storage_files(content_id,os.path.join(path,f.filename))
+
+            
+            return render_template('teacher/teacher_main.html')
     except Exception as e:
         print(e)
         return redirect('/')

@@ -285,3 +285,73 @@ def get_teach_partiular_subject(class_id):
             return output
     except Exception as e:
         print(e)    
+
+
+def check_content_id(content_id):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select class_id from class_content where content_id=(%s)"
+            curr.execute(sql,(content_id))
+            output = curr.fetchall()
+            if len(output)==0:
+                return False
+            return True
+    except Exception as e:
+        print(e)        
+
+
+def add_class_content(class_id,content_id,content_heading,descript,max_score,due_date):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "insert into class_content (class_id,content_id,content_heading,descript,max_score,due_date) value (%s,%s,%s,%s,%s,%s)"
+            curr.execute(sql,(class_id,content_id,content_heading,descript,max_score,due_date))
+            conn.commit()
+    except Exception as e:
+        print(e)     
+
+
+def add_content_storage_link(content_id,links):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "insert into content_storage_links (content_id,links) value (%s,%s)"
+            curr.execute(sql,(content_id,links))
+            conn.commit()
+    except Exception as e:
+        print(e)     
+
+def add_content_storage_files(content_id,content_links):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "insert into content_storage (content_id,content_links) value (%s,%s)"
+            curr.execute(sql,(content_id,content_links))
+            conn.commit()
+    except Exception as e:
+        print(e)     
