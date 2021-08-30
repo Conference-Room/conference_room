@@ -139,7 +139,25 @@ def get_teacher_id(mail):
         print(e)            
 
 
-def check_class_id(code):
+def get_student_id(mail):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select student_id from student where email=(%s)"
+            curr.execute(sql,(mail))
+            output = curr.fetchall()
+            #print(output[0][0])
+            return output[0][0]
+    except Exception as e:
+        print(e)   
+
+def check_class_id(code):               ## check class exists or not
     conn=pymysql.connect(
         host=credential.host,
         port=credential.port,
@@ -176,6 +194,22 @@ def create_class(class_name,class_id,class_link,teacher_id):
     except Exception as e:
         print(e)     
 
+
+def join_class(student_id,class_code):              ## join the new class from student
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "insert into stud_classroom(student_id,class_code) value(%s,%s)"
+            curr.execute(sql,(student_id,class_code))
+            conn.commit()
+    except Exception as e:
+        print(e)
 
 def check_teach_mail(email):
     conn=pymysql.connect(
@@ -250,6 +284,27 @@ def check_class_name(class_name,teacher_id):
             return True
     except Exception as e:
         print(e)     
+
+
+def already_joined_class(student_id,class_code):      ## check if class is already joined
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "SELECT EXISTS(SELECT * from stud_classroom where student_id=(%s) and class_code=(%s)"
+            curr.execute(sql,(student_id,class_code))
+            output = curr.fetchall()
+            if output==0:
+                return False
+            return True
+    except Exception as e:
+        print(e)
+
 
 
 def get_class_data(class_id):
