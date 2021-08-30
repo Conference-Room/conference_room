@@ -358,7 +358,7 @@ def get_class_data(class_id):
     )
     try:
         with conn.cursor() as curr:
-            sql = "select content_heading,descript,upload_time from class_content where class_id=(%s)"
+            sql = "select content_heading,descript,upload_time from class_content where class_id=(%s) order by upload_time desc"
             curr.execute(sql,(class_id))
             output = curr.fetchall()
             return output
