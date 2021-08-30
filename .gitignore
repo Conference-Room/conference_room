@@ -3,7 +3,8 @@ credential.py
 generator.py
 
 
-
+/static/storage/teacher/
+/static/storage/student/
 
 
 # Byte-compiled / optimized / DLL files

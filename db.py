@@ -317,7 +317,7 @@ def get_class_data(class_id):
     )
     try:
         with conn.cursor() as curr:
-            sql = "select content_heading,upload_time from class_content where class_id=(%s)"
+            sql = "select content_heading,descript,upload_time from class_content where class_id=(%s)"
             curr.execute(sql,(class_id))
             output = curr.fetchall()
             return output
@@ -372,8 +372,19 @@ def add_class_content(class_id,content_id,content_heading,descript,max_score,due
     )
     try:
         with conn.cursor() as curr:
-            sql = "insert into class_content (class_id,content_id,content_heading,descript,max_score,due_date) value (%s,%s,%s,%s,%s,%s)"
-            curr.execute(sql,(class_id,content_id,content_heading,descript,max_score,due_date))
+            if(max_score=="default" and due_date=="default"):
+                sql = "insert into class_content (class_id,content_id,content_heading,descript) value (%s,%s,%s,%s)"
+                curr.execute(sql,(class_id,content_id,content_heading,descript))
+            elif max_score=="default":
+                sql = "insert into class_content (class_id,content_id,content_heading,descript,due_date) value (%s,%s,%s,%s,%s)"
+                curr.execute(sql,(class_id,content_id,content_heading,descript,due_date))
+            elif due_date=="default":
+                sql = "insert into class_content (class_id,content_id,content_heading,descript,max_score) value (%s,%s,%s,%s,%s)"
+                curr.execute(sql,(class_id,content_id,content_heading,descript,max_score))
+            
+            else:
+                sql = "insert into class_content (class_id,content_id,content_heading,descript,max_score,due_date) value (%s,%s,%s,%s,%s,%s)"
+                curr.execute(sql,(class_id,content_id,content_heading,descript,max_score,due_date))
             conn.commit()
     except Exception as e:
         print(e)     

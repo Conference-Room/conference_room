@@ -224,12 +224,13 @@ def add_content():
             files = request.files.getlist("files")
             class_id = form_details['class_id']
             
-            
+            flag=True
             if(max_score==""): max_score="default"
             if(due_date==""): due_date="default"
             if(reference_link==""): reference_link="None"
-            if(len(files)==0): files="None"
-
+    
+            if(len(files)==1): flag=False
+            
             content_id = gen.content_id()
             while api.check_content_id(content_id):
                 content_id=gen.content_id()
@@ -238,7 +239,7 @@ def add_content():
             if reference_link!="None":
                 api.add_content_storage_link(content_id,reference_link)
 
-            if files!="None":
+            if flag==True:
                 app.config['UPLOAD_FOLDER']=credential.file_path
                 parent = credential.file_path
                 directory = content_id
@@ -247,9 +248,9 @@ def add_content():
                 for f in files:
                     f.save(os.path.join(path,f.filename))
                     api.add_content_storage_files(content_id,os.path.join(path,f.filename))
-
-            
-            return render_template('teacher/teacher_main.html')
+            link = '/class/'+str(class_id)
+            return redirect(link)
+        return render_template('teacher/teacher_main.html')    
     except Exception as e:
         print(e)
         return redirect('/')

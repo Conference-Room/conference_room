@@ -63,6 +63,7 @@ body {
   margin-top: 60px;
   transform: translateX(-250px);
   transition: transform 250ms ease-in-out;
+  z-index: 999;
   /* background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%); */
 }
 .sidebarMenuInner {
