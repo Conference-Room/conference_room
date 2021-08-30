@@ -13,7 +13,6 @@ def login_teacher(email,password):
     
     try:
         with conn.cursor() as curr:
-            print(email,password)
             sql = "select password from teacher where email=(%s)"
             curr.execute(sql,email)
             output = curr.fetchone()
@@ -36,7 +35,7 @@ def login_student(email,password):
     try:
         with conn.cursor() as curr:
             sql = "select password from student where email=(%s)"
-            curr.execute(sql,email)
+            curr.execute(sql,(email))
             output = curr.fetchone()
             if(output):
                 if(password==output[0]):
@@ -480,5 +479,75 @@ def add_content_storage_files(content_id,content_links):
             sql = "insert into content_storage (content_id,content_links) value (%s,%s)"
             curr.execute(sql,(content_id,content_links))
             conn.commit()
+    except Exception as e:
+        print(e)     
+
+
+def get_teacher_id_class_id(class_id):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select teacher_id from class_table where class_id=(%s)"
+            curr.execute(sql,(class_id))
+            output = curr.fetchall()
+            return output[0][0]
+    except Exception as e:
+        print(e)     
+
+def get_teacher_name(teacher_id):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select name from teacher where teacher_id=(%s)"
+            curr.execute(sql,(teacher_id))
+            output = curr.fetchall()
+            return output[0][0]
+    except Exception as e:
+        print(e)     
+
+
+def get_students_id(class_id):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select student_id from stud_classroom where class_id=(%s)"
+            curr.execute(sql,(class_id))
+            output = curr.fetchall()
+            return output
+    except Exception as e:
+        print(e)     
+
+def get_student_name(student_id):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select name from student where student_id=(%s)"
+            curr.execute(sql,(student_id))
+            output = curr.fetchall()
+            return output[0][0]
     except Exception as e:
         print(e)     

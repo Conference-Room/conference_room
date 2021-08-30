@@ -35,11 +35,7 @@ def home():
                 teacher_id = api.get_teacher_id(mail)
                 data = api.get_teach_classes(teacher_id)
                 return render_template('teacher//teacher_main.html', data=data)
-                #data = api.get_joined_class(student_id)
-                print("here toooooooooo")
-                return render_template('student/student_main.html')
            
-        print("not here")
         return render_template('index.html')
     except Exception as e:
         print(e)
@@ -161,7 +157,9 @@ def login():
             email = form_details['email']
             password = form_details['password']
             if(who == 'student'):
+                
                 flag = api.login_student(email, password)
+
                 if(flag == 1):
                     session['email'] = email
                     session['who'] = 0
@@ -276,6 +274,7 @@ def add_class_content(code):
         return render_template('teacher/add_class_content.html', code=code)
     except Exception as e:
         print(e)
+
 @app.route('/student_class/<code>')    ## for student class info 
 def stud_class_info(code):
     try:
@@ -340,6 +339,25 @@ def add_content():
     except Exception as e:
         print(e)
         return redirect('/')
+
+
+@app.route('/show_students/<code>',methods=['POST','GET'])
+def show_joinned_students(code):
+    try:
+        if 'email' not in session:
+            return redirect('/')
+        teach_id = api.get_teacher_id_class_id(code)
+        teach_name = api.get_teacher_name(teach_id)
+        stud_all_id = api.get_students_id(code)
+        stud_name=[]
+        for stud_id in stud_all_id:
+            stud_name.append(api.get_student_name(stud_id[0]))
+        return render_template("teacher/joinned_people.html",teach_name=teach_name,stud_name=stud_name)  
+    except Exception as e:
+        print(e)
+        link='/class/'+str(code)
+        return redirect(link) 
+
 
 
 @app.route('/logout')
