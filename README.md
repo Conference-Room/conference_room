@@ -20,14 +20,14 @@ be done)
 
 ### Some Salient Features
 **Features for Teachers*** 
- 1. Teachers can upload assigment
- 2. Teachers can grade the assignments
- 3. See other students enrolled       
- 4. Tecahers can create new class
- 5. Preview & Route in Enrolled class
- 6. Can view the work of any class
- 7. Teachers can annouce anything to the whole class at once
- 8. Teachers can create a meet link
+ * Teachers can upload assigment
+ * Teachers can grade the assignments
+ * See other students enrolled       
+ * Tecahers can create new class
+ * Preview & Route in Enrolled class
+ * Can view the work of any class
+ * Teachers can annouce anything to the whole class at once
+ * Teachers can create a meet link
 
 | S.no.|Features for Students |
 |--------|-------------------------|
