@@ -276,17 +276,21 @@ def add_class_content(code):
         return render_template('teacher/add_class_content.html', code=code)
     except Exception as e:
         print(e)
+
+
 @app.route('/student_class/<code>')    ## for student class info 
 def stud_class_info(code):
     try:
         if 'email' not in session:
             return redirect('/')
-        data = api.get_student_class_data(code)  ## get the heading,descript and uploadtime
+        data = api.get_class_data(code)  ## get the heading,descript and uploadtime
         details = api.get_teach_partiular_subject(code)  ## same as teacher for class link and name
         return render_template('student/student_class_content.html',data=data,details=details)
     except Exception as e:
         print(e)
         return redirect('/')
+
+
 
 @app.route('/add_content', methods=['POST', 'GET'])
 def add_content():
@@ -340,6 +344,8 @@ def add_content():
     except Exception as e:
         print(e)
         return redirect('/')
+
+
 
 
 @app.route('/logout')
