@@ -17,12 +17,12 @@
 
 
 
-    <div class="layout">
-        <form  method="POST" action="/add_content" enctype="multipart/form-data" name="myform" onsubmit="return validateForm()" >
+     <div class="layout">
+        <form  method="POST" action="/add_content" enctype="multipart/form-data" name="myform" >
           <label for="Heading">Heading <em>&#x2a;</em></label>
-          <input type="text" id="content_heading" name="content_heading"  required>
+          <input type="text" id="content_heading" name="content_heading"  required="">
           <label for="description">Description<em>&#x2a;</em></label>
-          <textarea id="desc" name="desc" required=""></textarea>
+          <textarea id="description" name="description" required=""></textarea>
           <label for="links">Links</label>
           <input type="text" id="reference_link" name="reference_link"  >
           <label for="score">Max Score</label>
@@ -39,7 +39,7 @@
         
         </form>
         <meta name="{{ code }}" id="code">
-      </div>
+      </div> 
       
 
 
@@ -51,9 +51,9 @@
 
             <div class="bg"></div>
     
-            <form method="POST" action="/add_content" enctype="multipart/form-data" name="myform" onsubmit="return validateForm()" >
+            <form method="POST" action="/add_content" enctype="multipart/form-data" >
                 <input type="text" id="content_heading" name="content_heading" placeholder="Heading" required>
-                <input type="text" id="description" name="description" placeholder="Description"required >
+                <input type="text" id="description" name="description" placeholder="Description" required>
                 <input type="text" id="reference_link" name="reference_link" placeholder="Any links" >
                 <input type="text" id="max_score" name="max_score" placeholder="Max Score" >
                 <input type="datetime-local" id="due_date" name="due_date" placeholder="Due Date" >
@@ -63,23 +63,22 @@
             </form>
     
             <meta name="{{ code }}" id="code">
+            </div> 
             </div> -->
-
-
 
         <script>
         
 
         function validateForm() {
-        var ch = document.getElementById("content_heading");
-        var des = document.getElementById("description");
+            var ch = document.getElementById("content_heading").value;
+            var des = document.getElementById("description").value;
         // console.log(ch + des);
-        if ((ch == "") || (des == "") || (ch == null) || (des == null)) {
-            alert ("these fields are required");
-            return false;
+            if ((ch == "") || (des == "") || (ch == null) || (des == null)) {
+                alert ("these fields are required");
+                return false;
+            }
+            return true;
         }
-        return true;
-  }
    function myFunction() {
                 var val = document.getElementById("code").name
                 document.getElementById("class_id").value = val;

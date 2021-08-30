@@ -233,15 +233,17 @@ def add_content():
     try:
         if request.method == 'POST':
             form_details = request.form
-
             content_heading = form_details['content_heading']
+            
+            
             descript = form_details['description']
             reference_link = form_details['reference_link']
             max_score = form_details['max_score']
             due_date = form_details['due_date']
             files = request.files.getlist("files")
+            
+            
             class_id = form_details['class_id']
-
             flag = True
             if(max_score == ""):
                 max_score = "default"
@@ -257,8 +259,7 @@ def add_content():
             while api.check_content_id(content_id):
                 content_id = gen.content_id()
 
-            api.add_class_content(
-                class_id, content_id, content_heading, descript, max_score, due_date)
+            api.add_class_content(class_id, content_id, content_heading, descript, max_score, due_date)
             if reference_link != "None":
                 api.add_content_storage_link(content_id, reference_link)
 
@@ -272,6 +273,7 @@ def add_content():
                     f.save(os.path.join(path, f.filename))
                     api.add_content_storage_files(
                         content_id, os.path.join(path, f.filename))
+            
             link = '/class/'+str(class_id)
             return redirect(link)
         return render_template('teacher/teacher_main.html')
