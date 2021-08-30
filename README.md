@@ -19,7 +19,7 @@ be done)
  
 
 ### Some Salient Features
-**Features for Teachers*** 
+**Features for Teachers
  * Teachers can upload assigment
  * Teachers can grade the assignments
  * See other students enrolled       
@@ -29,17 +29,16 @@ be done)
  * Teachers can annouce anything to the whole class at once
  * Teachers can create a meet link
 
-| S.no.|Features for Students |
-|--------|-------------------------|
-| 01   |Students can upload the work done|
-| 02   |Students can check marks provided by teacher|
-| 03   |See other friends     |            
-| 04   |Store work as submission         |
-| 05   |Students can enroll into a new classroom|
-| 06   |Preview & Route in Enrolled class|
-| 07   |Can view the work of any class|
-| 08   |Students can ask their doubts directly from the teacher|
-| 09   |Student can directly join the classes via the link|
+### Features for Students 
+* Students can upload the work done
+* Students can check marks provided by teacher
+* See other friends               
+* Store work as submission         
+* Students can enroll into a new classroom
+* Preview & Route in Enrolled class
+* Can view the work of any class
+* Students can ask their doubts directly from the teacher
+* Student can directly join the classes via the link
 
 
 
