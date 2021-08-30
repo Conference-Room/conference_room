@@ -1,3 +1,4 @@
+from generator import class_id
 import pymysql
 import credential
 
@@ -195,7 +196,7 @@ def create_class(class_name,class_id,class_link,teacher_id):
         print(e)     
 
 
-def join_class(student_id,class_code):              ## join the new class from student
+def join_class(student_id,class_id):              ## join the new class from student
     conn=pymysql.connect(
         host=credential.host,
         port=credential.port,
@@ -205,8 +206,9 @@ def join_class(student_id,class_code):              ## join the new class from s
     )
     try:
         with conn.cursor() as curr:
-            sql = "insert into stud_classroom(student_id,class_code) value(%s,%s)"
-            curr.execute(sql,(student_id,class_code))
+            sql = "insert into stud_classroom(student_id,class_id) value(%s,%s)"
+            #sql = "REPLACE INTO stud_classroom(student_id,class_id) value(%s,%s)"
+            curr.execute(sql,(student_id,class_id))
             conn.commit()
     except Exception as e:
         print(e)
@@ -266,6 +268,25 @@ def get_teach_classes(teacher_id):
     except Exception as e:
         print(e)    
 
+
+def joined_classes_info(class_id):   ## Retrieve join class info i.e. class name,class link,teacher name
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select C.class_name,C.class_link,T.name from class_table C join teacher T on (C.teacher_id = T.teacher_id and C.class_id =(%s))"
+            curr.execute(sql,(class_id))
+            output = curr.fetchall()
+            return output
+    except Exception as e:
+        print(e)
+
+
 def check_class_name(class_name,teacher_id):
     conn=pymysql.connect(
         host=credential.host,
@@ -286,7 +307,7 @@ def check_class_name(class_name,teacher_id):
         print(e)     
 
 
-def already_joined_class(student_id,class_code):      ## check if class is already joined
+def already_joined_class(student_id,class_id):      ## check if class is already joined
     conn=pymysql.connect(
         host=credential.host,
         port=credential.port,
@@ -296,14 +317,34 @@ def already_joined_class(student_id,class_code):      ## check if class is alrea
     )
     try:
         with conn.cursor() as curr:
-            sql = "SELECT EXISTS(SELECT * from stud_classroom where student_id=(%s) and class_code=(%s)"
-            curr.execute(sql,(student_id,class_code))
+            #sql = "REPLACE INTO stud_classroom(student_id,class_id) value(%s,%s)"
+            sql = "SELECT * from stud_classroom where student_id=(%s) and class_id=(%s)"
+            curr.execute(sql,(student_id,class_id))
             output = curr.fetchall()
-            if output==0:
+            #print(output)
+            if len(output)==0:
                 return False
             return True
     except Exception as e:
         print(e)
+
+
+def get_joined_classes(student_id):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select class_id from stud_classroom where student_id=(%s)"
+            curr.execute(sql,(student_id))
+            output = curr.fetchall()
+            return output
+    except Exception as e:
+        print(e)  
 
 
 

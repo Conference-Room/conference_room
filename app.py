@@ -15,11 +15,17 @@ def home():
         if 'email' in session:
             mail = session['email']
             who = session['who']
+            list_data =[]
             if who==0:
                 student_id = api.get_student_id(mail)
-                #joined_classes = api.get_joined_classes(student_id)
-                #data = api.get_joined_class(student_id)
-                return render_template('student/student_main.html')
+                joined_classes = api.get_joined_classes(student_id)  ## get joined classes ID's
+                #print(joined_classes)
+                for joined_class_id in joined_classes:
+                    data = api.joined_classes_info(joined_class_id)
+                    list_data.append(data)
+
+                #print(list_data)
+                return render_template('student/student_main.html',data=list_data)
             else:
                 teacher_id = api.get_teacher_id(mail)
                 data = api.get_teach_classes(teacher_id)
@@ -171,16 +177,22 @@ def create_class_data():
 def join_class_data():
     try:
         if request.method=='POST':
+            #print('HEllo')
             form_details = request.form
             class_code = form_details['class_code']
+           # print(class_code)
             if 'email' not in session:
                 return redirect('/')
-            if api.check_class_id(class_code):
+            #print("fuck")
+            if api.check_class_id(class_code)==False:
                 return redirect('/')        ####WRONG class code alert
+            #print('suck')
             mail = session['email']
             student_id = api.get_student_id(mail)
+            #print('Hello')
             if api.already_joined_class(student_id,class_code):
                 return redirect('/')         #after this alert that class is already joined
+            #print('BYE')
             api.join_class(student_id,class_code)
             return redirect('/')
         return render_template("student/add_class.html")
