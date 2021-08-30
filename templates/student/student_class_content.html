@@ -8,10 +8,10 @@
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="../../static/index2.css">
     <link rel="stylesheet" href="../../static/teacher/class_content.css">
-    <title>ClassRoom</title>
+    <title>Document</title>
 </head>
 <body>
-    <nav style="border-bottom: 2px solid #d8dcdc; height: 3.9rem;">
+    <nav style="background-color: #d8dcdc; height: 3.9rem;">
         <div class="container-fluid row">
             <div style="display: flex;">
                 <div class="col-md-11" style="display: flex;">
@@ -22,12 +22,10 @@
                         <div class="spinner horizontal"></div>
                         <div class="spinner diagonal part-2"></div>
                     </label>
-                    
-                       
                     <div id="sidebarMenu" style="background-color: #696e6e;">
                         <ul class="sidebarMenuInner">
                             <li>Classes<span>To-Do</span></li>                            
-                            <li><a href="/add_class_content/{{ code }}">Add Content</a></li>
+                            <li><a href="/add_class_content/{{ code }}">Add content</a></li>
                             <li><a href="https://instagram.com/plavookac" target="_blank">Instagram</a></li>
                             <li><a href="https://twitter.com/plavookac" target="_blank">Twitter</a></li>
                             <li><a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg"
@@ -35,68 +33,37 @@
                             <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a></li>
                         </ul>
                     </div>
-                    <div class="navbar-brand " style="margin-top: 0.7rem; margin-left: 1.5rem;" href="#">Conference Room
-                    
-                    </div>
-                    <div class="buttons" style="align-items: center;">
-                        <button class="btn  active">classroom</button>
-                        <button  class="btn">people</button>
-                    </div>
+
+                    <div class="navbar-brand " style="margin-top: 0.7rem; margin-left: 1.5rem;" href="#">Conference Room</div>
                 </div>
-                
                 <div class="col-md-1" style=" display: flex;flex-direction: row-reverse;">
                     <div><img style="margin-top: 0.8rem; width:40px; border-radius: 50%;"
                             src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar"></div>
-                    <div style="margin-top: 1.3rem;margin-right: 0.5rem;"><img
-                            src="https://img.icons8.com/ios/25/000000/plus--v2.png" /></div>
+                    <div style="margin-top: 1.3rem;margin-right: 0.5rem;z-index: 100;"><a href="/"><img
+                            src="https://img.icons8.com/ios/25/000000/plus--v2.png" /></a></div>
                 </div>
-                
             </div>
-            
         </div>
-        
     </nav>
 
 
     <ul>
     
-        <div class="card">
-            <div class="card-body">
-              <a href=""><h5 class="card-title">{{ details[0][0]|upper }}</h5></a>
-              <!-- <p class="card-text">Meet Link</p> -->
-              <a href="{{ details[0][1] }}" name="{{ details[0][1] }}"id="meet_link" class="btn btn-primary">Join Meet</a>
-              <h5 class="card-title">Class Code:-{{ code }}</h5>
-            </div>
-          </div>
-            
-        </ul>
-
- 
-
-{% for info in data %}
-    <ul>
-    
-        <li class="card0">
-            
-            <article class="card0-body">
+        <li class="card">
+            <img class="featured-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLXo2vrSuT3xiNBgr5G4CI0PSWh0UUqjF-hg&usqp=CAU" alt="">
+            <article class="card-body">
                 <header>
-                    <img class="featured-image" src="https://www.w3schools.com/howto/img_avatar.png" alt="">
-                        <span class="pre-heading">{{ info[0]|capitalize }}</span>
-                    
                     <a href="#">
-                        
+                        <span class="pre-heading">Dr. Krishan pal</span>
+                        <div class="title">
+                            <p>Dear Students,
+                                In the last lab, the Group 1 joined on the theory class link and I have also send the assignment over there mistakenly. So from today onwards kindly join here for conducting your labs</p>
+                        </div>
+                        <p class="meta">
+                            <time class="updated" datetime="" itemprop="datePublished">July 27, 2021</time>
+                        </p>
                     </a>
                 </header>
-                    <div class="title">
-                        <a href="" class="title" >
-                            <p style="margin-top: .5em;">{{ info[1]|capitalize}}</p>
-                        
-                        </a>
-                        </div>
-                    <p class="meta">
-                        <time class="updated" datetime="" itemprop="datePublished">{{ info[2] }}</time>
-                    </p>
-                
                 <!-- <div class="chips">
                     <a class="chip">Manav</a>
                     <a class="chip">dekh</a>
@@ -106,16 +73,7 @@
         </li>
             
         </ul>
-        {% endfor %}
-
-        <script>
-            var val = document.getElementById("meet_link").name;
-            if(val==""){
-                document.getElementById("meet_link").style.visibility="hidden";
-            }
-
-        </script>
 
 
 </body>
-    </html>
+</html>

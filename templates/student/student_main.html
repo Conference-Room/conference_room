@@ -58,8 +58,9 @@
             <img src="https://i.pinimg.com/originals/5c/b4/8c/5cb48cea9219f94fbbb6a77009d0b56a.png" alt="rover" />
           </div>
           <div class="card-body">
-            <a class="tag tag-teal" id="{{items}}" href="/class/{{ items[1] }}">{{ items[0] }}</a>
-            <div class="col-md-4" align="right"><span class="tag tag-teal" href="{{ items[2] }}">Meet</span></div>
+            <a class="tag tag-teal" id="{{items}}" href="/student_class/{{ items[0][0] }}">{{ items[0][0] }}</a>
+            <div class="col-md-4" align="right"><span class="tag tag-teal" href="#">{{items[0][2]}}</span></div>
+            <div class="col-md-4" align="right"><span class="tag tag-teal" href="{{ items[0][1] }}">Meet</span></div>
           </div>
           <h6>Assignments:</h6>
 

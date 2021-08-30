@@ -1,200 +1,305 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.card0 {
+  -webkit-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.1), 0 5px 6px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border: 1px solid rgb(185, 184, 184);
+  border-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+.card0 .card0-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 10px;
+}
+
+.title {
+  display: inline;
+  font-size: 13px;
+}
+.card0 header {
+  -webkit-box-flex: 100%;
+  -ms-flex: 100%;
+  flex: 100%;
+}
+
+.card0 .meta {
+  margin-bottom: -12px;
+}
+
+.card0 .chips {
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+.buttons {
+  margin-top: auto;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn {
+  margin-top: auto;
+  border: none;
+  outline: none;
+  padding: 7px 16px;
+  background-color: #f1f1f1;
+  cursor: grab;
+}
+
+/* Style the active class (and buttons on mouse-over) */
+.active,
+.btn:hover {
+  background-color: #666;
+  color: white;
+}
+.card0 .featured-image,
+.card0 .featured-image1 {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+}
+.card-header,
+.card-text {
+  font-family: Roboto;
+  color: #fff;
+}
+.card-title {
+  color: white;
+  font-family: roboto;
+}
+.card .btn {
+  color: #222;
+  background-color: white;
+}
 .card {
-    -webkit-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 0px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1);
-    background: #fff;
-    border-radius: 15px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+  background-image: url("https://i.pinimg.com/originals/5d/ab/4d/5dab4d5e50156cb929c1b1946085bdde.jpg");
+  background-size: cover;
+}
+
+@media only screen and (min-width: 768px) {
+  .card {
+    background-image: url("https://i.pinimg.com/originals/5d/ab/4d/5dab4d5e50156cb929c1b1946085bdde.jpg");
+    background-size: cover;
+    height: 240px;
   }
-  
-  .card .card-body {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+  .card0 {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
-    padding: 30px;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    max-height: 279px;
+    width: 80%;
+    float: right;
+    padding-left: 1em;
   }
-  
-  .card header {
-    -webkit-box-flex: 100%;
-        -ms-flex: 100%;
-            flex: 100%;
+
+  .card0 h3 {
+    font-size: calc(100% + 1vw);
   }
-  
-  .card .meta {
-    margin-bottom: -12px;
+
+  .card0 .featured-image {
+    margin-top: 0.2em;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    max-width: 50px;
+    max-height: 50px;
   }
-  
-  .card .chips {
-    -ms-flex-item-align: end;
-        align-self: flex-end;
+  .card0 .featured-image1 {
+    margin-top: 0.2em;
+    margin-right: 0.5em;
+    max-width: 50px;
+    max-height: 50px;
   }
-  
-  .card .featured-image {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    overflow: hidden;
-    width: 100%;
-    height: 300px;
-  }
-  
-  @media only screen and (min-width: 768px) {
-    .card {
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-          -ms-flex-direction: row;
-              flex-direction: row;
-      max-height: 279px;
-    }
-    .card h3 {
-      font-size: calc(100% + 1vw);
-    }
-    .card .featured-image {
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-top-right-radius: 0;
-      max-width: 100px;
-      max-height: 100px;
-    }
-  }
-  
-  @media only screen and (min-width: 1280px) {
-    .card h3 {
-      font-size: 32px;
-    }
-  }
-  
-  * {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-  
-  h3 {
-    font-size: 32px;
-    line-height: 1.2;
-    font-weight: bold;
-    color: #222;
-    margin: 0.5em 0;
-  }
-  
-  .pre-heading {
-    color: #444;
-    font-size: 20px;
-    font-weight: 400;
-    text-transform: uppercase;
-  }
-  
+  .title a,
   .meta {
-    color: #555;
-    font-size: 16px;
-    text-transform: uppercase;
+    margin-top: 0.5em;
   }
-  
-  .author {
-    text-transform: uppercase;
-  }
-  
-  ul {
-    display: block;
-    margin: 0 auto;
-    max-width: 1160px;
-    padding: 30px;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  .chips {
-    white-space: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    -ms-overflow-style: none;
-  }
-  
-  .chips::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .chip {
-    display: inline-block;
-    position: relative;
-    font-size: 16px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 1.4;
-    white-space: nowrap;
+  .card-title {
     color: white;
-    background: #009dff;
-    border-radius: 25px;
-    margin-right: 8px;
-    padding: 5px 12px;
-    max-height: 32px;
+    font-size: 40px;
+    font-family: roboto;
   }
-  
-  .chip.large {
-    text-transform: uppercase;
-    color: black;
-    border: 1px solid #e0e0e0;
-    background: white;
-    padding: 10px 15px;
-    max-height: 44px;
+
+  .table {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
   }
-  
-  .chip input {
-    margin-bottom: 0 !important;
-    height: 22px !important;
-    background-color: transparent !important;
-    padding: 3px 0 0 0 !important;
+  .page-title {
+    font-size: 40px;
   }
-  
-  .chip input::-webkit-input-placeholder {
-    color: black;
-    text-transform: uppercase;
-    font-size: 16px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.page-title {
+  margin-top: 2em;
+  color: #222;
+  font-family: Roboto;
+  font-weight: 400;
+  text-align: center;
+}
+.count {
+  color: #222;
+  font-family: Roboto;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1280px) {
+  .card0 h3,
+  .card0 h3 {
+    font-size: 32px;
   }
-  
-  .chip input:-ms-input-placeholder {
-    color: black;
-    text-transform: uppercase;
-    font-size: 16px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-  
-  .chip input::-ms-input-placeholder {
-    color: black;
-    text-transform: uppercase;
-    font-size: 16px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-  
-  .chip input::placeholder {
-    color: black;
-    text-transform: uppercase;
-    font-size: 16px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-  
-  a.chip {
-    cursor: pointer;
-  }
-  
-  a.chip:hover, a.chip:visited, a.chip:active {
-    color: white;
-  }
-  
-  a.chip.large:visited, a.chip.large:hover, a.chip.large:active {
-    color: black;
-  }
-  /*# sourceMappingURL=class.css.map */
+}
+
+* {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+h3 {
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: bold;
+  color: #222;
+  margin: 0.5em 0;
+}
+
+.card0 .pre-heading {
+  font-family: roboto;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+}
+.card0 a {
+  color: black;
+}
+.bar {
+  float: right;
+}
+
+.meta {
+  color: #555;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.author {
+  text-transform: uppercase;
+}
+
+ul {
+  display: block;
+  margin: 0 auto;
+  max-width: 1160px;
+  padding: 30px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.chips {
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -ms-overflow-style: none;
+}
+
+.chips::-webkit-scrollbar {
+  display: none;
+}
+
+.chip {
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  white-space: nowrap;
+  color: white;
+  background: #009dff;
+  border-radius: 25px;
+  margin-right: 8px;
+  padding: 5px 12px;
+  max-height: 32px;
+}
+
+.chip.large {
+  text-transform: uppercase;
+  color: black;
+  border: 1px solid #e0e0e0;
+  background: white;
+  padding: 10px 15px;
+  max-height: 44px;
+}
+
+.chip input {
+  margin-bottom: 0 !important;
+  height: 22px !important;
+  background-color: transparent !important;
+  padding: 3px 0 0 0 !important;
+}
+
+.chip input::-webkit-input-placeholder {
+  color: black;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.chip input:-ms-input-placeholder {
+  color: black;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.chip input::-ms-input-placeholder {
+  color: black;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.chip input::placeholder {
+  color: black;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a.chip {
+  cursor: pointer;
+}
+
+a.chip:hover,
+a.chip:visited,
+a.chip:active {
+  color: white;
+}
+
+a.chip.large:visited,
+a.chip.large:hover,
+a.chip.large:active {
+  color: black;
+}
+/*# sourceMappingURL=class.css.map */
+.title p span {
+  font-weight: 600;
+}
