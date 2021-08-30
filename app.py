@@ -133,6 +133,10 @@ def login():
 @app.route('/create_class')
 def create_class():
     return render_template('teacher/create_class.html')
+    
+@app.route('/add_class')
+def add_class():
+    return render_template('student/add_class.html')
 
 @app.route('/create_class_data',methods=['POST','GET'])
 def create_class_data():
