@@ -641,7 +641,7 @@ def get_Max_marks(content_id):
     except Exception as e:
         print(e)  
 
-print(get_Max_marks('7sZoeoQ7GBtc3rl'))
+
 
 def get_teacher_id_class_id(class_id):
     conn=pymysql.connect(
