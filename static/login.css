@@ -30,7 +30,7 @@ img {
   padding: 1em;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 6px 31px -2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 31px 2px rgba(20, 20, 20, 0.3);
   transition: 1.5s ease-in-out;
 }
 
@@ -54,14 +54,16 @@ p {
 
 .bg {
   width: 450px;
-  height: 550px;
+  height: 570px;
   background: #696e6e;
+  background-image: url("https://i.pinimg.com/originals/f8/ce/88/f8ce885fefff18b4cd5d58e8eacc7718.jpg");
   position: absolute;
   top: -5em;
   left: 0;
   right: 0;
+  opacity: 0.5;
   margin: auto;
-  background-image: url("background.jpg");
+  /* background-image: url("background.jpg"); */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -93,10 +95,10 @@ form input {
   background: rgb(255, 255, 255, 0.3);
   font-family: "Poppins", sans-serif;
   outline: none;
-  color: #fff;
+  color: rgb(10, 10, 10);
 }
 input::placeholder {
-  color: #fff;
+  color: rgb(8, 8, 8);
   font-size: 13px;
 }
 
@@ -106,6 +108,7 @@ input::placeholder {
 
 footer {
   position: absolute;
+  transform: translate(0%, 40%);
   bottom: 0;
   left: 0;
   right: 0;
@@ -114,10 +117,8 @@ footer {
 }
 
 button {
-  padding: 13px 15px;
-  border-radius: 5em;
-  border: none;
-  border: 2px solid rgb(0, 0, 0);
+  padding: 6px 20px;
+  border-radius: 100px;
   background: #696e6e;
   font-family: "Poppins", sans-serif;
   outline: none;
@@ -149,5 +150,12 @@ button:hover {
   input,
   button {
     padding: 18px 15px;
+    border: 100px;
   }
+}
+.g-signin2 {
+  width: 120px;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
 }

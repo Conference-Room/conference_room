@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url("../photos/grid.png");
+  background-image: url("../../static/photos/SVG/Asset\ 2.svg");
   background-size: cover;
   width: 100vw;
   height: 100vh;
@@ -14,14 +14,15 @@ body {
   justify-items: center;
   font-size: 12pt;
   font-family: "Spartan";
-  color: #2a293e;
+  color: white;
 }
 
 .layout {
+  border-radius: 100px;
   width: 40%;
-  background: #f8f4e5;
+  background: rgb(218, 209, 209);
   padding: 50px 100px;
-  border-top: 10px solid #1f7574;
+  border-top: 10px solid #696e6e;
 }
 
 label,
@@ -52,7 +53,7 @@ span {
 }
 
 em {
-  color: #1f7574;
+  color: #696e6e;
   font-weight: bold;
 }
 
@@ -61,7 +62,7 @@ textarea {
   border: none;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 2px;
-  background: #f8f4e5;
+  background: rgb(218, 209, 209);
   padding-left: 5px;
   outline: none;
 }
@@ -81,7 +82,7 @@ button {
   line-height: 24pt;
   padding: 0 20px;
   border: none;
-  background: #1f7574;
+  background: #696e6e;
   color: white;
   letter-spacing: 2px;
   transition: 0.2s all ease-in-out;
@@ -90,8 +91,8 @@ button {
 }
 button:hover {
   background: inherit;
-  color: #1f7574;
-  border-bottom: 2px solid #1f7574;
+  color: #696e6e;
+  border-bottom: 2px solid #696e6e;
 }
 
 ::selection {
