@@ -83,7 +83,7 @@
             <div class="card-body">
               <a href=""><h5 class="card-title">{{ details[0][0]|upper }}</h5></a>
               <!-- <p class="card-text">Meet Link</p> -->
-              <a href="{{ details[0][1] }}" name="{{ details[0][1] }}"id="meet_link" class="btn btn-primary">Join Meet</a>
+              <a href="{{ details[0][1] }}" target ="_blank" name="{{ details[0][1] }}"id="meet_link" class="btn btn-primary">Join Meet</a>
              
             </div>
           </div>
@@ -106,12 +106,19 @@
                     </header>
                         <div class="title">
                             <a href="" class="title" >
-                                <p style="margin-top: .5em;">{{ info[1]|capitalize}}</p>
+                                <p style="margin-top: .5em;font-size: 20px ;font-style: italic;"> Content ID:- {{ info[1]|capitalize}} </p>
                             
                             </a>
                             </div>
+                            
+                            <div class="title">
+                                <a href="" class="title" >
+                                    <p style="margin-top: .5em;">       {{ info[2]|capitalize}}</p>
+                                
+                                </a>
+                                </div>
                         <p class="meta">
-                            <time class="updated" datetime="" itemprop="datePublished">{{ info[2] }}</time>
+                            <time class="updated" datetime="" itemprop="datePublished">{{ info[3] }}</time>
                         </p>
                     
                     <!-- <div class="chips">

@@ -279,7 +279,7 @@ def joined_classes_info(class_id):   ## Retrieve join class info i.e. class name
     )
     try:
         with conn.cursor() as curr:
-            sql = "select C.class_name,C.class_link,C.class_id,T.name from class_table C join teacher T on (C.teacher_id = T.teacher_id and C.class_id =(%s))"
+            sql = "select C.class_name,C.class_link,C.class_id,T.name from class_table C join teacher T on (C.teacher_id = T.teacher_id and C.class_id =(%s)) order by C.creation_date "
             curr.execute(sql,(class_id))
             output = curr.fetchall()
             return output
@@ -358,12 +358,13 @@ def get_class_data(class_id):
     )
     try:
         with conn.cursor() as curr:
-            sql = "select content_heading,descript,upload_time from class_content where class_id=(%s) order by upload_time desc"
+            sql = "select content_heading,content_id,descript,upload_time from class_content where class_id=(%s) order by upload_time desc"
             curr.execute(sql,(class_id))
             output = curr.fetchall()
             return output
     except Exception as e:
         print(e)    
+
 
 
 

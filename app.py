@@ -29,7 +29,7 @@ def home():
                     
                     list_data.append(data)
 
-                # print(list_data)
+                #print(list_data)
                 return render_template('student/student_main.html', data=list_data)
             else:
                 teacher_id = api.get_teacher_id(mail)
@@ -281,7 +281,7 @@ def stud_class_info(code):
     try:
         if 'email' not in session:
             return redirect('/')
-        data = api.get_class_data(code)  ## get the content heading,descript and uploadtime
+        data = api.get_class_data(code)  ## get the content heading,content_id, descript and uploadtime
         details = api.get_teach_partiular_subject(code)  ## same as teacher for class link and name
         return render_template('student/student_class_content.html',data=data,details=details,code=code)
     except Exception as e:
