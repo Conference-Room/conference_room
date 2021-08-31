@@ -478,7 +478,7 @@ def add_class_content(class_id,content_id,content_heading,descript,max_score,due
         print(e)     
 
 
-def add_content_storage_link(content_id,links):
+def add_content_storage_link(content_id,links):  # store the content links from teacher
     conn=pymysql.connect(
         host=credential.host,
         port=credential.port,
@@ -494,7 +494,7 @@ def add_content_storage_link(content_id,links):
     except Exception as e:
         print(e)     
 
-def add_content_storage_files(content_id,content_links):  #teacher
+def add_content_storage_files(content_id,content_links):  #store the teacher uploaded files assignment
     conn=pymysql.connect(
         host=credential.host,
         port=credential.port,
@@ -544,7 +544,67 @@ def is_assignment_submitted(submission_id):  #Student
                 return False
             return True
     except Exception as e:
-        print(e)     
+        print(e)
+
+print(is_assignment_submitted("Hdo0g0wrgp4vxnvUBG3331PjDmY3N9"))     
+
+
+def get_content_specific_data(content_id):  ## get the content specific data for teacher
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select class_id,content_heading,descript,due_date from class_content where content_id=(%s)"
+            curr.execute(sql,(content_id))
+            output = curr.fetchall()
+            return output[0]
+    except Exception as e:
+        print(e)
+
+
+
+
+def get_total_students(class_id):   ## get count of  total students for particular class
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select count(*) from stud_classroom where class_id =(%s)"
+            curr.execute(sql,(class_id))
+            output = curr.fetchall()
+            return output[0][0]
+    except Exception as e:
+        print(e)
+
+print(get_total_students('IEjAeavw6V'))
+
+def get_smart_students(content_id):  ## get the students that completed assignment
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select count(*) from submission where content_id =(%s) "
+            curr.execute(sql,(content_id))
+            output = curr.fetchall()
+            return output[0][0]
+    except Exception as e:
+        print(e) 
+
 
 
 def get_teacher_id_class_id(class_id):

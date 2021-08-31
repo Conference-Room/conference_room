@@ -1,3 +1,4 @@
+from logging import exception
 from flask import Flask, session, render_template, redirect, request
 import db as api
 import credential
@@ -171,10 +172,10 @@ def login():
                 elif(flag == 0):
                     # remove print statements and add reply him with proper reply
                     print("wrong password")
-                    return render_template('login.html')
+                    return redirect('/')
                 else:
                     print("user not exist")
-                    return render_template('login.html')
+                    return redirect('/')
 
             else:
                 flag = api.login_teacher(email, password)
@@ -184,10 +185,10 @@ def login():
                     return redirect('/')
                 elif(flag == 0):
                     print("wrong password")
-                    return render_template('login.html')
+                    return redirect('/')
                 else:
                     print("user not exist")
-                    return render_template('login.html')
+                    return redirect('/')
         return render_template('login.html')
     except Exception as e:
         print(e)
@@ -271,8 +272,7 @@ def class_info(code):
         print(e)
         return redirect('/')
 
-
-@app.route('/stuAss/<assId>', methods=['GET', 'POST'])
+@app.route('/stuAss/<assId>' , methods=['GET', 'POST'])   #student assign
 def stuAss(assId):
     try:
         print("comes here")
@@ -287,12 +287,33 @@ def stuAss(assId):
             return render_template('student/stuAss.html', assId=assId , done="Submitted")
 
         return render_template('student/stuAss.html', assId=assId , done="submit")
+        #print("mofosssssssss")
+        return render_template('student/stuAss.html' , assId=assId)
     except Exception as e:
         print(e)
         return redirect('/')
 
 
-@app.route('/stuAssSubmit/<assId>', methods=['GET', 'POST'])
+
+@app.route('/teachAssign/<content_id>',methods=['GET', 'POST'])  ## teacher side content specific
+def teachContent(content_id):
+    try:
+        if 'email' not in session:
+            return redirect('/')
+
+        Content = api.get_content_specific_data(content_id) ## get the class_id,content heading,descript and due time
+        total_students = (api.get_total_students(Content[0]))  ## count of total students
+        smart_students = (api.get_smart_students(content_id)) ## count of smart students
+       
+        print(total_students)
+        print(smart_students)
+        
+        return render_template('teacher/particular_content.html' , data=Content,assigned_stud = int(smart_students),left_stud = int(total_students) - int(smart_students))
+    except Exception as e:
+        print(e)
+        return redirect('/')
+
+@app.route('/stuAssSubmit/<assId>',methods=['GET', 'POST'])
 def stuAssSubmit(assId):
     try:
         if 'email' not in session:
@@ -327,11 +348,16 @@ def stuAssSubmit(assId):
             for f in files:
                 f.save(os.path.join(path, f.filename))
                 api.add_student_storage_files(directory,  os.path.join(path, f.filename))
-            if(api.is_assignment_submitted(assId+StuId)):
-                print("hereee")
-                return render_template('student/stuAss.html', assId=assId , done="Submitted")
+            # if(api.is_assignment_submitted(assId+StuId)):
+            #     print("hereee")
+            return render_template('student/stuAss.html', assId=assId , done="Submitted")
             
            
+            # link = '/stuAss/' + str(assId)
+            # return redirect(link , done="Submitted")
+            
+           
+            print(StuId)
            
         return render_template('student/student_main.html' , assId=assId)
     except Exception as e:
@@ -339,7 +365,10 @@ def stuAssSubmit(assId):
         return redirect('/')
 
 
-@app.route('/add_class_content/<code>', methods=['POST', 'GET'])
+
+
+
+@app.route('/add_class_content/<code>', methods=['POST', 'GET'])  #teacher side content add
 def add_class_content(code):
     try:
         return render_template('teacher/add_class_content.html', code=code)
