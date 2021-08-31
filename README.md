@@ -25,6 +25,50 @@ be done)
 `Additional` : Google Authentication <br>
 **We have made custom API to make API calls for fetching data from the Database.**
 
+## Installation
+
+A step by step series of examples that tell you how to get a development env running.
+### STEP 1 : Clone the repository
+```
+https://github.com/
+```
+
+We recommend to use `virtualenv` for development:
+### STEP 2 : Create Virtual Environment
+
+- Start by installing `virtualenv` if you don't have it
+```
+pip install virtualenv
+```
+
+- Once installed access the project folder
+```
+cd conference_room
+```
+
+- Create a virtual environment
+```
+python3 -m venv venv
+
+```
+
+- Enable the virtual environment in windows
+```
+cd venv\Scripts
+ .\activate
+```
+
+### STEP 3 : Install the python dependencies on the virtual environment
+
+```
+pip install -r requirements.txt
+```
+
+### STEP : 4
+- Start the web application 🥳
+```
+python app.py
+
 ### Some Salient Features
 **Features for Teachers**
  * Teachers can upload assigment and grade the assignments
