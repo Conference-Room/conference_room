@@ -38,10 +38,6 @@
                     <div class="navbar-brand " style="margin-top: 0.7rem; margin-left: 1.5rem;" href="#">Conference Room
                     
                     </div>
-                    <div class="buttons" style="align-items: center;">
-                        <button class="btn  active">classroom</button>
-                        <button class="btn  active">People</button>
-                    </div>
                    
                 </div>
                  
@@ -60,16 +56,21 @@
         </div>
         
     </nav>
-<a  href="/show_students/{{ code }}">people</a>
+    <div class="peop" style="width: 50px; margin-left: auto; margin-right: 4em;">
+        <a  class="people" href="/show_students/{{ code }}">PEOPLE</a>
+    </div>
+
 
     <ul>
     
         <div class="card">
+            <div class="card-header">
+                <p>Class Code:-{{ code }}</p>
+              </div>
             <div class="card-body">
               <a href=""><h5 class="card-title">{{ details[0][0]|upper }}</h5></a>
               <!-- <p class="card-text">Meet Link</p> -->
               <a href="{{ details[0][1] }}" name="{{ details[0][1] }}"id="meet_link" class="btn btn-primary">Join Meet</a>
-              <h5 class="card-title">Class Code:-{{ code }}</h5>
             </div>
           </div>
             
@@ -84,27 +85,30 @@
             
             <article class="card0-body">
                 <header>
-                    <img class="featured-image" src="https://www.w3schools.com/howto/img_avatar.png" alt="">
-                        <span class="pre-heading">{{ info[0]|capitalize }}</span>
+                    <img class="featured-image" src="https://findicons.com/files/icons/2813/flat_jewels/512/file.png" alt="">
+                        <span class="pre-heading">Heading : {{ info[0]|capitalize }}</span>
                     
                     
                 </header>
-                <div class="title">
+                <!-- <div class="title">
                     <a href="" class="title" >
                         <p style="margin-top: .5em;font-size: 20px ;font-style: italic;"> Content ID:- {{ info[1]|capitalize}} </p>
                     
                     </a>
-                    </div>
+                    </div> -->
                     
                     <div class="title">
                         <a href="" class="title" >
-                            <p style="margin-top: .5em;">       {{ info[2]|capitalize}}</p>
+                            <p style="margin-top: .5em;">       {{ info[2]|capitalize}} <br> </p>
                         
                         </a>
-                        </div>
-                    <p class="meta">
-                        <time class="updated" datetime="" itemprop="datePublished">{{ info[3] }}</time>
-                    </p>
+                    </div>
+                    <div class="card-body" style="text-align: right; margin-top: .5em;">
+                        <p class="meta">
+                            <time class="updated" datetime="" itemprop="datePublished">Posted at: {{ info[3] }}</time>
+                        </p>
+                    </div>
+                    
                 
                 <!-- <div class="chips">
                     <a class="chip">Manav</a>
