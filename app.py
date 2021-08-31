@@ -267,6 +267,17 @@ def class_info(code):
         print(e)
         return redirect('/')
 
+@app.route('/stuAss/<assId>')
+def stuAss(assId):
+    try:
+        if 'email' not in session:
+            return redirect('/')
+        print("mofosssssssss")
+        return render_template('student/stuAss.html' , assId=assId)
+    except Exception as e:
+        print(e)
+        return redirect('/')
+
 
 @app.route('/add_class_content/<code>', methods=['POST', 'GET'])
 def add_class_content(code):
