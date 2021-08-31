@@ -64,8 +64,7 @@ def gs_login():
         if 'email' in session:
             return redirect('/')
         token = request.form["idtoken"]
-        idinfo = id_token.verify_oauth2_token(token, requests.Request(
-        ), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
         print("here")
         userid = idinfo['sub']
         email = idinfo['email']
@@ -275,10 +274,8 @@ def class_info(code):
 @app.route('/stuAss/<assId>' , methods=['GET', 'POST'])   #student assign
 def stuAss(assId):
     try:
-        print("comes here")
         if 'email' not in session:
             return redirect('/')
-        print("mofosssssssss")
         done=0
         mail = session['email']
         StuId=api.getStuId(mail )
@@ -305,9 +302,13 @@ def teachContent(content_id):
         total_students = (api.get_total_students(Content[0]))  ## count of total students
         smart_students = (api.get_smart_students(content_id)) ## count of smart students
         List_smart_students = api.get_data_smart_students(content_id)
-        
         Max_Score = (api.get_Max_marks(content_id))
-        print(Max_Score)
+        # print(type(Max_Score))
+        Max_Score = str(Max_Score)
+        if(Max_Score=='None'): 
+            Max_Score=0
+
+        # else: Max_Score=int(Max_Score)
         return render_template('teacher/particular_content.html' , data=Content,assigned_stud = int(smart_students),left_stud=int(total_students)-int(smart_students),smart_stud =List_smart_students,Max_Score = Max_Score)
     except Exception as e:
         print(e)
