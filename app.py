@@ -85,14 +85,11 @@ def gt_login():
         if 'email' in session:
             return redirect('/')
         token = request.form["idtoken"]
-        idinfo = id_token.verify_oauth2_token(token, requests.Request(
-        ), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
-        print("here")
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
         userid = idinfo['sub']
         email = idinfo['email']
         name = idinfo['name']
         api.signup_teacher(name, email, "", "", userid)
-        print("hxsbdjhb")
         session['email'] = email
         session['who'] = 1
         return '/'
