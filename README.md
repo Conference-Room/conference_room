@@ -17,6 +17,13 @@ Conference Room is a suite of online tools that allows teachers to set assignmen
 be done)
 4. [x] Test Page ( Showing the list of past test results as well as upcoming tests)
  
+## ⚙ Technology Stack
+`Backend` : Flask <br>
+`Database`: MySQL <br>
+`Frontend`: CSS, Jinja, HTML, Bootstrap, Javascript  <br>
+`Hosting` : Pythonanywhere <br>
+`Additional` : Google Authentication <br>
+**We have made custom API to make API calls for fetching data from the Database.**
 
 ### Some Salient Features
 **Features for Teachers**
@@ -38,6 +45,6 @@ be done)
 * Students can ask their doubts directly from the teacher
 * Student can directly join the classes via the link
 
-## ⚙ Technology Stack
+
 
 
