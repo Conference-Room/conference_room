@@ -546,6 +546,35 @@ def is_assignment_submitted(submission_id):  #Student
     except Exception as e:
         print(e)
 
+def get_assignment_details(content_id):  #Student
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select class_id, content_heading, descript, upload_time, max_score , due_date from class_content where content_id=(%s)"
+            curr.execute(sql,(content_id))
+            output = curr.fetchall()
+            if len(output)==0:
+                return False
+            print(output)
+            # print(output[0][0])
+            # print(output[0][1])
+            # print(output[0][2])
+            print(output[0][3])
+            # print(output[0][3][2])
+            # print(output[0][4])
+            # print(output[0][5])
+            return (output)
+    except Exception as e:
+        print(e)
+print(get_assignment_details("VloPDONb3c8voYo"))
+print(is_assignment_submitted("Hdo0g0wrgp4vxnvUBG3331PjDmY3N9"))     
+
 
 def get_content_specific_data(content_id):  ## get the content specific data for teacher
     conn=pymysql.connect(
