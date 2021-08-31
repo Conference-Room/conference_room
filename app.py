@@ -320,26 +320,21 @@ def stuAssSubmit(assId):
             return redirect('/')
         if request.method == 'POST':
             form_details = request.form
-            print(form_details)
 
             content_id = form_details['assId']
             mail = session['email']
 
-            print(content_id)
-            print(mail)
-            
+    
             StuId=api.getStuId(mail )
             if(api.is_assignment_submitted(assId+StuId)):
-                print("hereee")
                 return render_template('student/stuAss.html', assId=assId , done="Submitted")
             files = request.files.getlist("stuAss")
-            print(files)
+
 
 
             app.config['UPLOAD_FOLDER'] = credential.student_file_path
             parent = credential.student_file_path
             directory = content_id+StuId
-            print(directory)
             
             path = os.path.join(parent, directory)
             os.mkdir(path)
@@ -403,7 +398,6 @@ def add_content():
             max_score = form_details['max_score']
             due_date = form_details['due_date']
             files = request.files.getlist("files")
-            print(files)
             # print(files.list().empty())
             class_id = form_details['class_id']
             flag = True
@@ -422,31 +416,20 @@ def add_content():
             content_id = gen.content_id()
             while api.check_content_id(content_id):
                 content_id = gen.content_id()
-            print(form_details)
-            print(files)
-            print(len(files))
 
 
-            print("here1")
             api.add_class_content(class_id, content_id, content_heading, descript, max_score, due_date)
-            print("here2")
             if reference_link != "None":
-                print("here2")
                 api.add_content_storage_link(content_id, reference_link)
-            print("her3")
             if flag == True:
-                print("her3")
                 app.config['UPLOAD_FOLDER'] = credential.file_path
                 parent = credential.file_path
                 directory = content_id
                 path = os.path.join(parent, directory)
                 os.mkdir(path)
-                for f in files:
-                    print("her3")   
+                for f in files: 
                     f.save(os.path.join(path, f.filename))
                     api.add_content_storage_files(content_id, os.path.join(path, f.filename))
-            print("her3")
-            print("her3")
             link = '/class/'+str(class_id)
             return redirect(link)
         return render_template('teacher/teacher_main.html')
