@@ -182,7 +182,7 @@ flex-wrap: wrap; */
 
 .card {
   margin: 10px;
-  background-image: url(https://i.pinimg.com/originals/f8/ce/88/f8ce885fefff18b4cd5d58e8eacc7718.jpg);
+  background: #fecc86;
   background-size: cover;
   box-sizing: border-box;
   box-shadow: 0 6px 11px 2px rgba(20, 20, 20, 0.3);
