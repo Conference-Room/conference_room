@@ -1,3 +1,4 @@
+from logging import exception
 from flask import Flask, session, render_template, redirect, request
 import db as api
 import credential
@@ -271,44 +272,85 @@ def class_info(code):
         print(e)
         return redirect('/')
 
-
-@app.route('/stuAss/<assId>', methods=['GET', 'POST'])
+@app.route('/stuAss/<assId>' , methods=['GET', 'POST'])   #student assign
 def stuAss(assId):
     try:
         if 'email' not in session:
             return redirect('/')
-        print("mofosssssssss")
-        return render_template('student/stuAss.html', assId=assId)
+        #print("mofosssssssss")
+        return render_template('student/stuAss.html' , assId=assId)
     except Exception as e:
         print(e)
         return redirect('/')
 
 
-@app.route('/stuAssSubmit/<assId>', methods=['GET', 'POST'])
-def stuAssSubmit(assId):
+
+@app.route('/teachAssign/<content_id>',methods=['GET', 'POST'])  ## teacher side content specific
+def teachContent(content_id):
     try:
-        print("hereeeeeeee")
         if 'email' not in session:
             return redirect('/')
-        print("here")
-        if request.method == 'POST':
-            form_details = request.form
-            content_id = form_details['assId']
-            subLink = form_details['stuAss']
-            mail = session['email']
-            print(content_id)
-            print(subLink)
-            print(mail)
-            StuId = api.getStuId(mail)
-            print(StuId)
-            subId = api.submitAss(StuId, content_id, StuId+content_id, subLink)
-        return render_template('student/stuAss.html', assId=assId)
+
+        Content = api.get_content_specific_data(content_id) ## get the class_id,content heading,descript and due time
+        total_students = (api.get_total_students(Content[0]))  ## count of total students
+        smart_students = (api.get_smart_students(content_id)) ## count of smart students
+       
+        print(total_students)
+        print(smart_students)
+        
+        return render_template('teacher/particular_content.html' , data=Content,assigned_stud = int(smart_students),left_stud = int(total_students) - int(smart_students))
     except Exception as e:
         print(e)
         return redirect('/')
 
 
-@app.route('/add_class_content/<code>', methods=['POST', 'GET'])
+def stuAssSubmit(assId):
+    try:
+        if 'email' not in session:
+            return redirect('/')
+        if request.method == 'POST':
+            form_details = request.form
+            print(form_details)
+
+            content_id = form_details['assId']
+            mail = session['email']
+
+            #print(content_id)
+            #print(mail)
+            
+            StuId=api.getStuId(mail )
+            files = request.files.getlist("stuAss")
+            #print(files)
+
+
+            app.config['UPLOAD_FOLDER'] = credential.student_file_path
+            parent = credential.student_file_path
+            directory = content_id+StuId
+            #print(directory)
+            
+            path = os.path.join(parent, directory)
+            os.mkdir(path)
+            
+            api.submitAss(StuId, content_id,directory)
+            for f in files:
+                f.save(os.path.join(path, f.filename))
+                api.add_student_storage_files(directory,  os.path.join(path, f.filename))
+            link = '/stuAss/' + str(assId)
+            return redirect(link , done=1)
+            
+           
+            print(StuId)
+           
+        return render_template('student/student_main.html' , assId=assId)
+    except Exception as e:
+        print(e)
+        return redirect('/')
+
+
+
+
+
+@app.route('/add_class_content/<code>', methods=['POST', 'GET'])  #teacher side content add
 def add_class_content(code):
     try:
         return render_template('teacher/add_class_content.html', code=code)

@@ -9,13 +9,13 @@ Conference Room is a suite of online tools that allows teachers to set assignmen
 
 
 ## 🎇 Features
-1. [x] Login and signup via
-   - [x] Username & Password
-   - [x] Gmail Sync (Login with Gmail Option).
-2. [x] Home Page showing the list of all the subjects of the logged in student
-3. [x] Assignment Page ( Showing the list of assignments done till now as well as the assignments to
+1. ✔️ Login and signup via
+    - ✔️ Username & Password
+   - ✔️ Gmail Sync (Login with Gmail Option).
+2. ✔️ Home Page showing the list of all the subjects of the logged in student
+3. ✔️ Assignment Page ( Showing the list of assignments done till now as well as the assignments to
 be done)
-4. [x] Test Page ( Showing the list of past test results as well as upcoming tests)
+4. ✔️Test Page ( Showing the list of past test results as well as upcoming tests)
  
 ## ⚙ Technology Stack
 `Backend` : Flask <br>
