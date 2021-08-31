@@ -55,10 +55,6 @@
                     <div class="navbar-brand " style="margin-top: 0.7rem; margin-left: 1.5rem;" href="#">Conference Room
                     
                     </div>
-                    <div class="buttons" style="align-items: center;">
-                        <button class="btn  active">classroom</button>
-                        
-                    </div>
                 </div>
                 
                 <div class="col-md-1 " style=" display: flex;flex-direction: row-reverse;z-index: 100;">
@@ -75,11 +71,17 @@
         </div>
         
     </nav>
-    <a  href="/show_all_students/{{ code }}">people</a>
+    <div class="peop" style="width: 50px; margin-left: auto; margin-right: 4em;">
+        <a class="people" href="/show_all_students/{{ code }}">PEOPLE</a>
+    </div>
+    
 
     <ul>
     
         <div class="card">
+            <div class="card-header">
+                <p>Class Code:-{{ code }}</p>
+              </div>
             <div class="card-body">
               <a href=""><h5 class="card-title">{{ details[0][0]|upper }}</h5></a>
               <!-- <p class="card-text">Meet Link</p> -->

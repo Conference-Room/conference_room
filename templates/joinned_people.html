@@ -41,11 +41,12 @@
                     
                 </div>
                 
-                <div class="col-md-1" style=" display: flex;flex-direction: row-reverse;">
-                    <div><img style="margin-top: 0.8rem; width:40px; border-radius: 50%;"
-                            src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar"></div>
-                    <div style="margin-top: 1.3rem;margin-right: 0.5rem;"><img
-                            src="https://img.icons8.com/ios/25/000000/plus--v2.png" /></div>
+                <div class="col-md-1 " style=" display: flex;flex-direction: row-reverse;z-index: 100;">
+                    <div class="dropdown"><img style="margin-top: 0.8rem; width:40px; border-radius: 50%;"
+                            src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+                        <div class="dropdown-content" ><a onclick="signOut()" href="/logout" style="color: #323335;">Log Out</a></div>      
+                    </div>
+                    <!--  -->
                 </div>
                 
             </div>
@@ -64,7 +65,6 @@
       {% endfor %} 
      -->
      <p class="count">1 Teacher and {{ stud_name|length }} student/s</p>
-     <table class="table">
         <table class="table">
             <thead>
               <tr>
@@ -76,28 +76,28 @@
                 <th>  </th>
                 <th>  </th>
                 <th>  </th>
-                    <th scope="col">{{ teach_name|capitalize }}</th>
+                    <th scope="col">{{ teach_name|upper }}</th>
                 <th></th>
                 <th>Teacher</th>
               </tr>
             </thead>
           </table>
-      </table>
       <hr>
     
     <p class="count">Students</p>
-{% for stud in stud_name %}
-    <table class="table">
+
+
         <table class="table">
             <thead>
+                {% for stud in stud_name %}
               <tr>
                 <th scope="col"><img style="margin-top: 0.8rem; width:40px; border-radius: 50%;"
                     src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar"></th>
-                <th scope="col">{{ stud|capitalize }}</th>
+                <th scope="row">{{ stud|capitalize }}</th>
               </tr>
+              {% endfor %} 
             </thead>
           </table>
-      </table>
-  {% endfor %} 
+
 </body>
 </html>

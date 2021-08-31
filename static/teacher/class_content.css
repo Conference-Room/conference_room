@@ -335,3 +335,95 @@ a.chip.large:active {
   padding: 12px 16px;
   z-index: 1;
 }
+.layout {
+  font-family: "Roboto";
+  width: 80%;
+  margin-top: 3em;
+  margin-left: auto;
+  margin-right: auto;
+}
+label,
+input,
+textarea {
+  font-family: "Roboto";
+  margin-top: 12px;
+  display: block;
+  width: 100%;
+  font-size: 12pt;
+  line-height: 24pt;
+}
+
+input {
+  margin-bottom: 44px;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 10pt;
+  line-height: 24pt;
+  font-style: italic;
+  margin-top: 12px;
+}
+
+span {
+  font-size: 8pt;
+}
+
+em {
+  color: #696e6e;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  background: rgb(218, 209, 209);
+  padding-left: 5px;
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  border: 1px solid #6bd4b1;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  display: block;
+  float: right;
+  line-height: 24pt;
+  padding: 0 20px;
+  border: none;
+  background: #696e6e;
+  color: white;
+  letter-spacing: 2px;
+  transition: 0.2s all ease-in-out;
+  border-bottom: 2px solid transparent;
+  outline: none;
+}
+button:hover {
+  background: inherit;
+  color: #696e6e;
+  border-bottom: 2px solid #696e6e;
+}
+
+::selection {
+  background: #ffc7b8;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  border: 1px solid #6bd4b1;
+  -webkit-text-fill-color: #2a293e;
+  /* -webkit-box-shadow: 0 0 0px 1000px #f8f4e5 inset; */
+  transition: background-color 5000s ease-in-out 0s;
+}
