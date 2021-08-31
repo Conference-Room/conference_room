@@ -43,6 +43,46 @@ def login_student(email,password):
                 else: return 0   #incorrect
             return -1  #doesnotexist
     except Exception as e:
+        print(e)     
+
+def getStuId(email):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select student_id from student where email=(%s)"
+            curr.execute(sql,(email))
+            output = curr.fetchone()
+            return output[0]
+            
+    except Exception as e:
+        print(e)      
+
+def submitAss(student_id,content_id,submission_id):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "insert into submission (student_id,content_id,submission_id) value (%s,%s,%s)"
+            curr.execute(sql ,(student_id,content_id,submission_id))
+            conn.commit()
+            # print(output)
+            # if(output):
+            #     return  1
+            # else:
+            #     return 0
+            
+    except Exception as e:
         print(e)            
 
 def signup_teacher(name,email,password,phone_no,teacher_id):
@@ -279,7 +319,7 @@ def joined_classes_info(class_id):   ## Retrieve join class info i.e. class name
     )
     try:
         with conn.cursor() as curr:
-            sql = "select C.class_name,C.class_link,C.class_id,T.name from class_table C join teacher T on (C.teacher_id = T.teacher_id and C.class_id =(%s))"
+            sql = "select C.class_name,C.class_link,C.class_id,T.name from class_table C join teacher T on (C.teacher_id = T.teacher_id and C.class_id =(%s)) order by C.creation_date "
             curr.execute(sql,(class_id))
             output = curr.fetchall()
             return output
@@ -358,12 +398,13 @@ def get_class_data(class_id):
     )
     try:
         with conn.cursor() as curr:
-            sql = "select content_heading,descript,upload_time from class_content where class_id=(%s) order by upload_time desc"
+            sql = "select content_heading,content_id,descript,upload_time from class_content where class_id=(%s) order by upload_time desc"
             curr.execute(sql,(class_id))
             output = curr.fetchall()
             return output
     except Exception as e:
         print(e)    
+
 
 
 

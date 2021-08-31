@@ -6,9 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" href="static\teacher\teacher_main.css">
     <link rel="stylesheet" href="../../static/index2.css">
     <link rel="stylesheet" href="../../static/teacher/class_content.css">
-    <title>ClassRoom</title>
+    <title>Conference  Room</title>
+    <meta name="google-signin-scope" content="profile email" />
+    <meta
+      name="google-signin-client_id"
+      content="1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com"
+    />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Conference Room</title>
+    <style>
+        .dropdown {position: relative;display: inline-block;}
+        .dropdown:hover .dropdown-content {display: block;}
+        .dropdown-content {display: none;
+        position: absolute;background-color: #f9f9f9;
+        min-width: 160px;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;z-index: 1;
+        }
+    </style>
 </head>
 <body>
     <nav style="border-bottom: 2px solid #d8dcdc; height: 3.9rem;">
@@ -44,11 +61,13 @@
                     </div>
                 </div>
                 
-                <div class="col-md-1" style=" display: flex;flex-direction: row-reverse;">
-                    <div><img style="margin-top: 0.8rem; width:40px; border-radius: 50%;"
-                            src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar"></div>
-                    <div style="margin-top: 1.3rem;margin-right: 0.5rem;"><img
-                            src="https://img.icons8.com/ios/25/000000/plus--v2.png" /></div>
+                <div class="col-md-1 " style=" display: flex;flex-direction: row-reverse;z-index: 100;">
+                    <div class="dropdown"><img style="margin-top: 0.8rem; width:40px; border-radius: 50%;"
+                            src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+                        <div class="dropdown-content" ><a onclick="signOut()" href="/logout" style="color: #323335;">Log Out</a></div>      
+                    </div>
+                    <!--  -->
+                    
                 </div>
                 
             </div>
@@ -64,7 +83,7 @@
             <div class="card-body">
               <a href=""><h5 class="card-title">{{ details[0][0]|upper }}</h5></a>
               <!-- <p class="card-text">Meet Link</p> -->
-              <a href="{{ details[0][1] }}" name="{{ details[0][1] }}"id="meet_link" class="btn btn-primary">Join Meet</a>
+              <a href="{{ details[0][1] }}" target ="_blank" name="{{ details[0][1] }}"id="meet_link" class="btn btn-primary">Join Meet</a>
              
             </div>
           </div>
@@ -86,13 +105,20 @@
                         
                     </header>
                         <div class="title">
-                            <a href="" class="title" >
-                                <p style="margin-top: .5em;">{{ info[1]|capitalize}}</p>
+                            <a href="/stuAss/{{ info[1]|capitalize }}" class="title" >
+                                <p style="margin-top: .5em;font-size: 20px ;font-style: italic;"> Content ID:- {{ info[1]|capitalize}} </p>
                             
                             </a>
                             </div>
+                            
+                            <div class="title">
+                                <a href="" class="title" >
+                                    <p style="margin-top: .5em;">       {{ info[2]|capitalize}}</p>
+                                
+                                </a>
+                                </div>
                         <p class="meta">
-                            <time class="updated" datetime="" itemprop="datePublished">{{ info[2] }}</time>
+                            <time class="updated" datetime="" itemprop="datePublished">{{ info[3] }}</time>
                         </p>
                     
                     <!-- <div class="chips">
@@ -113,6 +139,21 @@
                 }
     
             </script>
+            <script>
+                function signOut() {
+                  var auth2 = gapi.auth2.getAuthInstance();
+                  auth2.signOut().then(function () {
+                    console.log('User signed out.');
+                  });
+                }
+            
+                function onLoad() {
+                  gapi.load('auth2', function() {
+                    gapi.auth2.init();
+                  });
+                }
+            </script>
+            <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 
 </body>
 </html>
