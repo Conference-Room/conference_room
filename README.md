@@ -30,7 +30,7 @@ be done)
 A step by step series of examples that tell you how to get a development env running.
 ### STEP 1 : Clone the repository
 ```
-https://github.com/
+https://github.com/Conference-Room/conference_room
 ```
 
 We recommend to use `virtualenv` for development:
@@ -58,8 +58,9 @@ cd venv\Scripts
  .\activate
 ```
 
-### STEP 3 : Install the python dependencies on the virtual environment
+### STEP 3 : Install the python dependencies 
 
+- Go back in your conference_room folder using cd.. and install the dependencies on the virtual environment
 ```
 pip install -r requirements.txt
 ```
