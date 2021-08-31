@@ -1,4 +1,3 @@
-from generator import class_id
 import pymysql
 import credential
 
@@ -63,7 +62,7 @@ def getStuId(email):
     except Exception as e:
         print(e)      
 
-def submitAss(student_id,content_id,submission_id):
+def submitAss(student_id,content_id,submission_id ,submission_link):
     conn=pymysql.connect(
         host=credential.host,
         port=credential.port,
@@ -76,6 +75,10 @@ def submitAss(student_id,content_id,submission_id):
             sql = "insert into submission (student_id,content_id,submission_id) value (%s,%s,%s)"
             curr.execute(sql ,(student_id,content_id,submission_id))
             conn.commit()
+            sql = "insert into submission_storage (submission_id , submission_link) value (%s ,%s)"
+            curr.execute(sql ,(submission_id , submission_link))
+            conn.commit()
+            
             # print(output)
             # if(output):
             #     return  1

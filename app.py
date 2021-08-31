@@ -294,12 +294,14 @@ def stuAssSubmit(assId):
         if request.method == 'POST':
             form_details = request.form
             content_id = form_details['assId']
+            subLink = form_details['stuAss']
             mail = session['email']
             print(content_id)
+            print(subLink)
             print(mail)
             StuId = api.getStuId(mail)
             print(StuId)
-            api.submitAss(StuId, content_id, "StuId+content_id")
+            subId = api.submitAss(StuId, content_id, StuId+content_id, subLink)
         return render_template('student/stuAss.html', assId=assId)
     except Exception as e:
         print(e)
@@ -341,7 +343,6 @@ def add_content():
             max_score = form_details['max_score']
             due_date = form_details['due_date']
             files = request.files.getlist("files")
-
             class_id = form_details['class_id']
             flag = True
             if(max_score == ""):
@@ -352,7 +353,9 @@ def add_content():
                 reference_link = "None"
 
             if(len(files) == 1):
-                flag = False
+                for f in files:
+                    if f.filename == "":
+                        flag = False
 
             content_id = gen.content_id()
             while api.check_content_id(content_id):
