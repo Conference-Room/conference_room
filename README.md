@@ -27,7 +27,7 @@ be done)
 
 ## 🔧 Installation
 
-A step by step series of examples that tell you how to get a development env running.
+A step by step series of examples that tell you how to get a development env running.<br>
 **STEP 1** : Clone the repository
 ```
 https://github.com/Conference-Room/conference_room
