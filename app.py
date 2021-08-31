@@ -288,12 +288,14 @@ def stuAssSubmit(assId):
         if request.method == 'POST':
             form_details = request.form
             content_id = form_details['assId']
+            subLink = form_details['stuAss']
             mail = session['email']
             print(content_id)
+            print(subLink)
             print(mail)
-            StuId=api.getStuId(mail)
+            StuId=api.getStuId(mail )
             print(StuId)
-            api.submitAss(StuId, content_id,"StuId+content_id")
+            subId=api.submitAss(StuId, content_id,StuId+content_id,subLink)
         return render_template('student/stuAss.html' , assId=assId)
     except Exception as e:
         print(e)
