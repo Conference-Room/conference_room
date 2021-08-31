@@ -65,7 +65,6 @@
       {% endfor %} 
      -->
      <p class="count">1 Teacher and {{ stud_name|length }} student/s</p>
-     <table class="table">
         <table class="table">
             <thead>
               <tr>
@@ -83,22 +82,22 @@
               </tr>
             </thead>
           </table>
-      </table>
       <hr>
     
     <p class="count">Students</p>
-{% for stud in stud_name %}
-    <table class="table">
+
+
         <table class="table">
             <thead>
+                {% for stud in stud_name %}
               <tr>
                 <th scope="col"><img style="margin-top: 0.8rem; width:40px; border-radius: 50%;"
                     src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar"></th>
-                <th scope="col">{{ stud|capitalize }}</th>
+                <th scope="row">{{ stud|capitalize }}</th>
               </tr>
+              {% endfor %} 
             </thead>
           </table>
-      </table>
-  {% endfor %} 
+
 </body>
 </html>
