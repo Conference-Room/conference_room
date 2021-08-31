@@ -171,10 +171,10 @@ def login():
                 elif(flag == 0):
                     # remove print statements and add reply him with proper reply
                     print("wrong password")
-                    return render_template('login.html')
+                    return redirect('/')
                 else:
                     print("user not exist")
-                    return render_template('login.html')
+                    return redirect('/')
 
             else:
                 flag = api.login_teacher(email, password)
@@ -184,10 +184,10 @@ def login():
                     return redirect('/')
                 elif(flag == 0):
                     print("wrong password")
-                    return render_template('login.html')
+                    return redirect('/')
                 else:
                     print("user not exist")
-                    return render_template('login.html')
+                    return redirect('/')
         return render_template('login.html')
     except Exception as e:
         print(e)
