@@ -55,10 +55,6 @@
                     <div class="navbar-brand " style="margin-top: 0.7rem; margin-left: 1.5rem;" href="#">Conference Room
                     
                     </div>
-                    <div class="buttons" style="align-items: center;">
-                        <button class="btn  active">classroom</button>
-                        
-                    </div>
                 </div>
                 
                 <div class="col-md-1 " style=" display: flex;flex-direction: row-reverse;z-index: 100;">
@@ -75,13 +71,18 @@
         </div>
         
     </nav>
-    <a  href="/show_all_students/{{ code }}">people</a>
+
+
+<div class="layout">
     <form method="POST" action="/stuAssSubmit/{{assId}}" >
-        
-        <input type="text" id="stuAss" name="stuAss"> 
+        <label for="stuAss" style="font-size: 22px;">Describe Your Answer</label>
+        <textarea name="stuAss" cols="30" rows="10" type="text" id="stuAss" required></textarea>
         <input type="hidden" id="assId" class="assId" name="assId" value={{assId}}>
-        <button type="submit" value="Submit">Submit</button>
+        <button type="submit" value="Submit" style="margin-top: 2em;">Submit</button>
     </form>
+</div>
+    
+    
 
 
 

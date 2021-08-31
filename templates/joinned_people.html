@@ -41,11 +41,12 @@
                     
                 </div>
                 
-                <div class="col-md-1" style=" display: flex;flex-direction: row-reverse;">
-                    <div><img style="margin-top: 0.8rem; width:40px; border-radius: 50%;"
-                            src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar"></div>
-                    <div style="margin-top: 1.3rem;margin-right: 0.5rem;"><img
-                            src="https://img.icons8.com/ios/25/000000/plus--v2.png" /></div>
+                <div class="col-md-1 " style=" display: flex;flex-direction: row-reverse;z-index: 100;">
+                    <div class="dropdown"><img style="margin-top: 0.8rem; width:40px; border-radius: 50%;"
+                            src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+                        <div class="dropdown-content" ><a onclick="signOut()" href="/logout" style="color: #323335;">Log Out</a></div>      
+                    </div>
+                    <!--  -->
                 </div>
                 
             </div>
@@ -76,7 +77,7 @@
                 <th>  </th>
                 <th>  </th>
                 <th>  </th>
-                    <th scope="col">{{ teach_name|capitalize }}</th>
+                    <th scope="col">{{ teach_name|upper }}</th>
                 <th></th>
                 <th>Teacher</th>
               </tr>
