@@ -43,6 +43,46 @@ def login_student(email,password):
                 else: return 0   #incorrect
             return -1  #doesnotexist
     except Exception as e:
+        print(e)     
+
+def getStuId(email):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select student_id from student where email=(%s)"
+            curr.execute(sql,(email))
+            output = curr.fetchone()
+            return output[0]
+            
+    except Exception as e:
+        print(e)      
+
+def submitAss(student_id,content_id,submission_id):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "insert into submission (student_id,content_id,submission_id) value (%s,%s,%s)"
+            curr.execute(sql ,(student_id,content_id,submission_id))
+            conn.commit()
+            # print(output)
+            # if(output):
+            #     return  1
+            # else:
+            #     return 0
+            
+    except Exception as e:
         print(e)            
 
 def signup_teacher(name,email,password,phone_no,teacher_id):

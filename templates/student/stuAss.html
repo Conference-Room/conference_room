@@ -76,11 +76,12 @@
         
     </nav>
     <a  href="/show_all_students/{{ code }}">people</a>
-    <form action="/action.php">
+    <form method="POST" action="/stuAssSubmit/{{assId}}" >
         
         <input type="file" id="myfile" name="myfile"> 
-        <button type="submit" form="form1" value="Submit">Submit</button>
-      </form>
+        <input type="hidden" id="assId" class="assId" name="assId" value={{assId}}>
+        <button type="submit" value="Submit">Submit</button>
+    </form>
 
 
 
@@ -90,6 +91,7 @@
     
     
             <script>
+                
                 var val = document.getElementById("meet_link").name;
                 if(val==""){
                     document.getElementById("meet_link").style.visibility="hidden";

@@ -267,12 +267,33 @@ def class_info(code):
         print(e)
         return redirect('/')
 
-@app.route('/stuAss/<assId>')
+@app.route('/stuAss/<assId>' , methods=['GET', 'POST'])
 def stuAss(assId):
     try:
         if 'email' not in session:
             return redirect('/')
         print("mofosssssssss")
+        return render_template('student/stuAss.html' , assId=assId)
+    except Exception as e:
+        print(e)
+        return redirect('/')
+
+@app.route('/stuAssSubmit/<assId>', methods=['GET', 'POST'])
+def stuAssSubmit(assId):
+    try:
+        print("hereeeeeeee")
+        if 'email' not in session:
+            return redirect('/')
+        print("here")
+        if request.method == 'POST':
+            form_details = request.form
+            content_id = form_details['assId']
+            mail = session['email']
+            print(content_id)
+            print(mail)
+            StuId=api.getStuId(mail)
+            print(StuId)
+            api.submitAss(StuId, content_id,"StuId+content_id")
         return render_template('student/stuAss.html' , assId=assId)
     except Exception as e:
         print(e)
