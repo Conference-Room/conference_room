@@ -584,9 +584,9 @@ def get_total_students(class_id):   ## get count of  total students for particul
     except Exception as e:
         print(e)
 
-print(get_total_students('IEjAeavw6V'))
 
-def get_smart_students(content_id):  ## get the students that completed assignment
+
+def get_smart_students(content_id):  ## get the count of students that completed assignment
     conn=pymysql.connect(
         host=credential.host,
         port=credential.port,
@@ -602,6 +602,42 @@ def get_smart_students(content_id):  ## get the students that completed assignme
             return output[0][0]
     except Exception as e:
         print(e) 
+
+
+def  get_data_smart_students(content_id):   ## get the student name and it's pending score with content_id
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select S.name,C.score from student S join submission C on(S.student_id = C.student_id and content_id =(%s)) "
+            curr.execute(sql,(content_id))
+            output = curr.fetchall()
+            return output
+    except Exception as e:
+        print(e) 
+
+
+def get_Max_marks(content_id):
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select max_score from class_content where content_id=(%s)"
+            curr.execute(sql,(content_id))
+            output = curr.fetchall()
+            return output[0][0]
+    except Exception as e:
+        print(e)  
 
 
 

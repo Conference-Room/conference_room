@@ -88,6 +88,15 @@
         <p>Assigned students {{assigned_stud}}</p>
         <p>Left Students {{left_stud}}</p>
     
+
+        
+{% for info in smart_stud %}
+        <ul>
+            <li>student name:- {{ info[0]|capitalize}}       assign score to student:-{{info[1]}} OUT of {{Max_Score}}</li>
+        </ul>
+{% endfor %}
+
+<p></p>
     
             <script>
                 

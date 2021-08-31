@@ -304,11 +304,13 @@ def teachContent(content_id):
         Content = api.get_content_specific_data(content_id) ## get the class_id,content heading,descript and due time
         total_students = (api.get_total_students(Content[0]))  ## count of total students
         smart_students = (api.get_smart_students(content_id)) ## count of smart students
-       
-        print(total_students)
-        print(smart_students)
+        List_smart_students = api.get_data_smart_students(content_id)
+        Max_Score = int(api.get_Max_marks(content_id))
+        #print(total_students)
+        #print(smart_students)
         
-        return render_template('teacher/particular_content.html' , data=Content,assigned_stud = int(smart_students),left_stud = int(total_students) - int(smart_students))
+        return render_template('teacher/particular_content.html' , data=Content,assigned_stud = int(smart_students),left_stud=int(total_students)-int(smart_students),
+        smart_stud =List_smart_students,Max_Score = Max_Score)
     except Exception as e:
         print(e)
         return redirect('/')
