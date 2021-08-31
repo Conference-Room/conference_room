@@ -546,8 +546,6 @@ def is_assignment_submitted(submission_id):  #Student
     except Exception as e:
         print(e)
 
-print(is_assignment_submitted("Hdo0g0wrgp4vxnvUBG3331PjDmY3N9"))     
-
 
 def get_content_specific_data(content_id):  ## get the content specific data for teacher
     conn=pymysql.connect(
