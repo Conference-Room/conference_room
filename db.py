@@ -1,4 +1,3 @@
-from generator import class_id
 import pymysql
 import credential
 

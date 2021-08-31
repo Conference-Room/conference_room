@@ -365,8 +365,7 @@ def add_content():
                 os.mkdir(path)
                 for f in files:
                     f.save(os.path.join(path, f.filename))
-                    api.add_content_storage_files(
-                        content_id, os.path.join(path, f.filename))
+                    api.add_content_storage_files(content_id, os.path.join(path, f.filename))
             
             link = '/class/'+str(class_id)
             return redirect(link)
