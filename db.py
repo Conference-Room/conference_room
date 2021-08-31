@@ -62,7 +62,7 @@ def getStuId(email):
     except Exception as e:
         print(e)      
 
-def submitAss(student_id,content_id,submission_id ,submission_link):
+def submitAss(student_id,content_id,submission_id ):
     conn=pymysql.connect(
         host=credential.host,
         port=credential.port,
@@ -75,9 +75,9 @@ def submitAss(student_id,content_id,submission_id ,submission_link):
             sql = "insert into submission (student_id,content_id,submission_id) value (%s,%s,%s)"
             curr.execute(sql ,(student_id,content_id,submission_id))
             conn.commit()
-            sql = "insert into submission_storage (submission_id , submission_link) value (%s ,%s)"
-            curr.execute(sql ,(submission_id , submission_link))
-            conn.commit()
+            # sql = "insert into submission_storage (submission_id , submission_link) value (%s ,%s)"
+            # curr.execute(sql ,(submission_id , submission_link))
+            # conn.commit()
             
             # print(output)
             # if(output):
@@ -494,7 +494,7 @@ def add_content_storage_link(content_id,links):
     except Exception as e:
         print(e)     
 
-def add_content_storage_files(content_id,content_links):
+def add_content_storage_files(content_id,content_links):  #teacher
     conn=pymysql.connect(
         host=credential.host,
         port=credential.port,
@@ -504,9 +504,45 @@ def add_content_storage_files(content_id,content_links):
     )
     try:
         with conn.cursor() as curr:
+            print(content_id,content_links)
             sql = "insert into content_storage (content_id,content_links) value (%s,%s)"
             curr.execute(sql,(content_id,content_links))
             conn.commit()
+    except Exception as e:
+        print(e) 
+        
+def add_student_storage_files(submission_id,submission_link):  #Student
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "insert into submission_storage (submission_id,submission_link) value (%s,%s)"
+            curr.execute(sql,(submission_id,submission_link))
+            conn.commit()
+    except Exception as e:
+        print(e)   
+
+def is_assignment_submitted(submission_id):  #Student
+    conn=pymysql.connect(
+        host=credential.host,
+        port=credential.port,
+        user=credential.user,
+        password=credential.password,
+        db=credential.databasename
+    )
+    try:
+        with conn.cursor() as curr:
+            sql = "select submit_time from submission where submission_id=(%s)"
+            curr.execute(sql,(submission_id))
+            output = curr.fetchall()
+            if len(output)==0:
+                return False
+            return True
     except Exception as e:
         print(e)     
 

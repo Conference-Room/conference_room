@@ -76,11 +76,13 @@
         
     </nav>
     <a  href="/show_all_students/{{ code }}">people</a>
-    <form method="POST" action="/stuAssSubmit/{{assId}}" >
+
+    <form method="POST" enctype="multipart/form-data" action="/stuAssSubmit/{{assId}}" >
         
-        <input type="text" id="stuAss" name="stuAss"> 
+        <input type="file" id="stuAss" name="stuAss" placeholder="Select Files" multiple=""> 
+
         <input type="hidden" id="assId" class="assId" name="assId" value={{assId}}>
-        <button type="submit" value="Submit">Submit</button>
+        <button type="submit" id="submit" value="Submit">{{done}}</button>
     </form>
 
 
@@ -88,7 +90,13 @@
 
 
 
-    
+    <!-- <script>
+        var val={{done}}
+         {
+            document.getElementById("submit").innerHTML = "Submitted";
+            document.getElementById("submit").setAttribute("disabled","disabled"); 
+        }
+    </script> -->
     
             <script>
                 
