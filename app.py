@@ -335,8 +335,8 @@ def add_content():
             max_score = form_details['max_score']
             due_date = form_details['due_date']
             files = request.files.getlist("files")
-            
-            
+            # print(type(files))
+            # print(files.list().empty())
             class_id = form_details['class_id']
             flag = True
             if(max_score == ""):
@@ -347,7 +347,9 @@ def add_content():
                 reference_link = "None"
 
             if(len(files) == 1):
-                flag = False
+                for f in files:
+                    if f.filename=="":
+                        flag = False
 
             content_id = gen.content_id()
             while api.check_content_id(content_id):
