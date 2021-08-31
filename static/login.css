@@ -33,9 +33,6 @@ img {
   box-shadow: 0 6px 31px -2px rgba(0, 0, 0, 0.3);
   transition: 1.5s ease-in-out;
 }
-.app:hover {
-  transform: scale(1.02);
-}
 
 a {
   text-decoration: none;
@@ -120,6 +117,7 @@ button {
   padding: 13px 15px;
   border-radius: 5em;
   border: none;
+  border: 2px solid rgb(0, 0, 0);
   background: #696e6e;
   font-family: "Poppins", sans-serif;
   outline: none;
