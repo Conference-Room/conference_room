@@ -28,47 +28,34 @@ be done)
 ## Installation
 
 A step by step series of examples that tell you how to get a development env running.
-### STEP 1 : Clone the repository
+**STEP 1** : Clone the repository
 ```
 https://github.com/Conference-Room/conference_room
 ```
 
 We recommend to use `virtualenv` for development:
-### STEP 2 : Create Virtual Environment
+**STEP 2** : Create Virtual Environment
 
-- Start by installing `virtualenv` if you don't have it
 ```
 pip install virtualenv
-```
-
-- Once installed access the project folder
-```
 cd conference_room
-```
-
-- Create a virtual environment
-```
-python3 -m venv venv
-
-```
-
-- Enable the virtual environment in windows
-```
+python -m venv venv
 cd venv\Scripts
  .\activate
 ```
 
-### STEP 3 : Install the python dependencies 
+**STEP 3** : Install the python dependencies 
 
 - Go back in your conference_room folder using cd.. and install the dependencies on the virtual environment
 ```
 pip install -r requirements.txt
 ```
 
-### STEP : 4
+**STEP : 4**
 - Start the web application 🥳
 ```
 python app.py
+```
 
 ### Some Salient Features
 **Features for Teachers**
