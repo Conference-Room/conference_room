@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="static\teacher\teacher_main.css">
     <link rel="stylesheet" href="../../static/index2.css">
     <link rel="stylesheet" href="../../static/teacher/class_content.css">
-    <title>Conference here   Room</title>
+    <title>Conference  Room</title>
     <meta name="google-signin-scope" content="profile email" />
     <meta
       name="google-signin-client_id"
@@ -55,6 +55,10 @@
                     <div class="navbar-brand " style="margin-top: 0.7rem; margin-left: 1.5rem;" href="#">Conference Room
                     
                     </div>
+                    <div class="buttons" style="align-items: center;">
+                        <button class="btn  active">classroom</button>
+                        
+                    </div>
                 </div>
                 
                 <div class="col-md-1 " style=" display: flex;flex-direction: row-reverse;z-index: 100;">
@@ -71,71 +75,31 @@
         </div>
         
     </nav>
-    <div class="peop" style="width: 50px; margin-left: auto; margin-right: 4em;">
-        <a class="people" href="/show_all_students/{{ code }}">PEOPLE</a>
-    </div>
     
 
-    <ul>
-    
-        <div class="card">
-            <div class="card-header">
-                <p>Class Code:-{{ code }}</p>
-              </div>
-            <div class="card-body">
-              <a href=""><h5 class="card-title">{{ details[0][0]|upper }}</h5></a>
-              <!-- <p class="card-text">Meet Link</p> -->
-              <a href="{{ details[0][1] }}" target ="_blank" name="{{ details[0][1] }}"id="meet_link" class="btn btn-primary">Join Meet</a>
-             
-            </div>
-          </div>
-            
+        <ul>
+            <li>Content ID:- {{data[0]}}</li>
+            <li>Content heading:- {{data[1]}}</li>
+            <li>Content descript:- {{data[2]}}</li>
+            <li>Content due time:- {{data[3]}}</li>
         </ul>
 
 
+        <p>Assigned students {{assigned_stud}}</p>
+        <p>Left Students {{left_stud}}</p>
+    
 
-        {% for info in data %}
-        <ul>
         
-            <li class="card0">
-                
-                <article class="card0-body">
-                    <header>
-                        <img class="featured-image" src="https://www.w3schools.com/howto/img_avatar.png" alt="">
-                        <a href="/stuAss/{{ info[1]}}" class="title" > 
-                            <span class="pre-heading">Heading : {{ info[0]|capitalize }}</span>
-                            </a>
-                        
-                    </header>
-                        <!--<div class="title">
-                            <a href="/stuAss/{{ info[1]|capitalize }}" class="title" >
-                                <p style="margin-top: .5em;font-size: 20px ;font-style: italic;" hidden> Content ID:- {{ info[1]|capitalize}} </p>
-                            
-                            </a>
-                            </div>-->
-                            
-                            <div class="title">
-                                <a href="" class="title" >
-                                    <p style="margin-top: .5em;">       {{ info[2]|capitalize}}</p>
-                                
-                                </a>
-                                </div>
-                        <p class="meta">
-                            <time class="updated" datetime="" itemprop="datePublished">{{ info[3] }}</time>
-                        </p>
-                    
-                    <!-- <div class="chips">
-                        <a class="chip">Manav</a>
-                        <a class="chip">dekh</a>
-                        <a class="chip">layi</a>
-                    </div> -->
-                </article>
-            </li>
-                
-            </ul>
-            {% endfor %}
+{% for info in smart_stud %}
+        <ul>
+            <li>student name:- {{ info[0]|capitalize}}       assign score to student:-{{info[1]}} OUT of {{Max_Score}}</li>
+        </ul>
+{% endfor %}
+
+<p></p>
     
             <script>
+                
                 var val = document.getElementById("meet_link").name;
                 if(val==""){
                     document.getElementById("meet_link").style.visibility="hidden";

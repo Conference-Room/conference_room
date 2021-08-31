@@ -73,12 +73,12 @@
     </nav>
 
 
-<div class="layout">
-    <form method="POST" action="/stuAssSubmit/{{assId}}" >
-        <label for="stuAss" style="font-size: 22px;">Describe Your Answer</label>
-        <textarea name="stuAss" cols="30" rows="10" type="text" id="stuAss" required></textarea>
+    <form method="POST" enctype="multipart/form-data" action="/stuAssSubmit/{{assId}}" >
+        
+        <input type="file" id="stuAss" name="stuAss" placeholder="Select Files" multiple=""> 
+
         <input type="hidden" id="assId" class="assId" name="assId" value={{assId}}>
-        <button type="submit" value="Submit" style="margin-top: 2em;">Submit</button>
+        <button type="submit" id="submit" value="Submit">{{done}}</button>
     </form>
 </div>
     
@@ -89,7 +89,13 @@
 
 
 
-    
+    <!-- <script>
+        var val={{done}}
+         {
+            document.getElementById("submit").innerHTML = "Submitted";
+            document.getElementById("submit").setAttribute("disabled","disabled"); 
+        }
+    </script> -->
     
             <script>
                 
