@@ -25,7 +25,7 @@ be done)
 `Additional` : Google Authentication <br>
 **We have made custom API to make API calls for fetching data from the Database.**
 
-## Installation
+## 🔧 Installation
 
 A step by step series of examples that tell you how to get a development env running.
 **STEP 1** : Clone the repository
@@ -57,7 +57,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-### Some Salient Features
+<!-- ### Some Salient Features
 **Features for Teachers**
  * Teachers can upload assigment and grade the assignments
  * Can see other students enrolled       
@@ -75,7 +75,7 @@ python app.py
 * Preview & Route in Enrolled class
 * Can view the work of any class
 * Students can ask their doubts directly from the teacher
-* Student can directly join the classes via the link
+* Student can directly join the classes via the link -->
 
 
 
