@@ -24,18 +24,18 @@ def home():
                 # print(joined_classes)
                 for joined_class_id in joined_classes:
                     data = api.joined_classes_info(joined_class_id)
-                    #print(type(data))
-                    #data.append(joined_class_id)
-                    
+                    # print(type(data))
+                    # data.append(joined_class_id)
+
                     list_data.append(data)
 
-                #print(list_data)
+                # print(list_data)
                 return render_template('student/student_main.html', data=list_data)
             else:
                 teacher_id = api.get_teacher_id(mail)
                 data = api.get_teach_classes(teacher_id)
                 return render_template('teacher//teacher_main.html', data=data)
-           
+
         return render_template('index.html')
     except Exception as e:
         print(e)
@@ -57,45 +57,49 @@ def index():
         return render_template('index.html')
 
 
-@app.route('/gs_login',methods=['POST','GET'])
+@app.route('/gs_login', methods=['POST', 'GET'])
 def gs_login():
     try:
         if 'email' in session:
             return redirect('/')
         token = request.form["idtoken"]
-        idinfo = id_token.verify_oauth2_token(token, requests.Request(), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(
+        ), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
         print("here")
         userid = idinfo['sub']
         email = idinfo['email']
         name = idinfo['name']
-        api.signup_student(name,email,"","",userid)
+        api.signup_student(name, email, "", "", userid)
         print("hxsbdjhb")
-        session['email']=email
-        session['who']=0
-        return  '/'
+        session['email'] = email
+        session['who'] = 0
+        return '/'
     except ValueError as e:
         print(e)
-        return render_template('index.html')  
+        return render_template('index.html')
 
-@app.route('/gt_login',methods=['POST','GET'])
+
+@app.route('/gt_login', methods=['POST', 'GET'])
 def gt_login():
     try:
         if 'email' in session:
             return redirect('/')
         token = request.form["idtoken"]
-        idinfo = id_token.verify_oauth2_token(token, requests.Request(), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(
+        ), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
         print("here")
         userid = idinfo['sub']
         email = idinfo['email']
         name = idinfo['name']
-        api.signup_teacher(name,email,"","",userid)
+        api.signup_teacher(name, email, "", "", userid)
         print("hxsbdjhb")
-        session['email']=email
-        session['who']=1
-        return  '/'
+        session['email'] = email
+        session['who'] = 1
+        return '/'
     except ValueError as e:
         print(e)
-        return render_template('index.html')   
+        return render_template('index.html')
+
 
 @app.route('/signup/<who1>', methods=['POST', 'GET'])
 def signup(who1):
@@ -157,7 +161,7 @@ def login():
             email = form_details['email']
             password = form_details['password']
             if(who == 'student'):
-                
+
                 flag = api.login_student(email, password)
 
                 if(flag == 1):
@@ -267,16 +271,18 @@ def class_info(code):
         print(e)
         return redirect('/')
 
-@app.route('/stuAss/<assId>' , methods=['GET', 'POST'])
+
+@app.route('/stuAss/<assId>', methods=['GET', 'POST'])
 def stuAss(assId):
     try:
         if 'email' not in session:
             return redirect('/')
         print("mofosssssssss")
-        return render_template('student/stuAss.html' , assId=assId)
+        return render_template('student/stuAss.html', assId=assId)
     except Exception as e:
         print(e)
         return redirect('/')
+
 
 @app.route('/stuAssSubmit/<assId>', methods=['GET', 'POST'])
 def stuAssSubmit(assId):
@@ -291,10 +297,10 @@ def stuAssSubmit(assId):
             mail = session['email']
             print(content_id)
             print(mail)
-            StuId=api.getStuId(mail)
+            StuId = api.getStuId(mail)
             print(StuId)
-            api.submitAss(StuId, content_id,"StuId+content_id")
-        return render_template('student/stuAss.html' , assId=assId)
+            api.submitAss(StuId, content_id, "StuId+content_id")
+        return render_template('student/stuAss.html', assId=assId)
     except Exception as e:
         print(e)
         return redirect('/')
@@ -308,18 +314,19 @@ def add_class_content(code):
         print(e)
 
 
-@app.route('/student_class/<code>')    ## for student class info 
+@app.route('/student_class/<code>')  # for student class info
 def stud_class_info(code):
     try:
         if 'email' not in session:
             return redirect('/')
-        data = api.get_class_data(code)  ## get the content heading,content_id, descript and uploadtime
-        details = api.get_teach_partiular_subject(code)  ## same as teacher for class link and name
-        return render_template('student/student_class_content.html',data=data,details=details,code=code)
+        # get the content heading,content_id, descript and uploadtime
+        data = api.get_class_data(code)
+        # same as teacher for class link and name
+        details = api.get_teach_partiular_subject(code)
+        return render_template('student/student_class_content.html', data=data, details=details, code=code)
     except Exception as e:
         print(e)
         return redirect('/')
-
 
 
 @app.route('/add_content', methods=['POST', 'GET'])
@@ -328,15 +335,13 @@ def add_content():
         if request.method == 'POST':
             form_details = request.form
             content_heading = form_details['content_heading']
-            
-            
+
             descript = form_details['description']
             reference_link = form_details['reference_link']
             max_score = form_details['max_score']
             due_date = form_details['due_date']
             files = request.files.getlist("files")
-            
-            
+
             class_id = form_details['class_id']
             flag = True
             if(max_score == ""):
@@ -353,7 +358,8 @@ def add_content():
             while api.check_content_id(content_id):
                 content_id = gen.content_id()
 
-            api.add_class_content(class_id, content_id, content_heading, descript, max_score, due_date)
+            api.add_class_content(
+                class_id, content_id, content_heading, descript, max_score, due_date)
             if reference_link != "None":
                 api.add_content_storage_link(content_id, reference_link)
 
@@ -367,7 +373,7 @@ def add_content():
                     f.save(os.path.join(path, f.filename))
                     api.add_content_storage_files(
                         content_id, os.path.join(path, f.filename))
-            
+
             link = '/class/'+str(class_id)
             return redirect(link)
         return render_template('teacher/teacher_main.html')
@@ -376,44 +382,42 @@ def add_content():
         return redirect('/')
 
 
-
-@app.route('/show_all_students/<code>',methods=['POST','GET'])
-def show_all_joinned_students(code):            ### show the joined teachers and students with class id
+@app.route('/show_all_students/<code>', methods=['POST', 'GET'])
+# show the joined teachers and students with class id
+def show_all_joinned_students(code):
     try:
         if 'email' not in session:
             return redirect('/')
         teach_id = api.get_teacher_id_class_id(code)
         teach_name = api.get_teacher_name(teach_id)
         stud_all_id = api.get_students_id(code)
-        stud_name=[]
+        stud_name = []
         for stud_id in stud_all_id:
             stud_name.append(api.get_student_name(stud_id[0]))
-        return render_template("student/joinned_people.html",teach_name=teach_name,stud_name=stud_name)  
+        return render_template("joinned_people.html", teach_name=teach_name, stud_name=stud_name)
     except Exception as e:
         print(e)
-        link='/class/'+str(code)
-        return redirect(link) 
+        link = '/class/'+str(code)
+        return redirect(link)
 
 
-
-
-@app.route('/show_students/<code>',methods=['POST','GET'])
-def show_joinned_students(code):            ### show the joined teachers and students with class id
+@app.route('/show_students/<code>', methods=['POST', 'GET'])
+# show the joined teachers and students with class id
+def show_joinned_students(code):
     try:
         if 'email' not in session:
             return redirect('/')
         teach_id = api.get_teacher_id_class_id(code)
         teach_name = api.get_teacher_name(teach_id)
         stud_all_id = api.get_students_id(code)
-        stud_name=[]
+        stud_name = []
         for stud_id in stud_all_id:
             stud_name.append(api.get_student_name(stud_id[0]))
-        return render_template("teacher/joinned_people.html",teach_name=teach_name,stud_name=stud_name)  
+        return render_template("joinned_people.html", teach_name=teach_name, stud_name=stud_name)
     except Exception as e:
         print(e)
-        link='/class/'+str(code)
-        return redirect(link) 
-
+        link = '/class/'+str(code)
+        return redirect(link)
 
 
 @app.route('/logout')

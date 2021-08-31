@@ -19,7 +19,19 @@
 </head>
 
 <body>
-    <nav style="background-color: #d8dcdc; height: 3.9rem;">
+
+  <style>
+    body {
+      background-image: url(../static/photos/SVG/Asset\ 2.svg);
+      height: 100%;
+
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+    <nav style=" height: 3.9rem;">
         <div class="container-fluid row">
             <div style="display: flex;">
                 <div class="col-md-11" style="display: flex;   z-index: 100;">
@@ -61,20 +73,19 @@
         
      <div  >
         <div class="card">
-          <div class="card-header" style="height: 8rem;">
-            <img src="https://i.pinimg.com/originals/5c/b4/8c/5cb48cea9219f94fbbb6a77009d0b56a.png" alt="rover" />
+          <div class="card-header" style="padding-top: 2em; padding-bottom: 0em;">
+            <a class="tag " id="{{items}}" href="/student_class/{{ items[0][2] }}">{{ items[0][0] }}</a>
+            <div class="col-md-4" ><span class="tag tag-teal" href="{{ items[0][1] }}">Meet</span></div>
+            <p>by {{items[0][3]}}</p>
           </div>
-          <div class="card-body">
-            <a class="tag tag-teal" id="{{items}}" href="/student_class/{{ items[0][2] }}">{{ items[0][0] }}</a>
-            <div class="col-md-4" align="right"><span class="tag tag-teal" href="#">{{items[0][3]}}</span></div>
-            <div class="col-md-4" align="right"><span class="tag tag-teal" href="{{ items[0][1] }}">Meet</span></div>
+          <div class="card-body" style=" background-color: rgb(219, 217, 217); margin-top: -.5em;">
+            <h6>Assignments:</h6>
+            <!-- <div class="col"><span class="tag tag-teal" href="#">{{items[0][3]}}</span></div> -->
+            
+            
+            
           </div>
-          <h6>Assignments:</h6>
-
-            <!-- <div class="user" style="margin-top: 4rem;">
-              <div class="user-info">
-              </div>
-            </div> -->
+      
         </div>
     
         </div>
