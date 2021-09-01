@@ -614,7 +614,7 @@ def  get_data_smart_students(content_id):   ## get the student name and it's pen
     )
     try:
         with conn.cursor() as curr:
-            sql = "select S.name,C.score from student S join submission C on(S.student_id = C.student_id and content_id =(%s)) "
+            sql = "select S.name,C.score,C.submit_time from student S join submission C on(S.student_id = C.student_id and content_id =(%s)) "
             curr.execute(sql,(content_id))
             output = curr.fetchall()
             return output
