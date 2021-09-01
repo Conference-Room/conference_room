@@ -85,14 +85,11 @@ def gt_login():
         if 'email' in session:
             return redirect('/')
         token = request.form["idtoken"]
-        idinfo = id_token.verify_oauth2_token(token, requests.Request(
-        ), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
-        print("here")
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
         userid = idinfo['sub']
         email = idinfo['email']
         name = idinfo['name']
         api.signup_teacher(name, email, "", "", userid)
-        print("hxsbdjhb")
         session['email'] = email
         session['who'] = 1
         return '/'
@@ -278,12 +275,45 @@ def stuAss(assId):
             return redirect('/')
         done=0
         mail = session['email']
+
         StuId=api.getStuId(mail )
+        output=api.get_assignment_details(assId)
+
+        if(output[0][0]):
+            class_id=output[0][0]
+        else:
+            class_id=""
+
+        if(output[0][1]):
+            content_heading=output[0][1]
+        else:
+            content_heading=""
+
+        if(output[0][2]):
+            descript=output[0][2]
+        else:
+            descript=""
+
+        if(output[0][3]):
+            upload_time=output[0][3]
+        else:
+            upload_time=""
+
+        if(output[0][4]):
+            max_score=output[0][4]
+        else:
+            max_score=""
+
+        if(output[0][5]):
+            due_date=output[0][5]
+        else:
+            due_date=""
+        
         if(api.is_assignment_submitted(assId+StuId)):
             print("hereee")
-            return render_template('student/stuAss.html', assId=assId , done="Submitted")
+            return render_template('student/stuAss.html', assId=assId , done="Submitted" , class_id=class_id , content_heading=content_heading , descript=descript , upload_time=upload_time , max_score=max_score, due_date=due_date )
 
-        return render_template('student/stuAss.html', assId=assId , done="submit")
+        return render_template('student/stuAss.html', assId=assId , done="submit" , class_id=class_id , content_heading=content_heading , descript=descript , upload_time=upload_time , max_score=max_score, due_date=due_date )
         #print("mofosssssssss")
         return render_template('student/stuAss.html' , assId=assId)
     except Exception as e:
@@ -328,6 +358,9 @@ def stuAssSubmit(assId):
     
             StuId=api.getStuId(mail )
             if(api.is_assignment_submitted(assId+StuId)):
+
+                link = '/stuAss/' + str(assId)
+                return redirect(link , done="Submitted")
                 return render_template('student/stuAss.html', assId=assId , done="Submitted")
             files = request.files.getlist("stuAss")
 
@@ -346,11 +379,43 @@ def stuAssSubmit(assId):
                 api.add_student_storage_files(directory,  os.path.join(path, f.filename))
             # if(api.is_assignment_submitted(assId+StuId)):
             #     print("hereee")
-            return render_template('student/stuAss.html', assId=assId , done="Submitted")
+            output=api.get_assignment_details(assId)
+
+            if(output[0][0]):
+                class_id=output[0][0]
+            else:
+                class_id=""
+
+            if(output[0][1]):
+                content_heading=output[0][1]
+            else:
+                content_heading=""
+
+            if(output[0][2]):
+                descript=output[0][2]
+            else:
+                descript=""
+
+            if(output[0][3]):
+                upload_time=output[0][3]
+            else:
+                upload_time=""
+
+            if(output[0][4]):
+                max_score=output[0][4]
+            else:
+                max_score=""
+
+            if(output[0][5]):
+                due_date=output[0][5]
+            else:
+                due_date=""
+        
+            # return render_template('student/stuAss.html', assId=assId , done="Submitted", class_id=class_id , content_heading=content_heading , descript=descript , upload_time=upload_time , max_score=max_score, due_date=due_date)
             
            
-            # link = '/stuAss/' + str(assId)
-            # return redirect(link , done="Submitted")
+            link = '/stuAss/' + str(assId)
+            return redirect(link , done="Submitted")
             
            
             print(StuId)

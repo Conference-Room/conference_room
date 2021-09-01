@@ -45,11 +45,10 @@
                         <ul class="sidebarMenuInner">
                             <li>Classes<span>To-Do</span></li>                            
                             <!--<li><a href="/add_class_content/{{ code }}">Add Content</a></li>-->
-                            <li><a href="https://instagram.com/plavookac" target="_blank">Instagram</a></li>
-                            <li><a href="https://twitter.com/plavookac" target="_blank">Twitter</a></li>
-                            <li><a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg"
-                                    target="_blank">YouTube</a></li>
-                            <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a></li>
+                            <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                            <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                            <li><a href="https://www.youtube.com" target="_blank">YouTube</a></li>
+                            <li><a href="https://www.linkedin.com" target="_blank">Linkedin</a></li>
                         </ul>
                     </div>
                     <div class="navbar-brand " style="margin-top: 0.7rem; margin-left: 1.5rem;" href="#">Conference Room
@@ -73,16 +72,77 @@
     </nav>
 
 
-    <form method="POST" enctype="multipart/form-data" action="/stuAssSubmit/{{assId}}" >
-        
-        <input type="file" id="stuAss" name="stuAss" placeholder="Select Files" multiple=""> 
+    
+    <div class="container row" style="color:black!important; margin-left: 7rem;    margin-top: 1rem;">
+        <div class="col-md-7">
+            <!-- <h5>{{content_heading}} what</h5>
+            <h5>{{descript}}</h5>
+            <h5>{{max_score}}</h5>
+            <h5>{{due_date}}</h5>
+            <h5>{{upload_time}}</h5> -->
+            <div class="card" style="background-image:none;">
+                <div class="card-header " style="color:black;">
+                    {{content_heading}}
+                </div>
+                
+                <div class="card-body"style="color:black;">
+                    <div class="row">
 
-        <input type="hidden" id="assId" class="assId" name="assId" value={{assId}}>
-        <button type="submit" id="submit" value="Submit">{{done}}</button>
-    </form>
-</div>
+                        <div class="col-md-9" >
+                            <h5 class="card-title"style="color:black;">Special title treatment</h5>
+                        </div>
+                        <div class=" col-md-3" style="color:black;display: flex;
+                        flex-direction: row-reverse;">
+                              Max Score:{{max_score}}
+                          </div>
+                    </div>
+                  <p class="card-text"style="color:black;">{{descript}}</p>
+                  <div  style="color:black;display: flex;
+                        flex-direction: row-reverse;">
+                              {{due_date}}
+                          </div>
+                </div>
+              </div>
+            
+
+            
+
+
+        </div>
+        <div class="col-md-5">
+            
+            <div class="card" style="background-image:none;">
+                <div class="card-header"style="color:black;">
+                    {{content_heading}}
+                </div>
+                <div class="card-body">
+                  <!-- <h5 class="card-title"style="color:black;">Special title treatment</h5> -->
+                  <p class="card-text"style="color:black;"></p>
+                  <br><br><br><br>
+                    <form method="POST" enctype="multipart/form-data" action="/stuAssSubmit/{{assId}}" >
+        
+                        <div class="row" style="padding-top: 0.6rem;">
+                            <div class="col-md-8"><input type="file" id="stuAss" name="stuAss" placeholder="Select Files" multiple=""> </div>
+                            <div class="col-md-4" style="padding-top: 0.9rem;   "><button type="submit" id="submit" value="Submit">{{done}}</button></div>
+                        </div>
+                        
+                
+                        <input type="hidden" id="assId" class="assId" name="assId" value={{assId}}>
+                        
+                    </form>
+                  
+                </div>
+              </div>
+            
+        </div>
+    </div>
+
+
+
+
+
     
-    
+   
 
 
 
