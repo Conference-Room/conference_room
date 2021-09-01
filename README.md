@@ -13,7 +13,7 @@ Conference Room is a suite of online tools that allows teachers to set assignmen
 1. ✔️ Login and signup via
     - ✔️ Username & Password
    - ✔️ Gmail Sync (Login with Gmail Option).
-    - ![interface](https://github.com/Conference-Room/conference_room/blob/main/assets/login.png)
+      ![interface](https://github.com/Conference-Room/conference_room/blob/main/assets/login.png)
 2. ✔️ Home Page showing the list of all the subjects of the logged in student
        ![interface](https://github.com/Conference-Room/conference_room/blob/main/assets/people.png)
 3. ✔️ Assignment Page ( Showing the list of assignments done till now as well as the assignments to
@@ -21,8 +21,8 @@ be done)
        ![interface](https://github.com/Conference-Room/conference_room/blob/main/assets/stud_ass.png)
        ![interface](https://github.com/Conference-Room/conference_room/blob/main/assets/teach_ass.png)
 4. ✔️Test Page ( Showing the list of past test results as well as upcoming tests)
- ![Interface](https://github.com/Conference-Room/conference_room/blob/main/assets/Screenshot%202021-08-31%20193314.png)
- ![Interface](https://github.com/Conference-Room/conference_room/blob/main/assets/Screenshot%202021-08-31%20193259.png)
+      ![Interface](https://github.com/Conference-Room/conference_room/blob/main/assets/Screenshot%202021-08-31%20193314.png)
+      ![Interface](https://github.com/Conference-Room/conference_room/blob/main/assets/Screenshot%202021-08-31%20193259.png)
 ## ⚙ Technology Stack
 `Backend` : Flask <br>
 `Database`: MySQL <br>
