@@ -72,15 +72,23 @@ p {
 
 form {
   position: absolute;
-  top: 0;
+  top: -5em;
+  /* z-index: -1; */
   left: 0;
   right: 0;
   width: 100%;
   text-align: center;
   padding: 2em;
 }
+@media only screen and (min-width: 700px) {
+  form {
+    top: 0;
+  }
+}
 
 header {
+  position: relative;
+  z-index: 9999;
   width: 220px;
   height: 220px;
   margin: 1em auto;
@@ -108,7 +116,8 @@ input::placeholder {
 
 footer {
   position: absolute;
-  transform: translate(0%, 40%);
+  transform: translate(0%, 25%);
+  /* top: 4em; */
   bottom: 0;
   left: 0;
   right: 0;

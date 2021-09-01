@@ -177,7 +177,10 @@ a.people {
   font-weight: 400;
   text-align: center;
 }
-
+.card-body {
+  position: relative;
+  right: 0;
+}
 @media only screen and (min-width: 1280px) {
   .card0 h3,
   .card0 h3 {
@@ -428,7 +431,7 @@ textarea:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 .container {
-  display: flex!important;
-  justify-content: center!important;
-  align-items: center!important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }

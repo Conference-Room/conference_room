@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-        <link rel="stylesheet" href="static\teacher\teacher_main.css">
+        <!-- <link rel="stylesheet" href="static\teacher\teacher_main.css"> -->
     <link rel="stylesheet" href="../../static/index2.css">
     <link rel="stylesheet" href="../../static/teacher/class_content.css">
     <title>Conference here   Room</title>
@@ -105,27 +105,29 @@
                             <span class="pre-heading">Heading : {{ info[0]|capitalize }}</span>
                             </a>
                         
-                       
-                        
-                        
                     </header>
                         <div class="title">
-                            <!-- <a href="/stuAss/{{ info[1]|capitalize }}" class="title" >
-                                <p style="margin-top: .5em;font-size: 20px ;font-style: italic;"> Content ID:- {{ info[1]|capitalize}} </p>
+                            <a href="/stuAss/{{ info[1]|capitalize }}" class="title" >
+                                <p style="margin-top: .5em;font-size: 20px ;font-style: italic;" hidden> Content ID:- {{ info[1]|capitalize}} </p>
                             
-                            </a> -->
+                            </a>
                             </div>
                             
                             <div class="title">
                                 <a href="" class="title" >
-                                    <p style="margin-top: .5em;" >       {{ info[2]|capitalize}}</p>
+                                    <p style="margin-top: .5em;" >{{ info[2]|capitalize}} </p>
                                 
                                 </a>
-                                </div>
-                        <p class="meta">
-                            <time class="updated" datetime="" itemprop="datePublished">{{ info[3] }}</time>
-                        </p>
-                    
+                                <p class="meta">
+                                    <time class="updated" datetime="" itemprop="datePublished">{{ info[3] }}</time>
+                                </p>
+                            </div>
+                            
+                            <!-- <div class="card-body" style="text-align: left; margin-top: .5em;">
+                                <p class="meta">
+                                    <time class="updated" datetime="" itemprop="datePublished">{{ info[3] }}</time>
+                                </p>
+                            </div> -->
                     <!-- <div class="chips">
                         <a class="chip">Manav</a>
                         <a class="chip">dekh</a>
