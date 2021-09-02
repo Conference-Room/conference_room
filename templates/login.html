@@ -67,7 +67,7 @@
           <div style="font-size: 0.7rem; margin-top: .3em;">Login with Google</div>
           <div class="g-signin2" data-onsuccess="onSignIn" ></div>
           
-          <!-- <a href="#" onclick="signOut()">Sign out</a> -->
+          <a href="#" onclick="signOut()">Sign out</a>
 
           <p>
             Don't have an account? <a href="/signup/{{ who1 }}">Register</a>
@@ -106,12 +106,12 @@
         if(who.value=="student"){
           console.log("for student");
             var profile = googleUser.getBasicProfile();
-            // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-            // console.log("Full Name: " + profile.getName());
-            // console.log("Given Name: " + profile.getGivenName());
-            // console.log("Family Name: " + profile.getFamilyName());
-            // console.log("Image URL: " + profile.getImageUrl());
-            // console.log("Email: " + profile.getEmail());
+            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            console.log("Full Name: " + profile.getName());
+            console.log("Given Name: " + profile.getGivenName());
+            console.log("Family Name: " + profile.getFamilyName());
+            console.log("Image URL: " + profile.getImageUrl());
+            console.log("Email: " + profile.getEmail());
     
             document.getElementsByName("email").value = profile.getEmail();
             document.getElementsByName("password").value = " ";

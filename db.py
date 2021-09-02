@@ -589,11 +589,12 @@ def get_content_specific_data(content_id):  ## get the content specific data for
             sql = "select class_id,content_heading,descript,due_date from class_content where content_id=(%s)"
             curr.execute(sql,(content_id))
             output = curr.fetchall()
+            print (output[0])
             return output[0]
     except Exception as e:
         print(e)
 
-
+print(get_content_specific_data("04V3e9nI7xQ2r1j"))
 
 
 def get_total_students(class_id):   ## get count of  total students for particular class
@@ -664,11 +665,12 @@ def get_Max_marks(content_id):
             sql = "select max_score from class_content where content_id=(%s)"
             curr.execute(sql,(content_id))
             output = curr.fetchall()
+            print(output[0][0]) 
             return output[0][0]
     except Exception as e:
         print(e)  
 
-
+print(get_Max_marks("04V3e9nI7xQ2r1j"))
 
 def get_teacher_id_class_id(class_id):
     conn=pymysql.connect(

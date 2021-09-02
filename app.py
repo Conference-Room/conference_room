@@ -329,20 +329,24 @@ def teachContent(content_id):
             return redirect('/')
 
         Content = api.get_content_specific_data(content_id) ## get the class_id,content heading,descript and due time
+        print("Content")
+        print(Content[0])
         total_students = (api.get_total_students(Content[0]))  ## count of total students
         smart_students = (api.get_smart_students(content_id)) ## count of smart students
         List_smart_students = api.get_data_smart_students(content_id)
         Max_Score = (api.get_Max_marks(content_id))
-        # print(type(Max_Score))
+        print(type(Max_Score))
         Max_Score = str(Max_Score)
         if(Max_Score=='None'): 
             Max_Score=0
+        # print(Max_Score)
 
         # else: Max_Score=int(Max_Score)
         return render_template('teacher/particular_content.html' , data=Content,assigned_stud = int(smart_students),left_stud=int(total_students)-int(smart_students),smart_stud =List_smart_students,Max_Score = Max_Score)
     except Exception as e:
         print(e)
         return redirect('/')
+# print(teachContent("04V3e9nI7xQ2r1j"))
 
 @app.route('/stuAssSubmit/<assId>',methods=['GET', 'POST'])
 def stuAssSubmit(assId):

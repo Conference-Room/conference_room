@@ -74,17 +74,67 @@
         </div>
         
     </nav>
+    <div class="container row" style="margin: 0 auto;">
+        <div class="card col-md-8 " style="background-image:none; margin-top: 2rem;">
+            <div class="card-header " style="color:black;">
+                {{data[1]}}
+            </div>
+            
+            <div class="card-body"style="color:black;">
+                <div class="row">
+    
+                    <div class="col-md-9" >
+                        <h5 class="card-title"style="color:black;">Special title treatment</h5>
+                    </div>
+                    <div class=" col-md-3" style="color:black;display: flex;
+                    flex-direction: row-reverse;">
+                          Max Score:{{Max_Score}} 
+                      </div>
+                </div>
+              <p class="card-text"style="color:black;">{{data[2]}}</p>
+              <div  style="color:black;display: flex;
+                    flex-direction: row-reverse;">
+                          {{data[3]}}
+                      </div>
+            </div>
+          </div>
+          <div class="col-md-4" style="margin-top: 2rem;">
+                
+            <div class="card" style="background-image:none;">
+                <div class="card-header"style="color:black;">
+                    Content Heading
+                </div>
+                <div class="card-body">
+                  <!-- <h5 class="card-title"style="color:black;">Special title treatment</h5> -->
+                  <p class="card-text"style="color:black;"></p>
+                  <br><br><br><br>
+        
+                        <div class="row" style="padding-top: 0.6rem;">
+                            <div class="col-md-4" style="padding-top: 0.9rem;   "><button type="submit" id="submit" value="Submit">{{assigned_stud}}</button></div>
+                            <div class="col-md-4" style="padding-top: 0.9rem;   "><button type="submit" id="submit" value="Submit">{{left_stud}}</button></div>
+                        </div>
+                        
+                
+                        
+                    </form>
+                  
+                </div>
+              </div>
+            
+        </div>
+    </div>
+    
     
 
-        <ul>
+        <!-- <ul>
             <li>Content heading:- {{data[1]}}</li>
             <li>Content descript:- {{data[2]}}</li>
             <li>Content due time:- {{data[3]}}</li>
-        </ul>
+        </ul> -->
 
 
-        <p>Assigned students {{assigned_stud}}</p>
-        <p>Left Students {{left_stud}}</p>
+        <!-- <p>Assigned students {{assigned_stud}}</p>
+        <p>Left Students {{left_stud}}</p> -->
     
 
         
