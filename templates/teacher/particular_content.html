@@ -55,7 +55,7 @@
                     
                     </div>
                     <div class="buttons" style="align-items: center;">
-                        <button class="btn  active">classroom</button>
+                        <!-- <button class="btn  active">classroom</button> -->
                         
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                 <div class="row">
     
                     <div class="col-md-9" >
-                        <h5 class="card-title"style="color:black;">Special title treatment</h5>
+                        <h5 class="card-title"style="color:black;">{{data[1]}}</h5>
                     </div>
                     <div class=" col-md-3" style="color:black;display: flex;
                     flex-direction: row-reverse;">
@@ -102,17 +102,32 @@
                 
             <div class="card" style="background-image:none;">
                 <div class="card-header"style="color:black;">
-                    Content Heading
+                    Student Submission Record
                 </div>
                 <div class="card-body">
                   <!-- <h5 class="card-title"style="color:black;">Special title treatment</h5> -->
                   <p class="card-text"style="color:black;"></p>
-                  <br><br><br><br>
+                  <br><br><br>
+                  <br>
+                  <hr style="margin: 0rem;">
         
-                        <div class="row" style="padding-top: 0.6rem;">
-                            <div class="col-md-4" style="padding-top: 0.9rem;   "><button type="submit" id="submit" value="Submit">{{assigned_stud}}</button></div>
-                            <div class="col-md-4" style="padding-top: 0.9rem;   "><button type="submit" id="submit" value="Submit">{{left_stud}}</button></div>
+                        <div class="container row" style="margin: 0 auto;">
+                            <div class="column col-md-6 ">
+
+                                <div class="container col-md-6" style="padding-top: 0.9rem; margin: 0 auto;  "><button type="submit" id="submit" value="Submit">{{assigned_stud}}</button></div>
+                                <div class="container tooltip" style="padding-top: 0rem; margin: 0 auto; font-size: 0.7rem; ">Smart Students<span class="tooltiptext">Students who have submitted the assignment</span></div>
+                                
+                            </div>
+                            <div class="column col-md-6 ">
+                                <div class="container col-md-6" style="padding-top: 0.9rem;  margin: 0 auto; "><button type="submit" id="submit" value="Submit">  {{left_stud}}</button></div>
+                                <div class="container tooltip" style="padding-top: 0rem;  margin: 0 auto; font-size: 0.7rem;">Students Left<span class="tooltiptext">Students who are yet to submitted the assignment</span></div>
+                                
+                            </div>
                         </div>
+                        <!-- <div class="container row" style="margin: 0 auto;font-size: 0.7rem;">
+                            <div class="container col-md-6" style="padding-top: 0.9rem; margin: 0 auto;  ">Smart Students</div>
+                            <div class="container col-md-6" style="padding-top: 0.9rem;  margin: 0 auto; ">Students Left</div>
+                        </div> -->
                         
                 
                         

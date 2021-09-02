@@ -603,6 +603,8 @@ def get_total_students(class_id):   ## get count of  total students for particul
             return output[0][0]
     except Exception as e:
         print(e)
+print("total Students")
+print(get_total_students("peo7KJT50c"))
 
 
 
@@ -622,6 +624,8 @@ def get_smart_students(content_id):  ## get the count of students that completed
             return output[0][0]
     except Exception as e:
         print(e) 
+print("smart students")
+print(get_smart_students("04V3e9nI7xQ2r1j"))
 
 
 def  get_data_smart_students(content_id):   ## get the student name and it's pending score with content_id
