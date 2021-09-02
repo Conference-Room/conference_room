@@ -106,12 +106,12 @@
         if(who.value=="student"){
           console.log("for student");
             var profile = googleUser.getBasicProfile();
-            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-            console.log("Full Name: " + profile.getName());
-            console.log("Given Name: " + profile.getGivenName());
-            console.log("Family Name: " + profile.getFamilyName());
-            console.log("Image URL: " + profile.getImageUrl());
-            console.log("Email: " + profile.getEmail());
+            //console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            //console.log("Full Name: " + profile.getName());
+            //console.log("Given Name: " + profile.getGivenName());
+            //console.log("Family Name: " + profile.getFamilyName());
+            //console.log("Image URL: " + profile.getImageUrl());
+            //console.log("Email: " + profile.getEmail());
     
             document.getElementsByName("email").value = profile.getEmail();
             document.getElementsByName("password").value = " ";
@@ -120,14 +120,14 @@
     
             // The ID token you need to pass to your backend:
             var id_token = googleUser.getAuthResponse().id_token;
-            console.log("ID Token: " + id_token);
+            //console.log("ID Token: " + id_token);
     
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost:5000/gs_login');
+            xhr.open('POST', 'https://conferenceroom1.pythonanywhere.com/gs_login');
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.send('idtoken=' + id_token);
             xhr.onload = function() {
-            console.log('Signed in as: ' + xhr.responseText);
+            //console.log('Signed in as: ' + xhr.responseText);
             window.location.replace('/'); 
         }
       }
@@ -149,14 +149,14 @@
     
             // The ID token you need to pass to your backend:
             var id_token = googleUser.getAuthResponse().id_token;
-            console.log("ID Token: " + id_token);
+            //console.log("ID Token: " + id_token);
     
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost:5000/gt_login');
+            xhr.open('POST', 'https://conferenceroom1.pythonanywhere.com/gt_login');
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.send('idtoken=' + id_token);
             xhr.onload = function() {
-            console.log('Signed in as: ' + xhr.responseText);
+            //console.log('Signed in as: ' + xhr.responseText);
             window.location.replace('/'); 
         }
       }

@@ -65,12 +65,10 @@ def gs_login():
             return redirect('/')
         token = request.form["idtoken"]
         idinfo = id_token.verify_oauth2_token(token, requests.Request(), "1050801722055-btcvqar75jhdt6shnop5esohpj5avd5c.apps.googleusercontent.com")
-        print("here")
         userid = idinfo['sub']
         email = idinfo['email']
         name = idinfo['name']
         api.signup_student(name, email, "", "", userid)
-        print("hxsbdjhb")
         session['email'] = email
         session['who'] = 0
         return '/'
@@ -231,23 +229,17 @@ def create_class_data():
 def join_class_data():
     try:
         if request.method == 'POST':
-            # print('HEllo')
             form_details = request.form
             class_code = form_details['class_code']
-           # print(class_code)
             if 'email' not in session:
                 return redirect('/')
-            # print("fuck")
             if api.check_class_id(class_code) == False:
                 return redirect('/')  # WRONG class code alert
-            # print('suck')
             mail = session['email']
             student_id = api.get_student_id(mail)
-            # print('Hello')
             if api.already_joined_class(student_id, class_code):
                 # after this alert that class is already joined
                 return redirect('/')
-            # print('BYE')
             api.join_class(student_id, class_code)
             return redirect('/')
         return render_template("student/add_class.html")
@@ -310,7 +302,6 @@ def stuAss(assId):
             due_date=""
         
         if(api.is_assignment_submitted(assId+StuId)):
-            print("hereee")
             return render_template('student/stuAss.html', assId=assId , done="Submitted" , class_id=class_id , content_heading=content_heading , descript=descript , upload_time=upload_time , max_score=max_score, due_date=due_date )
 
         return render_template('student/stuAss.html', assId=assId , done="submit" , class_id=class_id , content_heading=content_heading , descript=descript , upload_time=upload_time , max_score=max_score, due_date=due_date )
@@ -329,13 +320,10 @@ def teachContent(content_id):
             return redirect('/')
 
         Content = api.get_content_specific_data(content_id) ## get the class_id,content heading,descript and due time
-        print("Content")
-        print(Content[0])
         total_students = (api.get_total_students(Content[0]))  ## count of total students
         smart_students = (api.get_smart_students(content_id)) ## count of smart students
         List_smart_students = api.get_data_smart_students(content_id)
         Max_Score = (api.get_Max_marks(content_id))
-        print(type(Max_Score))
         Max_Score = str(Max_Score)
         if(Max_Score=='None'): 
             Max_Score=0
@@ -421,8 +409,6 @@ def stuAssSubmit(assId):
             link = '/stuAss/' + str(assId)
             return redirect(link , done="Submitted")
             
-           
-            print(StuId)
            
         return render_template('student/student_main.html' , assId=assId)
     except Exception as e:
