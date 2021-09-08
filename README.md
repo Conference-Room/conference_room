@@ -28,7 +28,7 @@ be done)
 `Database`: MySQL <br>
 `Frontend`: CSS, Jinja, HTML, Bootstrap, Javascript  <br>
 `Hosting` : Pythonanywhere <br>
-`Additional` : Google Authentication <br>
+`Additional` : Google Authentication <br> <br>
 **We have made custom API to make API calls for fetching data from the Database.**
 
 ## 🔧 Installation
